@@ -190,8 +190,8 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
          int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "Sure? You want to exit?", 
-                            "Swing Tester",
+                            "¿Estas seguro de crear este producto?", 
+                            "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
                         );
@@ -211,6 +211,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaProductos vistaProductos = new VistaProductos();
                  vistaProductos.show();
+                 dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**

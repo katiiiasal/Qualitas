@@ -41,6 +41,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -152,6 +153,16 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setText("🔙");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(60, 20, 170, 80);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -167,6 +178,12 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+                 VistaProductos vistaProductos = new VistaProductos();
+                 vistaProductos.show();
+                 dispose();      
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +237,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;

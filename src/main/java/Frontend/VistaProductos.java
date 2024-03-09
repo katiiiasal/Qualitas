@@ -119,7 +119,9 @@ public class VistaProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        VistaProductosActualizar vistaProductosActualizar = new VistaProductosActualizar();
+        vistaProductosActualizar.show();
+        dispose();   
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
