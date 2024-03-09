@@ -95,6 +95,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(lblfechaExpiracion);
         lblfechaExpiracion.setBounds(510, 580, 230, 32);
 
+        txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfidProducto);
@@ -188,7 +189,22 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-         int result = JOptionPane.showConfirmDialog(
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String descripcion = txtfDescripcion.getText();
+        System.out.println(descripcion);
+        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
+        System.out.println(numeroLote);
+        String fechaProduccion = txtffechaProduccion.getText();
+        System.out.println(fechaProduccion);
+        String fechaExpiracion = txtffechaExpiracion.getText();
+        System.out.println(fechaExpiracion);
+        
+        
+        
+        // Logica del pop up de confirmacion
+        int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
                             "¿Estas seguro de crear este producto?", 
                             "QUALITAS - CONFIRMACION",

@@ -4,6 +4,9 @@
  */
 package Frontend;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author heiva
@@ -139,6 +142,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnActualizar);
         btnActualizar.setBounds(130, 480, 243, 55);
 
@@ -184,6 +192,42 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
                  vistaProductos.show();
                  dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String descripcion = txtfDescripcion.getText();
+        System.out.println(descripcion);
+        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
+        System.out.println(numeroLote);
+        String fechaProduccion = txtffechaProduccion.getText();
+        System.out.println(fechaProduccion);
+        String fechaExpiracion = txtffechaExpiracion.getText();
+        System.out.println(fechaExpiracion);
+        
+        
+        
+        // Logica del pop up de confirmacion
+        int result = JOptionPane.showConfirmDialog(
+                            new JFrame(),
+                            "¿Estas seguro de actualizar este producto?", 
+                            "QUALITAS - CONFIRMACION",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE
+                        );
+         
+            if(result == JOptionPane.YES_OPTION){
+                System.out.println(1);
+               //label.setText("You selected: Yes");
+            }else if (result == JOptionPane.NO_OPTION){
+                System.out.println(2);
+               //label.setText("You selected: No");
+            }else {
+                System.out.println(3);
+               //label.setText("None selected");
+            }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
