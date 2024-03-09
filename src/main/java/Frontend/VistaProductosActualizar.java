@@ -4,6 +4,9 @@
  */
 package Frontend;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author heiva
@@ -41,6 +44,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,6 +142,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
         btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnActualizar);
         btnActualizar.setBounds(130, 480, 243, 55);
 
@@ -151,6 +160,16 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
+
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setText("🔙");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(60, 20, 170, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -167,6 +186,48 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+                 VistaProductos vistaProductos = new VistaProductos();
+                 vistaProductos.show();
+                 dispose();      
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String descripcion = txtfDescripcion.getText();
+        System.out.println(descripcion);
+        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
+        System.out.println(numeroLote);
+        String fechaProduccion = txtffechaProduccion.getText();
+        System.out.println(fechaProduccion);
+        String fechaExpiracion = txtffechaExpiracion.getText();
+        System.out.println(fechaExpiracion);
+        
+        
+        
+        // Logica del pop up de confirmacion
+        int result = JOptionPane.showConfirmDialog(
+                            new JFrame(),
+                            "¿Estas seguro de actualizar este producto?", 
+                            "QUALITAS - CONFIRMACION",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE
+                        );
+         
+            if(result == JOptionPane.YES_OPTION){
+                System.out.println(1);
+               //label.setText("You selected: Yes");
+            }else if (result == JOptionPane.NO_OPTION){
+                System.out.println(2);
+               //label.setText("You selected: No");
+            }else {
+                System.out.println(3);
+               //label.setText("None selected");
+            }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +281,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;

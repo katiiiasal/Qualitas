@@ -44,6 +44,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,6 +95,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(lblfechaExpiracion);
         lblfechaExpiracion.setBounds(510, 580, 230, 32);
 
+        txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfidProducto);
@@ -160,6 +162,16 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setText("🔙");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(60, 20, 180, 80);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -177,10 +189,25 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-         int result = JOptionPane.showConfirmDialog(
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String descripcion = txtfDescripcion.getText();
+        System.out.println(descripcion);
+        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
+        System.out.println(numeroLote);
+        String fechaProduccion = txtffechaProduccion.getText();
+        System.out.println(fechaProduccion);
+        String fechaExpiracion = txtffechaExpiracion.getText();
+        System.out.println(fechaExpiracion);
+        
+        
+        
+        // Logica del pop up de confirmacion
+        int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "Sure? You want to exit?", 
-                            "Swing Tester",
+                            "¿Estas seguro de crear este producto?", 
+                            "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
                         );
@@ -196,6 +223,12 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                //label.setText("None selected");
             }
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+                 VistaProductos vistaProductos = new VistaProductos();
+                 vistaProductos.show();
+                 dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,6 +298,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;
