@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author heiva
  */
-public class VistaProductosCrear extends javax.swing.JFrame {
+public class VistaClientesCrear extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProductosCrear
      */
-    public VistaProductosCrear() {
+    public VistaClientesCrear() {
         initComponents();
     }
 
@@ -48,7 +48,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("QUALITAS - CREAR PRODUCTO");
+        setTitle("QUALITAS - CREAR CLIENTES");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
@@ -151,9 +151,9 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(btnCrear);
         btnCrear.setBounds(180, 470, 141, 55);
 
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
+        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
         getContentPane().add(lblProductos);
-        lblProductos.setBounds(120, 170, 280, 260);
+        lblProductos.setBounds(120, 170, 300, 260);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -225,9 +225,9 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaProductos vistaProductos = new VistaProductos();
-                 vistaProductos.show();
-                 dispose();
+                 VistaClientes vistaClientes = new VistaClientes();
+                 vistaClientes.show();
+                 dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
@@ -247,14 +247,46 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaClientesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaClientesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaClientesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaClientesCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -291,7 +323,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProductosCrear().setVisible(true);
+                new VistaClientesCrear().setVisible(true);
             }
         });
     }

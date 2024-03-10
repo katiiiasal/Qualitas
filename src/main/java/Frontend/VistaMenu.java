@@ -84,6 +84,11 @@ public class VistaMenu extends javax.swing.JFrame {
         btnEmpleados.setText("EMPLEADOS");
         btnEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEmpleados.setPreferredSize(new java.awt.Dimension(200, 35));
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnEmpleados);
         btnEmpleados.setBounds(340, 200, 200, 40);
 
@@ -125,7 +130,9 @@ public class VistaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        // TODO add your handling code here:
+        VistaClientes vistaClientes = new VistaClientes();
+        vistaClientes.show();
+        dispose();
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
@@ -135,12 +142,20 @@ public class VistaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidosActionPerformed
-        // TODO add your handling code here:
+        VistaPedidos vistaPedidos = new VistaPedidos();
+        vistaPedidos.show();
+        dispose();
     }//GEN-LAST:event_btnPedidosActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        VistaEmpleados vistaEmpleados = new VistaEmpleados();
+        vistaEmpleados.show();
+        dispose();
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
 
     /**
      * @param args the command line arguments
