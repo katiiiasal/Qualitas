@@ -149,6 +149,8 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         });
         getContentPane().add(btnActualizar);
         btnActualizar.setBounds(130, 480, 243, 55);
+
+        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
         getContentPane().add(lblProductos);
         lblProductos.setBounds(120, 170, 280, 260);
 

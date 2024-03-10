@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author heiva
  */
-public class VistaProductosCrear extends javax.swing.JFrame {
+public class VistaEmpleadosActualizar extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProductosCrear
      */
-    public VistaProductosCrear() {
+    public VistaEmpleadosActualizar() {
         initComponents();
     }
 
@@ -41,14 +41,14 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         txtfnumeroLote = new javax.swing.JTextField();
         txtffechaExpiracion = new javax.swing.JTextField();
         txtffechaProduccion = new javax.swing.JTextField();
-        btnCrear = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("QUALITAS - CREAR PRODUCTO");
+        setTitle("QUALITAS - ACTUALIZAR EMPLEADOS");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
@@ -95,7 +95,6 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(lblfechaExpiracion);
         lblfechaExpiracion.setBounds(510, 580, 230, 32);
 
-        txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfidProducto);
@@ -141,17 +140,17 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(txtffechaProduccion);
         txtffechaProduccion.setBounds(520, 520, 690, 40);
 
-        btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
-        btnCrear.setText("CREAR");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCrear);
-        btnCrear.setBounds(180, 470, 141, 55);
+        getContentPane().add(btnActualizar);
+        btnActualizar.setBounds(130, 480, 243, 55);
 
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
+        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Empleados.png")); // NOI18N
         getContentPane().add(lblProductos);
         lblProductos.setBounds(120, 170, 280, 260);
 
@@ -170,7 +169,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 180, 80);
+        btnRegresar.setBounds(60, 20, 170, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -188,7 +187,13 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+                 VistaEmpleados vistaEmpleados = new VistaEmpleados();
+                 vistaEmpleados.show();
+                 dispose();      
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
@@ -206,7 +211,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de crear este producto?", 
+                            "¿Estas seguro de actualizar este producto?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -222,13 +227,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                 System.out.println(3);
                //label.setText("None selected");
             }
-    }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaProductos vistaProductos = new VistaProductos();
-                 vistaProductos.show();
-                 dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,13 +246,13 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleadosActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleadosActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleadosActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosCrear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaEmpleadosActualizar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -291,13 +290,13 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProductosCrear().setVisible(true);
+                new VistaEmpleadosActualizar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDescripcion;
