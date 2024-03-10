@@ -99,24 +99,24 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().add(btnClientes);
         btnClientes.setBounds(720, 210, 200, 35);
 
-        lblEmpleados.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\Empleados.png")); // NOI18N
+        lblEmpleados.setIcon(new javax.swing.ImageIcon("C:\\Images\\Empleados.png")); // NOI18N
         getContentPane().add(lblEmpleados);
         lblEmpleados.setBounds(320, 40, 240, 190);
 
-        lblPedidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\Pedidos.png")); // NOI18N
+        lblPedidos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Pedidos.png")); // NOI18N
         getContentPane().add(lblPedidos);
         lblPedidos.setBounds(330, 350, 220, 200);
 
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\Productos.png")); // NOI18N
+        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
         getContentPane().add(lblProductos);
         lblProductos.setBounds(700, 350, 270, 210);
 
-        lblClientes1.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\Clientes.jpg")); // NOI18N
+        lblClientes1.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
         lblClientes1.setName(""); // NOI18N
         getContentPane().add(lblClientes1);
         lblClientes1.setBounds(660, 20, 300, 240);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
 
