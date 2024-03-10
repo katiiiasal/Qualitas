@@ -202,7 +202,7 @@
     <Component class="javax.swing.JLabel" name="lblBackground">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\heiva\Documents\NetBeansProjects\QualitasProject\src\main\java\Images\background.png"/>
+          <Image iconType="2" name="C:\Images\background.png"/>
         </Property>
       </Properties>
       <Constraints>

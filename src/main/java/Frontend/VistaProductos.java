@@ -118,7 +118,7 @@ public class VistaProductos extends javax.swing.JFrame {
         getContentPane().add(lblReturnToMenu);
         lblReturnToMenu.setBounds(10, 620, 120, 60);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
 

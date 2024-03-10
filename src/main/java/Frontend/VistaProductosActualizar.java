@@ -149,8 +149,6 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         });
         getContentPane().add(btnActualizar);
         btnActualizar.setBounds(130, 480, 243, 55);
-
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\Productos.png")); // NOI18N
         getContentPane().add(lblProductos);
         lblProductos.setBounds(120, 170, 280, 260);
 
@@ -171,7 +169,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().add(btnRegresar);
         btnRegresar.setBounds(60, 20, 170, 80);
 
-        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\heiva\\Documents\\NetBeansProjects\\QualitasProject\\src\\main\\java\\Images\\background.png")); // NOI18N
+        lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
 
