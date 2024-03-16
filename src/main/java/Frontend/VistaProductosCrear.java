@@ -223,7 +223,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                //label.setText("You selected: No");
             }else {
                 System.out.println(3);
-               //label.setText("None selected");
+               
             }
     }//GEN-LAST:event_btnCrearActionPerformed
 
