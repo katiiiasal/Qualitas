@@ -29,22 +29,33 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidProducto = new javax.swing.JLabel();
+        lblIdCliente = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblDescripcion = new javax.swing.JLabel();
-        lblnumeroLote = new javax.swing.JLabel();
-        lblfechaProduccion = new javax.swing.JLabel();
-        lblfechaExpiracion = new javax.swing.JLabel();
-        txtfidProducto = new javax.swing.JTextField();
+        lblApellidoMaterno = new javax.swing.JLabel();
+        lblApellidoPaterno = new javax.swing.JLabel();
+        txtfidCliente = new javax.swing.JTextField();
         txtfNombre = new javax.swing.JTextField();
-        txtfDescripcion = new javax.swing.JTextField();
-        txtfnumeroLote = new javax.swing.JTextField();
-        txtffechaExpiracion = new javax.swing.JTextField();
-        txtffechaProduccion = new javax.swing.JTextField();
-        btnCrear = new javax.swing.JButton();
-        lblProductos = new javax.swing.JLabel();
+        txtfApellidoMaterno = new javax.swing.JTextField();
+        txtfApellidoPaterno = new javax.swing.JTextField();
+        txtfTelefono = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        lblEmail = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
+        txtfCalle = new javax.swing.JTextField();
+        lblCalle = new javax.swing.JLabel();
+        lblNumeroInterior = new javax.swing.JLabel();
+        txtfNumeroInterior = new javax.swing.JTextField();
+        lblCodigoPostal = new javax.swing.JLabel();
+        txtfCodigoPostal = new javax.swing.JTextField();
+        lblColonia = new javax.swing.JLabel();
+        txtfColonia = new javax.swing.JTextField();
+        lblCuidad = new javax.swing.JLabel();
+        txtfCuidad = new javax.swing.JTextField();
+        lblEstado = new javax.swing.JLabel();
+        txtfEstado = new javax.swing.JTextField();
+        txtfEmail1 = new javax.swing.JTextField();
+        lblTelefono = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,111 +64,72 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
 
-        lblidProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidProducto.setText("idProducto");
-        lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 140, 122, 32);
+        lblIdCliente.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblIdCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblIdCliente.setText("idCliente");
+        lblIdCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblIdCliente);
+        lblIdCliente.setBounds(210, 130, 96, 32);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 230, 90, 32);
+        lblNombre.setBounds(210, 220, 90, 32);
 
-        lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripcion");
-        lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 320, 128, 32);
+        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoMaterno.setText("Apellido Materno");
+        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(210, 310, 240, 32);
 
-        lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblnumeroLote.setText("Numero de lote");
-        lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(510, 410, 180, 32);
+        lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoPaterno.setText("Apellido Paterno");
+        lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoPaterno);
+        lblApellidoPaterno.setBounds(210, 400, 230, 32);
 
-        lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaProduccion.setText("Fecha de produccion");
-        lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(500, 490, 250, 32);
-
-        lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaExpiracion.setText("Fecha de expiracion");
-        lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(510, 580, 230, 32);
-
-        txtfidProducto.setEditable(false);
-        txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidProducto);
-        txtfidProducto.setBounds(520, 180, 690, 40);
+        txtfidCliente.setEditable(false);
+        txtfidCliente.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfidCliente.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfidCliente);
+        txtfidCliente.setBounds(210, 170, 450, 40);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(520, 270, 690, 40);
+        txtfNombre.setBounds(210, 260, 450, 40);
 
-        txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfDescripcion.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfDescripcion);
-        txtfDescripcion.setBounds(520, 360, 690, 38);
+        txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoMaterno);
+        txtfApellidoMaterno.setBounds(210, 350, 450, 38);
 
-        txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfnumeroLote.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfnumeroLote);
-        txtfnumeroLote.setBounds(520, 440, 690, 40);
+        txtfApellidoPaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoPaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoPaterno);
+        txtfApellidoPaterno.setBounds(210, 430, 450, 40);
 
-        txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.addActionListener(new java.awt.event.ActionListener() {
+        txtfTelefono.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfTelefono.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfTelefono.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaExpiracionActionPerformed(evt);
+                txtfTelefonoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtffechaExpiracion);
-        txtffechaExpiracion.setBounds(520, 610, 690, 40);
-
-        txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaProduccionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtffechaProduccion);
-        txtffechaProduccion.setBounds(520, 520, 690, 40);
-
-        btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
-        btnCrear.setText("CREAR");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCrear);
-        btnCrear.setBounds(180, 470, 141, 55);
-
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
-        getContentPane().add(lblProductos);
-        lblProductos.setBounds(120, 170, 300, 260);
+        getContentPane().add(txtfTelefono);
+        txtfTelefono.setBounds(210, 620, 450, 40);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("PRODUCTOS");
+        lblTitulo.setText("CLIENTES");
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
@@ -172,34 +144,154 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         getContentPane().add(btnRegresar);
         btnRegresar.setBounds(60, 20, 180, 80);
 
+        lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEmail.setText("Email");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEmail);
+        lblEmail.setBounds(210, 490, 230, 32);
+
+        btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        btnCrear.setText("CREAR");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCrear);
+        btnCrear.setBounds(790, 30, 141, 55);
+
+        txtfCalle.setEditable(false);
+        txtfCalle.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCalle.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfCalle);
+        txtfCalle.setBounds(700, 170, 450, 40);
+
+        lblCalle.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCalle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCalle.setText("Calle");
+        lblCalle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCalle);
+        lblCalle.setBounds(700, 140, 53, 32);
+
+        lblNumeroInterior.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNumeroInterior.setText("Numero Interior");
+        lblNumeroInterior.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblNumeroInterior);
+        lblNumeroInterior.setBounds(700, 220, 210, 32);
+
+        txtfNumeroInterior.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfNumeroInterior.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfNumeroInterior.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfNumeroInterior);
+        txtfNumeroInterior.setBounds(700, 260, 450, 40);
+
+        lblCodigoPostal.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCodigoPostal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCodigoPostal.setText("Codigo Postal");
+        lblCodigoPostal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCodigoPostal);
+        lblCodigoPostal.setBounds(700, 310, 240, 32);
+
+        txtfCodigoPostal.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCodigoPostal.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfCodigoPostal.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfCodigoPostal);
+        txtfCodigoPostal.setBounds(700, 350, 450, 38);
+
+        lblColonia.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblColonia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblColonia.setText("Colonia");
+        lblColonia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblColonia);
+        lblColonia.setBounds(700, 400, 230, 32);
+
+        txtfColonia.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfColonia.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfColonia.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfColonia);
+        txtfColonia.setBounds(700, 430, 450, 40);
+
+        lblCuidad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCuidad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCuidad.setText("Cuidad");
+        lblCuidad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCuidad);
+        lblCuidad.setBounds(700, 490, 250, 32);
+
+        txtfCuidad.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCuidad.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfCuidad.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfCuidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfCuidadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfCuidad);
+        txtfCuidad.setBounds(700, 520, 450, 40);
+
+        lblEstado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEstado.setText("Estado");
+        lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEstado);
+        lblEstado.setBounds(700, 590, 230, 32);
+
+        txtfEstado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEstado.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEstado.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfEstadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfEstado);
+        txtfEstado.setBounds(700, 620, 450, 40);
+
+        txtfEmail1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEmail1.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEmail1.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEmail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfEmail1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfEmail1);
+        txtfEmail1.setBounds(210, 520, 450, 40);
+
+        lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTelefono.setText("Telefono");
+        lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblTelefono);
+        lblTelefono.setBounds(210, 590, 230, 32);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 1280, 720);
+        lblBackground.setBounds(10, -20, 1430, 720);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtffechaProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaProduccionActionPerformed
+    private void txtfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaProduccionActionPerformed
-
-    private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+    }//GEN-LAST:event_txtfTelefonoActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-         
+        /* 
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
-        String descripcion = txtfDescripcion.getText();
+        String descripcion = txtfApellidoMaterno.getText();
         System.out.println(descripcion);
-        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
+        int numeroLote = Integer.valueOf(txtfApellidoPaterno.getText());
         System.out.println(numeroLote);
         String fechaProduccion = txtffechaProduccion.getText();
         System.out.println(fechaProduccion);
-        String fechaExpiracion = txtffechaExpiracion.getText();
+        String fechaExpiracion = txtfTelefono.getText();
         System.out.println(fechaExpiracion);
+        */
         
         
         
@@ -229,6 +321,18 @@ public class VistaClientesCrear extends javax.swing.JFrame {
                  vistaClientes.show();
                  dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtfCuidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCuidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfCuidadActionPerformed
+
+    private void txtfEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfEstadoActionPerformed
+
+    private void txtfEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfEmail1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,20 +435,31 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblApellidoMaterno;
+    private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblBackground;
-    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblCalle;
+    private javax.swing.JLabel lblCodigoPostal;
+    private javax.swing.JLabel lblColonia;
+    private javax.swing.JLabel lblCuidad;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEstado;
+    private javax.swing.JLabel lblIdCliente;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblProductos;
+    private javax.swing.JLabel lblNumeroInterior;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblfechaExpiracion;
-    private javax.swing.JLabel lblfechaProduccion;
-    private javax.swing.JLabel lblidProducto;
-    private javax.swing.JLabel lblnumeroLote;
-    private javax.swing.JTextField txtfDescripcion;
+    private javax.swing.JTextField txtfApellidoMaterno;
+    private javax.swing.JTextField txtfApellidoPaterno;
+    private javax.swing.JTextField txtfCalle;
+    private javax.swing.JTextField txtfCodigoPostal;
+    private javax.swing.JTextField txtfColonia;
+    private javax.swing.JTextField txtfCuidad;
+    private javax.swing.JTextField txtfEmail1;
+    private javax.swing.JTextField txtfEstado;
     private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtffechaExpiracion;
-    private javax.swing.JTextField txtffechaProduccion;
-    private javax.swing.JTextField txtfidProducto;
-    private javax.swing.JTextField txtfnumeroLote;
+    private javax.swing.JTextField txtfNumeroInterior;
+    private javax.swing.JTextField txtfTelefono;
+    private javax.swing.JTextField txtfidCliente;
     // End of variables declaration//GEN-END:variables
 }
