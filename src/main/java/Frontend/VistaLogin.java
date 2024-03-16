@@ -37,6 +37,11 @@ public class VistaLogin extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnLogin.setText("INICIAR SESION");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin);
         btnLogin.setBounds(450, 410, 440, 40);
 
@@ -57,6 +62,17 @@ public class VistaLogin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String email = txtfEmail1.getText();
+        String password = String.valueOf(txtpPassword.getPassword());
+        System.out.println(email);
+        System.out.println(password);
+        VistaMenu vistaMenu = new VistaMenu();
+        vistaMenu.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
