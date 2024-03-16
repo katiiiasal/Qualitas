@@ -1,16 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Frontend;
+
+import Backend.Productos;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author heiva
- */
+
 public class VistaProductosCrear extends javax.swing.JFrame {
 
     /**
@@ -189,7 +184,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-         
+        
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
         String descripcion = txtfDescripcion.getText();
@@ -200,6 +195,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         System.out.println(fechaProduccion);
         String fechaExpiracion = txtffechaExpiracion.getText();
         System.out.println(fechaExpiracion);
+        
         
         
         
@@ -214,7 +210,14 @@ public class VistaProductosCrear extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                
+                Productos doritos = new Productos("Doritos Nachos", "200grs sabor nacho", 100, "2024-03-01", "2024-03-15");
+
+                doritos.estaPorExpirar();
+                
+                Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
+                producto.estaPorExpirar();
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
