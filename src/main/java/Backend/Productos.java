@@ -7,7 +7,7 @@ import java.time.temporal.ChronoUnit;
 public class Productos {
 
   // Atributos
-
+  
   String nombre;
   String descripcion;
   int numeroLote;
@@ -101,5 +101,14 @@ public class Productos {
       return false;
     }
   }
+
+
+    @Override
+    public String toString() {
+        return "Productos{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", numeroLote=" + numeroLote + ", fechaProduccion=" + fechaProduccion + ", fechaExpiracion=" + fechaExpiracion + '}';
+    }
+
+  
+  
 
 }
