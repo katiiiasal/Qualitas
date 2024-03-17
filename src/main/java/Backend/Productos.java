@@ -102,4 +102,11 @@ public class Productos {
     }
   }
 
+    @Override
+    public String toString() {
+        return "Productos{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", numeroLote=" + numeroLote + ", fechaProduccion=" + fechaProduccion + ", fechaExpiracion=" + fechaExpiracion + '}';
+    }
+  
+  
+
 }
