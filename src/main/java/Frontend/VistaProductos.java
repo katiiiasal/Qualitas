@@ -4,8 +4,15 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +25,39 @@ public class VistaProductos extends javax.swing.JFrame {
      */
     public VistaProductos() {
         initComponents();
+
+        try {
+            int id = 0;
+            
+            DefaultTableModel model = (DefaultTableModel) tblProductos.getModel();
+             
+            Connection conexion = ConexionBD.obtenerConexion();
+            ProductosDAO productosDAO = new ProductosDAO(conexion);
+            
+            // Obtener todos los productos
+            List<Productos> todosProductos = productosDAO.obtenerTodosProductos();
+            System.out.println("Todos los productos:");
+            for (Productos product : todosProductos) {
+                System.out.println(product);
+                id++;
+                
+                model.addRow(new Object[]{
+                    id, 
+                    product.getNombre(),
+                    product.getDescripcion(),
+                    product.getNumeroLote(),
+                    product.getFechaProduccion(),
+                    product.getFechaExpiracion(),
+                    product.estaPorExpirar()
+                });
+            }
+            
+            conexion.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+
     }
 
     /**
@@ -49,7 +89,7 @@ public class VistaProductos extends javax.swing.JFrame {
         tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "idProducto", "Nombre", "Descripcion", "Lote", "Fecha produccion", "Fecha Expiracion", "Alerta Expiracion"
@@ -61,6 +101,11 @@ public class VistaProductos extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        tblProductos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                tblProductosComponentShown(evt);
             }
         });
         spHeadersTable.setViewportView(tblProductos);
@@ -165,6 +210,10 @@ public class VistaProductos extends javax.swing.JFrame {
                //label.setText("None selected");
             }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblProductosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblProductosComponentShown
+
+    }//GEN-LAST:event_tblProductosComponentShown
 
     /**
      * @param args the command line arguments
