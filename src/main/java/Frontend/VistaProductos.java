@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,8 +29,6 @@ public class VistaProductos extends javax.swing.JFrame {
         initComponents();
 
         try {
-            int id = 0;
-            
             DefaultTableModel model = (DefaultTableModel) tblProductos.getModel();
              
             Connection conexion = ConexionBD.obtenerConexion();
@@ -38,11 +38,9 @@ public class VistaProductos extends javax.swing.JFrame {
             List<Productos> todosProductos = productosDAO.obtenerTodosProductos();
             System.out.println("Todos los productos:");
             for (Productos product : todosProductos) {
-                System.out.println(product);
-                id++;
                 
                 model.addRow(new Object[]{
-                    id, 
+                    product.getIdProducto(),
                     product.getNombre(),
                     product.getDescripcion(),
                     product.getNumeroLote(),
@@ -103,6 +101,7 @@ public class VistaProductos extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblProductos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblProductos.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 tblProductosComponentShown(evt);
@@ -172,20 +171,31 @@ public class VistaProductos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        VistaProductosActualizar vistaProductosActualizar = new VistaProductosActualizar();
-        vistaProductosActualizar.show();
-        dispose();   
+        
+        int selectedRow = tblProductos.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
+            System.out.println(idProducto);
+            VistaProductosActualizar vistaProductosActualizar = new VistaProductosActualizar();
+            vistaProductosActualizar.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
+        }
+
+ 
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         VistaMenu vistaMenu = new VistaMenu();
-        vistaMenu.show();
+        vistaMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         VistaProductosCrear vistaProductosCrear = new VistaProductosCrear();
-        vistaProductosCrear.show();
+        vistaProductosCrear.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreateActionPerformed
 

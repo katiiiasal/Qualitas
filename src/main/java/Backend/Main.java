@@ -19,7 +19,7 @@ public class Main {
             // Insertar un producto
             Productos producto = new Productos("Doritos", "35grs sabor nacho", 12345, "2024-03-17", "2024-03-18");
             System.out.println(producto);
-            //productosDAO.insertarProducto(producto);
+            productosDAO.insertarProducto(producto);
             
 
             // Obtener un producto por su ID
