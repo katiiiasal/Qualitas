@@ -11,7 +11,7 @@ public class ProductosDAO {
         this.connection = connection;
     }
 
-    public void insertarProducto(Productos producto) throws SQLException {
+    public int insertarProducto(Productos producto) throws SQLException {
         String query = "INSERT INTO producto (nombre, descripcion, numero_lote, fecha_produccion, fecha_expiracion, expiracion_alerta) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, producto.getNombre());
@@ -21,11 +21,19 @@ public class ProductosDAO {
             statement.setString(5, producto.getFechaExpiracion());
             statement.setBoolean(6, producto.estaPorExpirar());
 
-            statement.executeUpdate();
-
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            System.out.println("Supuestamente se inserto");
-
+            int rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        producto.setIdProducto( generatedKeys.getInt(1) );
+                        return generatedKeys.getInt(1); // Obtiene el ID generado
+                    } else {
+                        throw new SQLException("No se pudo obtener el ID generado del producto.");
+                    }
+                }
+            } else {
+                throw new SQLException("No se pudo insertar el producto en la base de datos.");
+            }
         }
     }
 
@@ -36,18 +44,23 @@ public class ProductosDAO {
 
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    Productos producto = new Productos();
-                    producto.setNombre(resultSet.getString("nombre"));
-                    producto.setDescripcion(resultSet.getString("descripcion"));
-                    producto.setNumeroLote(resultSet.getInt("numero_lote"));
-                    producto.setFechaProduccion(resultSet.getString("fecha_produccion"));
-                    producto.setFechaExpiracion(resultSet.getString("fecha_expiracion"));
-                    producto.estaPorExpirar();
-                    return producto;
+                    return obtenerProductoDesdeResultSet(resultSet);
                 }
             }
         }
         return null;
+    }
+
+    private Productos obtenerProductoDesdeResultSet(ResultSet resultSet) throws SQLException {
+        Productos producto = new Productos();
+        producto.setIdProducto(resultSet.getInt("id_producto"));
+        producto.setNombre(resultSet.getString("nombre"));
+        producto.setDescripcion(resultSet.getString("descripcion"));
+        producto.setNumeroLote(resultSet.getInt("numero_lote"));
+        producto.setFechaProduccion(resultSet.getString("fecha_produccion"));
+        producto.setFechaExpiracion(resultSet.getString("fecha_expiracion"));
+        producto.estaPorExpirar();
+        return producto;
     }
 
     public List<Productos> obtenerTodosProductos() throws SQLException {
@@ -56,14 +69,7 @@ public class ProductosDAO {
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
-                Productos producto = new Productos();
-                producto.setNombre(resultSet.getString("nombre"));
-                producto.setDescripcion(resultSet.getString("descripcion"));
-                producto.setNumeroLote(resultSet.getInt("numero_lote"));
-                producto.setFechaProduccion(resultSet.getString("fecha_produccion"));
-                producto.setFechaExpiracion(resultSet.getString("fecha_expiracion"));
-                producto.estaPorExpirar();
-                productos.add(producto);
+                productos.add(obtenerProductoDesdeResultSet(resultSet));
             }
         }
         return productos;
