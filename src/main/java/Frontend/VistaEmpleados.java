@@ -30,7 +30,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         spHeadersTable = new javax.swing.JScrollPane();
-        tblProductos = new javax.swing.JTable();
+        tblEmpleado = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
@@ -46,24 +46,24 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
         spHeadersTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpleado.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        tblEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "idProducto", "Nombre", "Descripcion", "Lote", "Fecha produccion", "Fecha Expiracion", "Alerta Expiracion"
+                "idEmpleado", "Nombre", "Apellido Paterno", "Apellido Materno", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        spHeadersTable.setViewportView(tblProductos);
+        spHeadersTable.setViewportView(tblEmpleado);
 
         getContentPane().add(spHeadersTable);
         spHeadersTable.setBounds(142, 58, 1138, 662);
@@ -148,7 +148,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de eliminar este producto?", 
+                            "¿Estas seguro de eliminar este Empleado?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -210,6 +210,6 @@ public class VistaEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblReturnToMenu;
     private javax.swing.JScrollPane spHeadersTable;
-    private javax.swing.JTable tblProductos;
+    private javax.swing.JTable tblEmpleado;
     // End of variables declaration//GEN-END:variables
 }

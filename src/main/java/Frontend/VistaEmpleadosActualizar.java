@@ -29,22 +29,22 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidProducto = new javax.swing.JLabel();
+        lblidEmpleado = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblDescripcion = new javax.swing.JLabel();
-        lblnumeroLote = new javax.swing.JLabel();
-        lblfechaProduccion = new javax.swing.JLabel();
-        lblfechaExpiracion = new javax.swing.JLabel();
-        txtfidProducto = new javax.swing.JTextField();
+        lblApellidoPaterno = new javax.swing.JLabel();
+        lblApellidoMaterno = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        txtfidEmpleado = new javax.swing.JTextField();
         txtfNombre = new javax.swing.JTextField();
-        txtfDescripcion = new javax.swing.JTextField();
-        txtfnumeroLote = new javax.swing.JTextField();
-        txtffechaExpiracion = new javax.swing.JTextField();
-        txtffechaProduccion = new javax.swing.JTextField();
+        txtfApellidoPaterno = new javax.swing.JTextField();
+        txtfApellidoMaterno = new javax.swing.JTextField();
+        txtfEmail = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        lblPassword = new javax.swing.JLabel();
+        txtpPassword = new javax.swing.JPasswordField();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,12 +53,12 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
 
-        lblidProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidProducto.setText("idProducto");
-        lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 140, 122, 32);
+        lblidEmpleado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblidEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblidEmpleado.setText("idEmpleado");
+        lblidEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblidEmpleado);
+        lblidEmpleado.setBounds(520, 140, 140, 32);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -67,38 +67,31 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().add(lblNombre);
         lblNombre.setBounds(520, 230, 90, 32);
 
-        lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripcion");
-        lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 320, 128, 32);
+        lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoPaterno.setText("Apellido Paterno");
+        lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoPaterno);
+        lblApellidoPaterno.setBounds(520, 320, 190, 32);
 
-        lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblnumeroLote.setText("Numero de lote");
-        lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(510, 410, 180, 32);
+        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoMaterno.setText("Apellido Materno");
+        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(510, 410, 210, 32);
 
-        lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaProduccion.setText("Fecha de produccion");
-        lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(500, 490, 250, 32);
+        lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmail.setText("Email");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEmail);
+        lblEmail.setBounds(530, 490, 60, 32);
 
-        lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaExpiracion.setText("Fecha de expiracion");
-        lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(510, 580, 230, 32);
-
-        txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidProducto);
-        txtfidProducto.setBounds(520, 180, 690, 40);
+        txtfidEmpleado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfidEmpleado.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfidEmpleado);
+        txtfidEmpleado.setBounds(520, 180, 690, 40);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -106,39 +99,28 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfNombre);
         txtfNombre.setBounds(520, 270, 690, 40);
 
-        txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfDescripcion.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfDescripcion);
-        txtfDescripcion.setBounds(520, 360, 690, 38);
+        txtfApellidoPaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoPaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoPaterno);
+        txtfApellidoPaterno.setBounds(520, 360, 690, 38);
 
-        txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfnumeroLote.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfnumeroLote);
-        txtfnumeroLote.setBounds(520, 440, 690, 40);
+        txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoMaterno);
+        txtfApellidoMaterno.setBounds(520, 440, 690, 40);
 
-        txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.addActionListener(new java.awt.event.ActionListener() {
+        txtfEmail.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEmail.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEmail.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaExpiracionActionPerformed(evt);
+                txtfEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(txtffechaExpiracion);
-        txtffechaExpiracion.setBounds(520, 610, 690, 40);
-
-        txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaProduccionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtffechaProduccion);
-        txtffechaProduccion.setBounds(520, 520, 690, 40);
+        getContentPane().add(txtfEmail);
+        txtfEmail.setBounds(520, 520, 690, 40);
 
         btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
@@ -156,7 +138,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("PRODUCTOS");
+        lblTitulo.setText("EMPLEADOS");
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
@@ -171,6 +153,18 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().add(btnRegresar);
         btnRegresar.setBounds(60, 20, 170, 80);
 
+        lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPassword.setText("Contraseña");
+        lblPassword.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(520, 580, 130, 32);
+
+        txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtpPassword.setText("jPasswordField1");
+        getContentPane().add(txtpPassword);
+        txtpPassword.setBounds(520, 620, 690, 40);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -179,13 +173,9 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtffechaProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaProduccionActionPerformed
+    private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaProduccionActionPerformed
-
-    private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+    }//GEN-LAST:event_txtfEmailActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaEmpleados vistaEmpleados = new VistaEmpleados();
@@ -197,21 +187,24 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
          
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
-        String descripcion = txtfDescripcion.getText();
-        System.out.println(descripcion);
-        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
-        System.out.println(numeroLote);
-        String fechaProduccion = txtffechaProduccion.getText();
-        System.out.println(fechaProduccion);
-        String fechaExpiracion = txtffechaExpiracion.getText();
-        System.out.println(fechaExpiracion);
+        String apellidoPaterno = txtfApellidoPaterno.getText();
+        System.out.println (apellidoPaterno);
+        
+        String apellidoMaterno = txtfApellidoMaterno.getText();
+        System.out.println (apellidoMaterno);
+        
+        String email = txtfEmail.getText();
+        System.out.println (email);
+        
+        String password =  String.valueOf(txtpPassword.getPassword());
+        System.out.println(password);
         
         
         
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de actualizar este producto?", 
+                            "¿Estas seguro de actualizar este Empleado?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -298,20 +291,20 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblApellidoMaterno;
+    private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblBackground;
-    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblProductos;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblfechaExpiracion;
-    private javax.swing.JLabel lblfechaProduccion;
-    private javax.swing.JLabel lblidProducto;
-    private javax.swing.JLabel lblnumeroLote;
-    private javax.swing.JTextField txtfDescripcion;
+    private javax.swing.JLabel lblidEmpleado;
+    private javax.swing.JTextField txtfApellidoMaterno;
+    private javax.swing.JTextField txtfApellidoPaterno;
+    private javax.swing.JTextField txtfEmail;
     private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtffechaExpiracion;
-    private javax.swing.JTextField txtffechaProduccion;
-    private javax.swing.JTextField txtfidProducto;
-    private javax.swing.JTextField txtfnumeroLote;
+    private javax.swing.JTextField txtfidEmpleado;
+    private javax.swing.JPasswordField txtpPassword;
     // End of variables declaration//GEN-END:variables
 }
