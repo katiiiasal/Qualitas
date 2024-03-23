@@ -1,6 +1,12 @@
 package Frontend;
 
+import Backend.ConexionBD;
 import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -211,12 +217,31 @@ public class VistaProductosCrear extends javax.swing.JFrame {
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
                 
-                Productos doritos = new Productos("Doritos Nachos", "200grs sabor nacho", 100, "2024-03-01", "2024-03-15");
-
-                doritos.estaPorExpirar();
-                
-                Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
+               
+            Connection conexion;
+            
+            try {
+                conexion = ConexionBD.obtenerConexion();
+                 Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
                 producto.estaPorExpirar();
+                
+                ProductosDAO productosDAO = new ProductosDAO(conexion);
+                int id = productosDAO.insertarProducto(producto);
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se creo producto(" + nombre + ") exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                    VistaProductos vistaProductos = new VistaProductos();
+                    vistaProductos.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se creo producto(" + nombre + ") ", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaProductosCrear.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
 
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);

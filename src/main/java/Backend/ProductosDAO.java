@@ -1,8 +1,11 @@
 package Backend;
 
+import Frontend.VistaProductosCrear;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductosDAO {
     private Connection connection;
@@ -75,7 +78,7 @@ public class ProductosDAO {
         return productos;
     }
 
-    public void actualizarProducto(Productos producto, int idProducto) throws SQLException {
+    public int actualizarProducto(Productos producto, int idProducto) throws SQLException {
         String query = "UPDATE producto SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ? WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, producto.getNombre());
@@ -87,14 +90,20 @@ public class ProductosDAO {
             statement.setInt(7, idProducto);
 
             statement.executeUpdate();
+            return 1;
+        }catch (SQLException ex) {
+            return 0;
         }
     }
 
-    public void eliminarProducto(int idProducto) throws SQLException {
+    public int eliminarProducto(int idProducto) throws SQLException {
         String query = "DELETE FROM producto WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idProducto);
             statement.executeUpdate();
+            return 1;
+        }catch (SQLException ex) {
+            return 0;
         }
     }
 }

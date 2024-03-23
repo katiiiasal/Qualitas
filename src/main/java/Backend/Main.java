@@ -17,9 +17,9 @@ public class Main {
             ProductosDAO productosDAO = new ProductosDAO(conexion);
 
             // Insertar un producto
-            Productos producto = new Productos("Doritos", "35grs sabor nacho", 12345, "2024-03-17", "2024-03-18");
-            System.out.println(producto);
-            productosDAO.insertarProducto(producto);
+            Productos doritos = new Productos("Doritos", "35grs sabor nacho", 12345, "2024-03-17", "2024-03-18");
+            System.out.println(doritos);
+            productosDAO.insertarProducto(doritos);
             
 
             // Obtener un producto por su ID
@@ -37,12 +37,12 @@ public class Main {
             
             
             // Actualizar un producto
-            Productos producto2 = new Productos("Doritos", "75grs sabor nacho", 12345, "2024-03-17", "2024-03-29");
+            Productos producto2 = new Productos("Doritos", "76grs sabor nacho", 12345, "2024-03-17", "2024-03-29");
             productosDAO.actualizarProducto(producto2, 1);
             
             
             // Eliminar un producto
-            productosDAO.eliminarProducto(1);
+            //productosDAO.eliminarProducto(1);
             
 
             conexion.close();

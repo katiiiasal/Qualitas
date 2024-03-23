@@ -177,7 +177,7 @@ public class VistaProductos extends javax.swing.JFrame {
         if(selectedRow != -1){
             int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
             System.out.println(idProducto);
-            VistaProductosActualizar vistaProductosActualizar = new VistaProductosActualizar();
+            VistaProductosActualizar vistaProductosActualizar = new VistaProductosActualizar(idProducto);
             vistaProductosActualizar.setVisible(true);
             dispose();
         }else{
@@ -211,7 +211,39 @@ public class VistaProductos extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                int selectedRow = tblProductos.getSelectedRow();
+        
+                if(selectedRow != -1){
+                    int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
+                    System.out.println(idProducto);
+                    Connection conexion;
+        
+                    try {
+                        conexion = ConexionBD.obtenerConexion();
+
+
+                        ProductosDAO productosDAO = new ProductosDAO(conexion);
+                        int id = productosDAO.eliminarProducto(idProducto);
+                        if (id != 0){
+                            JOptionPane.showMessageDialog(null, "Se creo elimino el producto exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                            VistaProductos vistaProductos = new VistaProductos();
+                            vistaProductos.setVisible(true);
+                            dispose();
+
+                        }else{
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+
+                        }
+
+
+                    } catch (SQLException ex) {
+                        System.out.println("Error al eliminar el producto");    
+                    }
+                    
+                }else{
+                     JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
+                }
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
