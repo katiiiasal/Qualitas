@@ -1,24 +1,64 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author heiva
- */
-public class VistaProductosActualizar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaProductosCrear
-     */
+public class VistaProductosActualizar extends javax.swing.JFrame {
+    
+    // Atributos 
+    private int idProducto;
+
+    // Getters and Setters
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    
+    
     public VistaProductosActualizar() {
         initComponents();
     }
+    
+    public VistaProductosActualizar(int idProducto) {
+        this.idProducto = idProducto;
+        initComponents(); 
+        
+        Connection conexion;
+        
+        try {
+            conexion = ConexionBD.obtenerConexion();
+                
+            
+            ProductosDAO productosDAO = new ProductosDAO(conexion);
+            Productos producto = productosDAO.obtenerProducto(idProducto);
+            
+            txtfidProducto.setText(Integer.toString(idProducto));
+            txtfNombre.setText(producto.getNombre());
+            txtfDescripcion.setText(producto.getDescripcion());
+            txtfnumeroLote.setText(Integer.toString( producto.getNumeroLote()));
+            txtffechaProduccion.setText(producto.getFechaProduccion());
+            txtffechaExpiracion.setText(producto.getFechaExpiracion());
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al cargar datos");    
+        }
+       
+        
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +135,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().add(lblfechaExpiracion);
         lblfechaExpiracion.setBounds(510, 580, 230, 32);
 
+        txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfidProducto);
@@ -219,13 +260,39 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                
+               
+            Connection conexion;
+            
+            try {
+                conexion = ConexionBD.obtenerConexion();
+                 Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
+                producto.estaPorExpirar();
+                
+                ProductosDAO productosDAO = new ProductosDAO(conexion);
+                int id = productosDAO.actualizarProducto(producto, this.getIdProducto());
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se actualizo producto(" + nombre + ") exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                    VistaProductos vistaProductos = new VistaProductos();
+                    vistaProductos.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se actualizo producto(" + nombre + ") ", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaProductosCrear.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
             }else {
                 System.out.println(3);
-               //label.setText("None selected");
+               
             }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
