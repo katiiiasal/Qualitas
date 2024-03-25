@@ -13,9 +13,10 @@ public class ProductosDAO {
     public ProductosDAO(Connection connection) {
         this.connection = connection;
     }
+    
 
     public int insertarProducto(Productos producto) throws SQLException {
-        String query = "INSERT INTO producto (nombre, descripcion, numero_lote, fecha_produccion, fecha_expiracion, expiracion_alerta) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO productos (nombre, descripcion, numero_lote, fecha_produccion, fecha_expiracion, expiracion_alerta) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, producto.getNombre());
             statement.setString(2, producto.getDescripcion());
@@ -41,7 +42,7 @@ public class ProductosDAO {
     }
 
     public Productos obtenerProducto(int idProducto) throws SQLException {
-        String query = "SELECT * FROM producto WHERE id_producto = ?";
+        String query = "SELECT * FROM productos WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idProducto);
 
@@ -68,7 +69,7 @@ public class ProductosDAO {
 
     public List<Productos> obtenerTodosProductos() throws SQLException {
         List<Productos> productos = new ArrayList<>();
-        String query = "SELECT * FROM producto";
+        String query = "SELECT * FROM productos";
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
@@ -79,7 +80,7 @@ public class ProductosDAO {
     }
 
     public int actualizarProducto(Productos producto, int idProducto) throws SQLException {
-        String query = "UPDATE producto SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ? WHERE id_producto = ?";
+        String query = "UPDATE productos SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ? WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, producto.getNombre());
             statement.setString(2, producto.getDescripcion());
@@ -97,7 +98,7 @@ public class ProductosDAO {
     }
 
     public int eliminarProducto(int idProducto) throws SQLException {
-        String query = "DELETE FROM producto WHERE id_producto = ?";
+        String query = "DELETE FROM productos WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idProducto);
             statement.executeUpdate();

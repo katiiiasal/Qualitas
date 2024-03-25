@@ -14,6 +14,7 @@ public class Main {
         
          try {
             Connection conexion = ConexionBD.obtenerConexion();
+            /*
             ProductosDAO productosDAO = new ProductosDAO(conexion);
 
             // Insertar un producto
@@ -43,7 +44,14 @@ public class Main {
             
             // Eliminar un producto
             //productosDAO.eliminarProducto(1);
+            */
             
+            Clientes cliente1 = new Clientes("Oxxo", "Seshomaru", "Yasha", "Pedro Moreno", "1234", "45190", "El Batan", "GDL", "Jalisco", "seshomaru@ymail.com", "2552552552");
+             System.out.println(cliente1);
+             
+             
+             ClientesDAO clientesDAO = new ClientesDAO(conexion);
+             ClientesDAO.insertarCliente(cliente1);
 
             conexion.close();
         } catch (SQLException e) {
