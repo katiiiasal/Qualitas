@@ -4,8 +4,15 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +25,42 @@ public class VistaClientes extends javax.swing.JFrame {
      */
     public VistaClientes() {
         initComponents();
+                
+                
+        try {
+            
+            
+            DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
+             
+            Connection conexion = ConexionBD.obtenerConexion();
+            ProductosDAO productosDAO = new ProductosDAO(conexion);
+            
+            // Obtener todos los productos
+            List<Productos> todosProductos = productosDAO.obtenerTodosProductos();
+            System.out.println("Todos los productos:");
+            for (Productos product : todosProductos) {
+                
+                model.addRow(new Object[]{
+                    product.getIdProducto(),
+                    product.getNombre(),
+                    product.getDescripcion(),
+                    product.getNumeroLote(),
+                    product.getFechaProduccion(),
+                    product.getFechaExpiracion(),
+                    product.estaPorExpirar()
+                });
+            }
+            
+            conexion.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +72,7 @@ public class VistaClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         spHeadersTable = new javax.swing.JScrollPane();
-        tblProductos = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
@@ -46,8 +88,8 @@ public class VistaClientes extends javax.swing.JFrame {
 
         spHeadersTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null}
             },
@@ -70,7 +112,7 @@ public class VistaClientes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        spHeadersTable.setViewportView(tblProductos);
+        spHeadersTable.setViewportView(tblClientes);
 
         getContentPane().add(spHeadersTable);
         spHeadersTable.setBounds(142, 58, 1138, 662);
@@ -217,6 +259,6 @@ public class VistaClientes extends javax.swing.JFrame {
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblReturnToMenu;
     private javax.swing.JScrollPane spHeadersTable;
-    private javax.swing.JTable tblProductos;
+    private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }
