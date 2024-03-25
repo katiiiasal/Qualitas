@@ -4,8 +4,17 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Empleado;
+import Backend.EmpleadoDAO;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +27,32 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     public VistaEmpleados() {
         initComponents();
+        
+        
+            DefaultTableModel model = (DefaultTableModel) tblEmpleado.getModel();
+             
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+            
+           
+            
+            // Obtener todos los productos
+            List<Empleado> todosEmpleados = empleadoDAO.obtenerEmpleados();
+            System.out.println("Todos los Empleados:");
+            for (Empleado empleado : todosEmpleados) {
+                
+                model.addRow(new Object[]{
+                   empleado.getIdEmpleado(),
+                   empleado.getNombre(),
+                   empleado.getApellidoPaterno(),
+                   empleado.getApellidoMaterno(),
+                   empleado.getEmail(),
+                   empleado.getTelefono()
+                        
+                });
+            }
+            
+            
+         
     }
 
     /**
@@ -52,15 +87,22 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idEmpleado", "Nombre", "Apellido Paterno", "Apellido Materno", "Email"
+                "idEmpleado", "Nombre", "Apellido Paterno", "Apellido Materno", "Email", "Telefono"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         spHeadersTable.setViewportView(tblEmpleado);
