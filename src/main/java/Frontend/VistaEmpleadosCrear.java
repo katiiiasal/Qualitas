@@ -4,6 +4,13 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Empleado;
+import Backend.EmpleadoDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -29,13 +36,13 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidEmpleado = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblApellidoPaterno = new javax.swing.JLabel();
         lblApellidoMaterno = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtfidEmpleado = new javax.swing.JTextField();
+        txtfTelefono = new javax.swing.JTextField();
         txtfNombre = new javax.swing.JTextField();
         txtfApellidoPaterno = new javax.swing.JTextField();
         txtfApellidoMaterno = new javax.swing.JTextField();
@@ -53,71 +60,70 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
 
-        lblidEmpleado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidEmpleado.setText("IdEmpleado");
-        lblidEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblidEmpleado);
-        lblidEmpleado.setBounds(520, 140, 140, 32);
+        lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTelefono.setText("Telefono");
+        lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblTelefono);
+        lblTelefono.setBounds(520, 590, 100, 30);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 230, 90, 30);
+        lblNombre.setBounds(520, 130, 90, 30);
 
         lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(520, 320, 190, 32);
+        lblApellidoPaterno.setBounds(520, 220, 190, 32);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblApellidoMaterno.setText("Apellido Materno");
         lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(520, 410, 200, 32);
+        lblApellidoMaterno.setBounds(520, 310, 200, 32);
 
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblEmail.setText("Email");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(530, 490, 60, 32);
+        lblEmail.setBounds(530, 390, 60, 32);
 
         lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPassword.setText("Contraseña");
         lblPassword.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(520, 580, 130, 32);
+        lblPassword.setBounds(520, 480, 130, 32);
 
-        txtfidEmpleado.setEditable(false);
-        txtfidEmpleado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidEmpleado.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidEmpleado);
-        txtfidEmpleado.setBounds(520, 180, 690, 40);
+        txtfTelefono.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfTelefono.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfTelefono);
+        txtfTelefono.setBounds(520, 630, 690, 40);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(520, 270, 690, 40);
+        txtfNombre.setBounds(520, 170, 690, 40);
 
         txtfApellidoPaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfApellidoPaterno.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfApellidoPaterno);
-        txtfApellidoPaterno.setBounds(520, 360, 690, 38);
+        txtfApellidoPaterno.setBounds(520, 260, 690, 38);
 
         txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfApellidoMaterno);
-        txtfApellidoMaterno.setBounds(520, 440, 690, 40);
+        txtfApellidoMaterno.setBounds(520, 340, 690, 40);
 
         txtfEmail.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfEmail.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -128,7 +134,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfEmail);
-        txtfEmail.setBounds(520, 520, 690, 40);
+        txtfEmail.setBounds(520, 420, 690, 40);
 
         btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnCrear.setText("CREAR");
@@ -164,7 +170,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtpPassword.setText("jPasswordField1");
         getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(520, 620, 690, 40);
+        txtpPassword.setBounds(520, 520, 690, 40);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -194,6 +200,13 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         String password =  String.valueOf(txtpPassword.getPassword());
         System.out.println(password);
         
+        String telefono =txtfTelefono.getText();
+        System.out.println(telefono);
+        
+        
+      
+        
+        
         
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
@@ -206,16 +219,44 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                
+                
+                
+                
+                Connection conexion;
+            
+            try {
+                conexion = ConexionBD.obtenerConexion();
+                Empleado empleado = new Empleado(nombre, apellidoPaterno, apellidoMaterno, email, password, "empleado", telefono);
+                System.out.println(empleado);
+                EmpleadoDAO empleadoDAO =new EmpleadoDAO();
+                
+                
+                int id = empleadoDAO.insertarEmpleado(empleado);
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se creo empleado(" + nombre + ") exitosmente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
+                    VistaEmpleados vistaEmpleados = new VistaEmpleados();
+                    vistaEmpleados.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se creo el empleado(" + nombre + ") ", "Qualitas - Empleado", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaProductosCrear.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
             }else {
                 System.out.println(3);
-               //label.setText("None selected");
+               
             }
     }//GEN-LAST:event_btnCrearActionPerformed
-
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaEmpleados vistaEmpleados = new VistaEmpleados();
                  vistaEmpleados.show();
@@ -330,13 +371,13 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblProductos;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblidEmpleado;
     private javax.swing.JTextField txtfApellidoMaterno;
     private javax.swing.JTextField txtfApellidoPaterno;
     private javax.swing.JTextField txtfEmail;
     private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtfidEmpleado;
+    private javax.swing.JTextField txtfTelefono;
     private javax.swing.JPasswordField txtpPassword;
     // End of variables declaration//GEN-END:variables
 }

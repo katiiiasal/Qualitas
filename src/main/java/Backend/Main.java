@@ -12,8 +12,18 @@ public class Main {
 
     public static void main(String[] args) {
         
+        
+        Empleado empleado1 = new Empleado("Juan", "Perez", "Gomez", "ejeyd@example", "123456", "admin", "55555555");
+    System.out.println(empleado1);
+
          try {
             Connection conexion = ConexionBD.obtenerConexion();
+            
+            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+            empleadoDAO.insertarEmpleado(empleado1);
+            
+            
+            
             /*
             ProductosDAO productosDAO = new ProductosDAO(conexion);
 
@@ -50,8 +60,8 @@ public class Main {
              System.out.println(cliente1);
              
              
-             ClientesDAO clientesDAO = new ClientesDAO(conexion);
-             ClientesDAO.insertarCliente(cliente1);
+            // ClientesDAO clientesDAO = new ClientesDAO(conexion);
+            // clientesDAO.insertarCliente(cliente1);
 
             conexion.close();
         } catch (SQLException e) {
