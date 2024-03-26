@@ -4,8 +4,26 @@
  */
 package Frontend;
 
+import Backend.Clientes;
+import Backend.ClientesDAO;
+import Backend.ConexionBD;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,6 +36,36 @@ public class VistaClientesCrear extends javax.swing.JFrame {
      */
     public VistaClientesCrear() {
         initComponents();
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfNombre);
+        campos.add(txtfApellidoPaterno);
+        campos.add(txtfApellidoMaterno);
+        campos.add(txtfEmail);
+        campos.add(txtfTelefono);
+        campos.add(txtfCalle);
+        campos.add(txtfNumeroInterior);
+        campos.add(txtfCodigoPostal);
+        campos.add(txtfColonia);
+        campos.add(txtfCiudad);
+        campos.add(txtfEstado);
+
+        // Agregar oyente de foco a cada JTextField
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    validarCampoVacio(campo, false, false);
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Color.BLACK);
+                }
+            });
+        }
+        
     }
 
     /**
@@ -29,14 +77,12 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblIdCliente = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblApellidoMaterno = new javax.swing.JLabel();
         lblApellidoPaterno = new javax.swing.JLabel();
-        txtfidCliente = new javax.swing.JTextField();
+        lblApellidoMaterno = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
-        txtfApellidoMaterno = new javax.swing.JTextField();
         txtfApellidoPaterno = new javax.swing.JTextField();
+        txtfApellidoMaterno = new javax.swing.JTextField();
         txtfTelefono = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
@@ -50,11 +96,11 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         txtfCodigoPostal = new javax.swing.JTextField();
         lblColonia = new javax.swing.JLabel();
         txtfColonia = new javax.swing.JTextField();
-        lblCuidad = new javax.swing.JLabel();
-        txtfCuidad = new javax.swing.JTextField();
+        lblCiudad = new javax.swing.JLabel();
+        txtfCiudad = new javax.swing.JTextField();
         lblEstado = new javax.swing.JLabel();
         txtfEstado = new javax.swing.JTextField();
-        txtfEmail1 = new javax.swing.JTextField();
+        txtfEmail = new javax.swing.JTextField();
         lblTelefono = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
@@ -64,57 +110,44 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
 
-        lblIdCliente.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblIdCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblIdCliente.setText("idCliente");
-        lblIdCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblIdCliente);
-        lblIdCliente.setBounds(210, 130, 96, 32);
-
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(210, 220, 90, 32);
-
-        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblApellidoMaterno.setText("Apellido Materno");
-        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(210, 310, 240, 32);
+        lblNombre.setBounds(140, 140, 90, 32);
 
         lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(210, 400, 230, 32);
+        lblApellidoPaterno.setBounds(140, 220, 240, 32);
 
-        txtfidCliente.setEditable(false);
-        txtfidCliente.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidCliente.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidCliente);
-        txtfidCliente.setBounds(210, 170, 450, 40);
+        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoMaterno.setText("Apellido Materno");
+        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(140, 310, 230, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(210, 260, 450, 40);
-
-        txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfApellidoMaterno);
-        txtfApellidoMaterno.setBounds(210, 350, 450, 38);
+        txtfNombre.setBounds(140, 170, 450, 40);
 
         txtfApellidoPaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfApellidoPaterno.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfApellidoPaterno);
-        txtfApellidoPaterno.setBounds(210, 430, 450, 40);
+        txtfApellidoPaterno.setBounds(140, 260, 450, 38);
+
+        txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoMaterno);
+        txtfApellidoMaterno.setBounds(140, 350, 450, 40);
 
         txtfTelefono.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfTelefono.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -125,7 +158,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfTelefono);
-        txtfTelefono.setBounds(210, 620, 450, 40);
+        txtfTelefono.setBounds(140, 520, 450, 40);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,7 +182,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         lblEmail.setText("Email");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(210, 490, 230, 32);
+        lblEmail.setBounds(140, 400, 230, 32);
 
         btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnCrear.setText("CREAR");
@@ -159,84 +192,83 @@ public class VistaClientesCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCrear);
-        btnCrear.setBounds(790, 30, 141, 55);
+        btnCrear.setBounds(280, 620, 141, 55);
 
-        txtfCalle.setEditable(false);
         txtfCalle.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfCalle.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfCalle);
-        txtfCalle.setBounds(700, 170, 450, 40);
+        txtfCalle.setBounds(640, 170, 450, 40);
 
         lblCalle.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblCalle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCalle.setText("Calle");
         lblCalle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblCalle);
-        lblCalle.setBounds(700, 140, 53, 32);
+        lblCalle.setBounds(640, 140, 53, 32);
 
         lblNumeroInterior.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNumeroInterior.setText("Numero Interior");
         lblNumeroInterior.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNumeroInterior);
-        lblNumeroInterior.setBounds(700, 220, 210, 32);
+        lblNumeroInterior.setBounds(640, 230, 210, 32);
 
         txtfNumeroInterior.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNumeroInterior.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNumeroInterior.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNumeroInterior);
-        txtfNumeroInterior.setBounds(700, 260, 450, 40);
+        txtfNumeroInterior.setBounds(640, 260, 450, 40);
 
         lblCodigoPostal.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblCodigoPostal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblCodigoPostal.setText("Codigo Postal");
         lblCodigoPostal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblCodigoPostal);
-        lblCodigoPostal.setBounds(700, 310, 240, 32);
+        lblCodigoPostal.setBounds(640, 310, 240, 32);
 
         txtfCodigoPostal.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfCodigoPostal.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfCodigoPostal.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfCodigoPostal);
-        txtfCodigoPostal.setBounds(700, 350, 450, 38);
+        txtfCodigoPostal.setBounds(640, 350, 450, 38);
 
         lblColonia.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblColonia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblColonia.setText("Colonia");
         lblColonia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblColonia);
-        lblColonia.setBounds(700, 400, 230, 32);
+        lblColonia.setBounds(640, 400, 230, 32);
 
         txtfColonia.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfColonia.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfColonia.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfColonia);
-        txtfColonia.setBounds(700, 430, 450, 40);
+        txtfColonia.setBounds(640, 430, 450, 40);
 
-        lblCuidad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblCuidad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCuidad.setText("Cuidad");
-        lblCuidad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblCuidad);
-        lblCuidad.setBounds(700, 490, 250, 32);
+        lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCiudad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCiudad.setText("Cuidad");
+        lblCiudad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCiudad);
+        lblCiudad.setBounds(640, 490, 250, 32);
 
-        txtfCuidad.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfCuidad.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfCuidad.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtfCuidad.addActionListener(new java.awt.event.ActionListener() {
+        txtfCiudad.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCiudad.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfCiudad.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfCuidadActionPerformed(evt);
+                txtfCiudadActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfCuidad);
-        txtfCuidad.setBounds(700, 520, 450, 40);
+        getContentPane().add(txtfCiudad);
+        txtfCiudad.setBounds(640, 520, 450, 40);
 
         lblEstado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEstado.setText("Estado");
         lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEstado);
-        lblEstado.setBounds(700, 590, 230, 32);
+        lblEstado.setBounds(640, 590, 230, 32);
 
         txtfEstado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfEstado.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -247,29 +279,29 @@ public class VistaClientesCrear extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtfEstado);
-        txtfEstado.setBounds(700, 620, 450, 40);
+        txtfEstado.setBounds(640, 620, 450, 40);
 
-        txtfEmail1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfEmail1.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfEmail1.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtfEmail1.addActionListener(new java.awt.event.ActionListener() {
+        txtfEmail.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEmail.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEmail.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfEmail1ActionPerformed(evt);
+                txtfEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(txtfEmail1);
-        txtfEmail1.setBounds(210, 520, 450, 40);
+        getContentPane().add(txtfEmail);
+        txtfEmail.setBounds(140, 430, 450, 40);
 
         lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTelefono.setText("Telefono");
         lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblTelefono);
-        lblTelefono.setBounds(210, 590, 230, 32);
+        lblTelefono.setBounds(140, 490, 230, 32);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(10, -20, 1430, 720);
+        lblBackground.setBounds(0, 0, 1430, 720);
 
         pack();
         setLocationRelativeTo(null);
@@ -278,7 +310,63 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     private void txtfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfTelefonoActionPerformed
-
+    
+    public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {
+        boolean valido = false;
+        String FORMATO_FECHA = "\\d{4}-\\d{2}-\\d{2}";
+        
+        String textoCampo = campo.getText().trim();
+        if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
+            campo.setForeground(Color.RED);
+            campo.setText("El campo es obligatorio");
+            valido = false;
+        }
+        else{
+            campo.setForeground(Color.BLACK);
+            valido = true;
+        }
+        
+        // Si el campo es una fecha
+        if(esFecha){
+            Pattern pattern = Pattern.compile(FORMATO_FECHA);
+            Matcher matcher = pattern.matcher(textoCampo);
+           
+            String regex = "^(20[1-9][5-9]|[2-9][0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]|(0[1-9]|1\\d|2[0-8]))|((20[1-9][5-9]|[2-9][0-9]{3})(0[48]|[2468][048]|[13579][26])-02-29|((20[1-9][5-9]|[2-9][0-9]{3})-02-(0[1-9]|1\\d|2[0-8])))$";
+            
+            // Si no es un formato de fecha pone el borde en rojo
+            if(!matcher.matches()){
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }else{
+                
+                // Si es un formato de fecha valido, validara si la fecha es una fecha valida
+                if(Pattern.matches(regex, textoCampo)){
+                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   valido = true;
+                }else{
+                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    valido = false;
+                }
+                
+            }
+        }
+        
+        // Si el campo debe ser numerico
+        if(esNumerico){
+            try {
+                Double.parseDouble(textoCampo);
+                // Si la conversión es exitosa, el contenido es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                valido = true;
+            } catch (NumberFormatException ex) {
+                // Si ocurre una excepción, el contenido no es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }
+        }
+        return valido;
+    }
+    
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         /* 
         String nombre = txtfNombre.getText();
@@ -293,26 +381,92 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         System.out.println(fechaExpiracion);
         */
         
+         if(
+            validarCampoVacio(txtfNombre, false, false) &&
+            validarCampoVacio(txtfApellidoPaterno, false, false) &&
+            validarCampoVacio(txtfApellidoMaterno, false, false) &&
+            validarCampoVacio(txtfEmail, false, false) &&
+            validarCampoVacio(txtfTelefono, false, true) && 
+            validarCampoVacio(txtfCalle, false, false) &&
+            validarCampoVacio(txtfNumeroInterior, false, true) && 
+            validarCampoVacio(txtfCodigoPostal, false, true) &&    
+            validarCampoVacio(txtfColonia, false, false) &&  
+            validarCampoVacio(txtfCiudad, false, false) &&  
+            validarCampoVacio(txtfEstado, false, false)        
+        ){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Verifica los campos");
+        }
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String apellidoPaterno = txtfApellidoPaterno.getText();
+        System.out.println(apellidoPaterno);
+        String apellidoMaterno = txtfApellidoMaterno.getText();
+        System.out.println(apellidoMaterno);
+        String email = txtfEmail.getText();
+        System.out.println(email);
+        String telefono = txtfTelefono.getText();
+        System.out.println(telefono);
+        String calle = txtfCalle.getText();
+        System.out.println(calle);
+        String numeroInterior = txtfNumeroInterior.getText();
+        System.out.println(numeroInterior);
+        String codigoPostal = txtfCodigoPostal.getText();
+        System.out.println(codigoPostal);
+        String colonia = txtfColonia.getText();
+        System.out.println(colonia);
+        String ciudad = txtfCiudad.getText();
+        System.out.println(ciudad);
+        String estado = txtfEstado.getText();
+        System.out.println(estado);
+        
         
         
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de crear este producto?", 
+                            "¿Estas seguro de crear este cliente?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
                         );
          
             if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-               //label.setText("You selected: Yes");
+
+                Connection conexion;
+            
+            try {
+                conexion = ConexionBD.obtenerConexion();
+                Clientes cliente = new Clientes(nombre, apellidoPaterno, apellidoMaterno, calle, numeroInterior, codigoPostal, colonia, ciudad, estado, email, telefono);
+                System.out.println(cliente);
+                
+                ClientesDAO clientesDAO = new ClientesDAO(conexion);
+                int id = clientesDAO.insertarCliente(cliente);
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se creo cliente (" + nombre + ") exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    VistaClientes vistaClientes = new VistaClientes();
+                    vistaClientes.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se creo cliente (" + nombre + ") ", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaClientesCrear.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
             }else {
                 System.out.println(3);
-               //label.setText("None selected");
+               
             }
     }//GEN-LAST:event_btnCrearActionPerformed
 
@@ -322,17 +476,17 @@ public class VistaClientesCrear extends javax.swing.JFrame {
                  dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void txtfCuidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCuidadActionPerformed
+    private void txtfCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCiudadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfCuidadActionPerformed
+    }//GEN-LAST:event_txtfCiudadActionPerformed
 
     private void txtfEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfEstadoActionPerformed
 
-    private void txtfEmail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmail1ActionPerformed
+    private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtfEmail1ActionPerformed
+    }//GEN-LAST:event_txtfEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -439,12 +593,11 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblCalle;
+    private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblCodigoPostal;
     private javax.swing.JLabel lblColonia;
-    private javax.swing.JLabel lblCuidad;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEstado;
-    private javax.swing.JLabel lblIdCliente;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumeroInterior;
     private javax.swing.JLabel lblTelefono;
@@ -452,14 +605,13 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     private javax.swing.JTextField txtfApellidoMaterno;
     private javax.swing.JTextField txtfApellidoPaterno;
     private javax.swing.JTextField txtfCalle;
+    private javax.swing.JTextField txtfCiudad;
     private javax.swing.JTextField txtfCodigoPostal;
     private javax.swing.JTextField txtfColonia;
-    private javax.swing.JTextField txtfCuidad;
-    private javax.swing.JTextField txtfEmail1;
+    private javax.swing.JTextField txtfEmail;
     private javax.swing.JTextField txtfEstado;
     private javax.swing.JTextField txtfNombre;
     private javax.swing.JTextField txtfNumeroInterior;
     private javax.swing.JTextField txtfTelefono;
-    private javax.swing.JTextField txtfidCliente;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,8 +19,8 @@ public class Main {
          try {
             Connection conexion = ConexionBD.obtenerConexion();
             
-            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-            empleadoDAO.insertarEmpleado(empleado1);
+            //EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+            //empleadoDAO.insertarEmpleado(empleado1);
             
             
             
@@ -56,12 +56,12 @@ public class Main {
             //productosDAO.eliminarProducto(1);
             */
             
-            Clientes cliente1 = new Clientes("Oxxo", "Seshomaru", "Yasha", "Pedro Moreno", "1234", "45190", "El Batan", "GDL", "Jalisco", "seshomaru@ymail.com", "2552552552");
+            Clientes cliente1 = new Clientes("Oxxo", "Seshomaru", "Yasha", "Pedro Moreno", "1234", "45190", "El Batan", "GDL", "Jalisco", "seshomaru2@ymail.com", "2552552552");
              System.out.println(cliente1);
              
              
-            // ClientesDAO clientesDAO = new ClientesDAO(conexion);
-            // clientesDAO.insertarCliente(cliente1);
+             ClientesDAO clientesDAO = new ClientesDAO(conexion);
+             clientesDAO.insertarCliente(cliente1);
 
             conexion.close();
         } catch (SQLException e) {
