@@ -3,13 +3,21 @@ package Frontend;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 public class VistaProductosCrear extends javax.swing.JFrame {
@@ -19,6 +27,29 @@ public class VistaProductosCrear extends javax.swing.JFrame {
      */
     public VistaProductosCrear() {
         initComponents();
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfNombre);
+        campos.add(txtfDescripcion);
+        campos.add(txtfnumeroLote);
+        campos.add(txtffechaProduccion);
+        campos.add(txtffechaExpiracion);
+
+        // Agregar oyente de foco a cada JTextField
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    validarCampoVacio(campo, false, false);
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Color.BLACK);
+                }
+            });
+        }
     }
 
     /**
@@ -30,13 +61,11 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidProducto = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblDescripcion = new javax.swing.JLabel();
         lblnumeroLote = new javax.swing.JLabel();
         lblfechaProduccion = new javax.swing.JLabel();
         lblfechaExpiracion = new javax.swing.JLabel();
-        txtfidProducto = new javax.swing.JTextField();
         txtfNombre = new javax.swing.JTextField();
         txtfDescripcion = new javax.swing.JTextField();
         txtfnumeroLote = new javax.swing.JTextField();
@@ -50,16 +79,10 @@ public class VistaProductosCrear extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QUALITAS - CREAR PRODUCTO");
+        setIconImages(null);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
-
-        lblidProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidProducto.setText("idProducto");
-        lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 140, 122, 32);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -70,41 +93,43 @@ public class VistaProductosCrear extends javax.swing.JFrame {
 
         lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripcion");
+        lblDescripcion.setText("Descripción");
         lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblDescripcion);
         lblDescripcion.setBounds(520, 320, 128, 32);
 
         lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblnumeroLote.setText("Numero de lote");
+        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblnumeroLote.setText("Número de lote (solo números)");
         lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(510, 410, 180, 32);
+        lblnumeroLote.setBounds(520, 410, 380, 32);
 
         lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaProduccion.setText("Fecha de produccion");
+        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblfechaProduccion.setText("Fecha de produccion (YYYY-MM-DD)");
         lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(500, 490, 250, 32);
+        lblfechaProduccion.setBounds(520, 490, 430, 32);
 
         lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaExpiracion.setText("Fecha de expiracion");
+        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblfechaExpiracion.setText("Fecha de expiracion (YYYY-MM-DD)");
         lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(510, 580, 230, 32);
-
-        txtfidProducto.setEditable(false);
-        txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidProducto);
-        txtfidProducto.setBounds(520, 180, 690, 40);
+        lblfechaExpiracion.setBounds(520, 580, 430, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfNombreFocusLost(evt);
+            }
+        });
         getContentPane().add(txtfNombre);
         txtfNombre.setBounds(520, 270, 690, 40);
 
@@ -189,7 +214,77 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
+    public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {
+        boolean valido = false;
+        String FORMATO_FECHA = "\\d{4}-\\d{2}-\\d{2}";
+        
+        String textoCampo = campo.getText().trim();
+        if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
+            campo.setForeground(Color.RED);
+            campo.setText("El campo es obligatorio");
+            valido = false;
+        }
+        else{
+            campo.setForeground(Color.BLACK);
+            valido = true;
+        }
+        
+        // Si el campo es una fecha
+        if(esFecha){
+            Pattern pattern = Pattern.compile(FORMATO_FECHA);
+            Matcher matcher = pattern.matcher(textoCampo);
+           
+            String regex = "^(20[1-9][5-9]|[2-9][0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]|(0[1-9]|1\\d|2[0-8]))|((20[1-9][5-9]|[2-9][0-9]{3})(0[48]|[2468][048]|[13579][26])-02-29|((20[1-9][5-9]|[2-9][0-9]{3})-02-(0[1-9]|1\\d|2[0-8])))$";
+            
+            // Si no es un formato de fecha pone el borde en rojo
+            if(!matcher.matches()){
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }else{
+                
+                // Si es un formato de fecha valido, validara si la fecha es una fecha valida
+                if(Pattern.matches(regex, textoCampo)){
+                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   valido = true;
+                }else{
+                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    valido = false;
+                }
+                
+            }
+        }
+        
+        // Si el campo debe ser numerico
+        if(esNumerico){
+            try {
+                Integer.parseInt(textoCampo);
+                // Si la conversión es exitosa, el contenido es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                valido = true;
+            } catch (NumberFormatException ex) {
+                // Si ocurre una excepción, el contenido no es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }
+        }
+        return valido;
+    }
+    
+    
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        
+        if(
+            validarCampoVacio(txtfNombre, false, false) &&
+            validarCampoVacio(txtfDescripcion, false, false) &&
+            validarCampoVacio(txtfnumeroLote, false, true) &&
+            validarCampoVacio(txtffechaProduccion, true, false) &&
+            validarCampoVacio(txtffechaExpiracion, true, false) 
+        ){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Verifica los campos");
+        }
         
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
@@ -203,8 +298,6 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         System.out.println(fechaExpiracion);
         
         
-        
-        
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
@@ -215,14 +308,12 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                         );
          
             if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-                
-               
-            Connection conexion;
+
+                Connection conexion;
             
             try {
                 conexion = ConexionBD.obtenerConexion();
-                 Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
+                Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
                 producto.estaPorExpirar();
                 
                 ProductosDAO productosDAO = new ProductosDAO(conexion);
@@ -254,9 +345,17 @@ public class VistaProductosCrear extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaProductos vistaProductos = new VistaProductos();
-                 vistaProductos.show();
+                 vistaProductos.setVisible(true);
                  dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void txtfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfNombreFocusGained
+
+    }//GEN-LAST:event_txtfNombreFocusGained
+
+    private void txtfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfNombreFocusLost
+
+    }//GEN-LAST:event_txtfNombreFocusLost
 
     /**
      * @param args the command line arguments
@@ -334,13 +433,11 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblfechaExpiracion;
     private javax.swing.JLabel lblfechaProduccion;
-    private javax.swing.JLabel lblidProducto;
     private javax.swing.JLabel lblnumeroLote;
     private javax.swing.JTextField txtfDescripcion;
     private javax.swing.JTextField txtfNombre;
     private javax.swing.JTextField txtffechaExpiracion;
     private javax.swing.JTextField txtffechaProduccion;
-    private javax.swing.JTextField txtfidProducto;
     private javax.swing.JTextField txtfnumeroLote;
     // End of variables declaration//GEN-END:variables
 }
