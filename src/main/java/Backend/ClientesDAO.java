@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,37 +16,37 @@ public class ClientesDAO {
     }
 
     public int insertarCliente(Clientes cliente) throws SQLException {
-        String sql = "INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, calle, numero, codigo_postal, colonia, ciudad, estado, email, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO clientes (nombre, apellido_paterno, apellido_materno, calle, numero, codigo_postal, colonia, ciudad, estado, email, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, cliente.getNombre());
-            statement.setString(2, cliente.getApellidoPaterno());
-            statement.setString(3, cliente.getApellidoMaterno());
-            statement.setString(4, cliente.getCalle());
-            statement.setString(5, cliente.getNumero());
-            statement.setString(6, cliente.getCodigoPostal());
-            statement.setString(7, cliente.getColonia());
-            statement.setString(8, cliente.getCiudad());
-            statement.setString(9, cliente.getEstado());
-            statement.setString(10, cliente.getEmail());
-            statement.setString(11, cliente.getTelefono());
+    try (PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        statement.setString(1, cliente.getNombre());
+        statement.setString(2, cliente.getApellidoPaterno());
+        statement.setString(3, cliente.getApellidoMaterno());
+        statement.setString(4, cliente.getCalle());
+        statement.setString(5, cliente.getNumero());
+        statement.setString(6, cliente.getCodigoPostal());
+        statement.setString(7, cliente.getColonia());
+        statement.setString(8, cliente.getCiudad());
+        statement.setString(9, cliente.getEstado());
+        statement.setString(10, cliente.getEmail());
+        statement.setString(11, cliente.getTelefono());
 
-            
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        cliente.setIdCliente( generatedKeys.getInt(1) );
-                        return generatedKeys.getInt(1); // Obtiene el ID generado
-                    } else {
-                        throw new SQLException("No se pudo obtener el ID generado del cliente.");
-                    }
+        int rowsInserted = statement.executeUpdate();
+        if (rowsInserted > 0) {
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    cliente.setIdCliente(generatedKeys.getInt(1));
+                    return generatedKeys.getInt(1); // Obtiene el ID generado
+                } else {
+                    throw new SQLException("No se pudo obtener el ID generado del cliente.");
                 }
-            } else {
-                throw new SQLException("No se pudo insertar el cliente en la base de datos.");
             }
+        } else {
+            throw new SQLException("No se pudo insertar el cliente en la base de datos.");
         }
     }
+}
+
 
     public List<Clientes> obtenerTodosClientes() throws SQLException {
         List<Clientes> clientesList = new ArrayList<>();
