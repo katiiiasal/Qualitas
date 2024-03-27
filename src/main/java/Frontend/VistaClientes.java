@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import Backend.Clientes;
+import Backend.ClientesDAO;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
@@ -33,21 +35,20 @@ public class VistaClientes extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
              
             Connection conexion = ConexionBD.obtenerConexion();
-            ProductosDAO productosDAO = new ProductosDAO(conexion);
-            
-            // Obtener todos los productos
-            List<Productos> todosProductos = productosDAO.obtenerTodosProductos();
-            System.out.println("Todos los productos:");
-            for (Productos product : todosProductos) {
+            ClientesDAO clientesDAO = new ClientesDAO(conexion);
+            List<Clientes> clientes = clientesDAO.obtenerTodosClientes();
+            System.out.println("Todos los clientes:");
+            for (Clientes cliente : clientes) {
                 
                 model.addRow(new Object[]{
-                    product.getIdProducto(),
-                    product.getNombre(),
-                    product.getDescripcion(),
-                    product.getNumeroLote(),
-                    product.getFechaProduccion(),
-                    product.getFechaExpiracion(),
-                    product.estaPorExpirar()
+                    cliente.getIdCliente(),
+                    cliente.getNombre(),
+                    cliente.getApellidoPaterno(),
+                    cliente.getApellidoMaterno(),
+                    cliente.getCalle(),
+                    cliente.getNumero(),
+                    cliente.getEmail(),
+                    cliente.getTelefono(),
                 });
             }
             
@@ -91,17 +92,17 @@ public class VistaClientes extends javax.swing.JFrame {
         tblClientes.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "idCliente", "nombre", "apellidoMaterno", "apellidoPaterno", "direccion", "email", "telefono"
+                "idCliente", "nombre", "apellidoPaterno", "apellidoMaterno", "calle", "numeroInterior", "email", "telefono"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -176,28 +177,38 @@ public class VistaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        VistaClientesActualizar vistaClientesActualizar = new VistaClientesActualizar();
-        vistaClientesActualizar.show();
-        dispose();
+        int selectedRow = tblClientes.getSelectedRow();
+        
+        if(selectedRow != -1){
+            int idCliente = (int) tblClientes.getValueAt(selectedRow, 0);
+            System.out.println(idCliente);
+            VistaClientesActualizar vistaClientesActualizar = new VistaClientesActualizar(idCliente);
+            vistaClientesActualizar.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un cliente");
+        }
+        
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         VistaMenu vistaMenu = new VistaMenu();
-        vistaMenu.show();
+        vistaMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         VistaClientesCrear vistaClientesCrear = new VistaClientesCrear();
-        vistaClientesCrear.show();
+        vistaClientesCrear.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // Logica del pop up de confirmacion
-        int result = JOptionPane.showConfirmDialog(
+                int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de eliminar este producto?", 
+                            "¿Estas seguro de eliminar este cliente?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -205,7 +216,38 @@ public class VistaClientes extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                int selectedRow = tblClientes.getSelectedRow();
+        
+                if(selectedRow != -1){
+                    int idCliente = (int) tblClientes.getValueAt(selectedRow, 0);
+                    System.out.println(idCliente);
+                    Connection conexion;
+        
+                    try {
+                        conexion = ConexionBD.obtenerConexion();
+
+                        ClientesDAO clientesDAO = new ClientesDAO(conexion);
+                        int id = clientesDAO.eliminarCliente(idCliente);
+                        if (id != 0){
+                            JOptionPane.showMessageDialog(null, "Se creo elimino el cliente exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                            VistaClientes vistaClientes = new VistaClientes();
+                            vistaClientes.setVisible(true);
+                            dispose();
+
+                        }else{
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el cliente", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+
+                        }
+
+
+                    } catch (SQLException ex) {
+                        System.out.println("Error al eliminar el cliente");    
+                    }
+                    
+                }else{
+                     JOptionPane.showMessageDialog(null, "Por favor selecciona un cliente");
+                }
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
