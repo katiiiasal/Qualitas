@@ -4,8 +4,26 @@
  */
 package Frontend;
 
+import Backend.Clientes;
+import Backend.ClientesDAO;
+import Backend.ConexionBD;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,10 +34,80 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     /**
      * Creates new form VistaProductosCrear
      */
-    public VistaClientesActualizar() {
-        initComponents();
+    // Atributos
+    private int idCliente;
+
+    public int getIdCliente() {
+        return idCliente;
     }
 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    
+    
+    public VistaClientesActualizar(){
+    }
+    
+    public VistaClientesActualizar(int idCliente) {
+        initComponents();
+        this.setIdCliente(idCliente);
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfNombre);
+        campos.add(txtfApellidoPaterno);
+        campos.add(txtfApellidoMaterno);
+        campos.add(txtfEmail);
+        campos.add(txtfTelefono);
+        campos.add(txtfCalle);
+        campos.add(txtfNumeroInterior);
+        campos.add(txtfCodigoPostal);
+        campos.add(txtfColonia);
+        campos.add(txtfCiudad);
+        campos.add(txtfEstado);
+
+        // Agregar oyente de foco a cada JTextField
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    validarCampoVacio(campo, false, false);
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Color.BLACK);
+                }
+            });
+        }
+        
+         Connection conexion;
+        
+        try {
+            conexion = ConexionBD.obtenerConexion();
+            
+            ClientesDAO clientesDAO = new ClientesDAO(conexion);
+            Clientes cliente = clientesDAO.obtenerCliente(idCliente);
+            
+            txtfNombre.setText(cliente.getNombre());
+            txtfApellidoPaterno.setText(cliente.getApellidoPaterno());
+            txtfApellidoMaterno.setText(cliente.getApellidoMaterno());
+            txtfEmail.setText(cliente.getEmail());
+            txtfTelefono.setText(cliente.getTelefono());
+            txtfCalle.setText(cliente.getCalle());
+            txtfNumeroInterior.setText(cliente.getNumero());
+            txtfCodigoPostal.setText(cliente.getCodigoPostal());
+            txtfColonia.setText(cliente.getCiudad());
+            txtfCiudad.setText(cliente.getCiudad());
+            txtfEstado.setText(cliente.getEstado());
+            
+        } catch (SQLException ex) {
+            System.out.println("Error al cargar datos");    
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,22 +117,31 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblidProducto = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        lblDescripcion = new javax.swing.JLabel();
-        lblnumeroLote = new javax.swing.JLabel();
-        lblfechaProduccion = new javax.swing.JLabel();
-        lblfechaExpiracion = new javax.swing.JLabel();
-        txtfidProducto = new javax.swing.JTextField();
+        lblApellidoPaterno = new javax.swing.JLabel();
+        lblApellidoMaterno = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
-        txtfDescripcion = new javax.swing.JTextField();
-        txtfnumeroLote = new javax.swing.JTextField();
-        txtffechaExpiracion = new javax.swing.JTextField();
-        txtffechaProduccion = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JButton();
-        lblProductos = new javax.swing.JLabel();
+        txtfApellidoPaterno = new javax.swing.JTextField();
+        txtfApellidoMaterno = new javax.swing.JTextField();
+        txtfTelefono = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        lblEmail = new javax.swing.JLabel();
+        btnActualizar = new javax.swing.JButton();
+        txtfCalle = new javax.swing.JTextField();
+        lblCalle = new javax.swing.JLabel();
+        lblNumeroInterior = new javax.swing.JLabel();
+        txtfNumeroInterior = new javax.swing.JTextField();
+        lblCodigoPostal = new javax.swing.JLabel();
+        txtfCodigoPostal = new javax.swing.JTextField();
+        lblColonia = new javax.swing.JLabel();
+        txtfColonia = new javax.swing.JTextField();
+        lblCiudad = new javax.swing.JLabel();
+        txtfCiudad = new javax.swing.JTextField();
+        lblEstado = new javax.swing.JLabel();
+        txtfEstado = new javax.swing.JTextField();
+        txtfEmail = new javax.swing.JTextField();
+        lblTelefono = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,110 +150,59 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
 
-        lblidProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidProducto.setText("idProducto");
-        lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 140, 122, 32);
-
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 230, 90, 32);
+        lblNombre.setBounds(140, 140, 90, 32);
 
-        lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripcion");
-        lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 320, 128, 32);
+        lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoPaterno.setText("Apellido Paterno");
+        lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoPaterno);
+        lblApellidoPaterno.setBounds(140, 220, 240, 32);
 
-        lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblnumeroLote.setText("Numero de lote");
-        lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(510, 410, 180, 32);
-
-        lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaProduccion.setText("Fecha de produccion");
-        lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(500, 490, 250, 32);
-
-        lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaExpiracion.setText("Fecha de expiracion");
-        lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(510, 580, 230, 32);
-
-        txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfidProducto);
-        txtfidProducto.setBounds(520, 180, 690, 40);
+        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoMaterno.setText("Apellido Materno");
+        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(140, 310, 230, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(520, 270, 690, 40);
+        txtfNombre.setBounds(140, 170, 450, 40);
 
-        txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfDescripcion.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfDescripcion);
-        txtfDescripcion.setBounds(520, 360, 690, 38);
+        txtfApellidoPaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoPaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoPaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoPaterno);
+        txtfApellidoPaterno.setBounds(140, 260, 450, 38);
 
-        txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfnumeroLote.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfnumeroLote);
-        txtfnumeroLote.setBounds(520, 440, 690, 40);
+        txtfApellidoMaterno.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfApellidoMaterno.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfApellidoMaterno.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfApellidoMaterno);
+        txtfApellidoMaterno.setBounds(140, 350, 450, 40);
 
-        txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.addActionListener(new java.awt.event.ActionListener() {
+        txtfTelefono.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfTelefono.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfTelefono.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaExpiracionActionPerformed(evt);
+                txtfTelefonoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtffechaExpiracion);
-        txtffechaExpiracion.setBounds(520, 610, 690, 40);
-
-        txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaProduccionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtffechaProduccion);
-        txtffechaProduccion.setBounds(520, 520, 690, 40);
-
-        btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
-        btnActualizar.setText("ACTUALIZAR");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnActualizar);
-        btnActualizar.setBounds(130, 480, 243, 55);
-
-        lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
-        getContentPane().add(lblProductos);
-        lblProductos.setBounds(120, 170, 300, 260);
+        getContentPane().add(txtfTelefono);
+        txtfTelefono.setBounds(140, 520, 450, 40);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("PRODUCTOS");
+        lblTitulo.setText("CLIENTES");
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
@@ -169,23 +215,288 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 170, 80);
+        btnRegresar.setBounds(60, 20, 180, 80);
+
+        lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEmail.setText("Email");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEmail);
+        lblEmail.setBounds(140, 400, 230, 32);
+
+        btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnActualizar);
+        btnActualizar.setBounds(220, 610, 260, 55);
+
+        txtfCalle.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCalle.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfCalle);
+        txtfCalle.setBounds(640, 170, 450, 40);
+
+        lblCalle.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCalle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCalle.setText("Calle");
+        lblCalle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCalle);
+        lblCalle.setBounds(640, 140, 53, 32);
+
+        lblNumeroInterior.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNumeroInterior.setText("Numero Interior");
+        lblNumeroInterior.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblNumeroInterior);
+        lblNumeroInterior.setBounds(640, 230, 210, 32);
+
+        txtfNumeroInterior.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfNumeroInterior.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfNumeroInterior.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfNumeroInterior);
+        txtfNumeroInterior.setBounds(640, 260, 450, 40);
+
+        lblCodigoPostal.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCodigoPostal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCodigoPostal.setText("Codigo Postal");
+        lblCodigoPostal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCodigoPostal);
+        lblCodigoPostal.setBounds(640, 310, 240, 32);
+
+        txtfCodigoPostal.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCodigoPostal.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfCodigoPostal.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfCodigoPostal);
+        txtfCodigoPostal.setBounds(640, 350, 450, 38);
+
+        lblColonia.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblColonia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblColonia.setText("Colonia");
+        lblColonia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblColonia);
+        lblColonia.setBounds(640, 400, 230, 32);
+
+        txtfColonia.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfColonia.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfColonia.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfColonia);
+        txtfColonia.setBounds(640, 430, 450, 40);
+
+        lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCiudad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCiudad.setText("Cuidad");
+        lblCiudad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCiudad);
+        lblCiudad.setBounds(640, 490, 250, 32);
+
+        txtfCiudad.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfCiudad.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfCiudad.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfCiudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfCiudadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfCiudad);
+        txtfCiudad.setBounds(640, 520, 450, 40);
+
+        lblEstado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEstado.setText("Estado");
+        lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEstado);
+        lblEstado.setBounds(640, 590, 230, 32);
+
+        txtfEstado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEstado.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEstado.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfEstadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfEstado);
+        txtfEstado.setBounds(640, 620, 450, 40);
+
+        txtfEmail.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfEmail.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfEmail.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtfEmail);
+        txtfEmail.setBounds(140, 430, 450, 40);
+
+        lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblTelefono.setText("Telefono");
+        lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblTelefono);
+        lblTelefono.setBounds(140, 490, 230, 32);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 1280, 720);
+        lblBackground.setBounds(0, 0, 1430, 720);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtffechaProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaProduccionActionPerformed
+    private void txtfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaProduccionActionPerformed
+    }//GEN-LAST:event_txtfTelefonoActionPerformed
+    
+    public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {
+        boolean valido = false;
+        String FORMATO_FECHA = "\\d{4}-\\d{2}-\\d{2}";
+        
+        String textoCampo = campo.getText().trim();
+        if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
+            campo.setForeground(Color.RED);
+            campo.setText("El campo es obligatorio");
+            valido = false;
+        }
+        else{
+            campo.setForeground(Color.BLACK);
+            valido = true;
+        }
+        
+        // Si el campo es una fecha
+        if(esFecha){
+            Pattern pattern = Pattern.compile(FORMATO_FECHA);
+            Matcher matcher = pattern.matcher(textoCampo);
+           
+            String regex = "^(20[1-9][5-9]|[2-9][0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]|(0[1-9]|1\\d|2[0-8]))|((20[1-9][5-9]|[2-9][0-9]{3})(0[48]|[2468][048]|[13579][26])-02-29|((20[1-9][5-9]|[2-9][0-9]{3})-02-(0[1-9]|1\\d|2[0-8])))$";
+            
+            // Si no es un formato de fecha pone el borde en rojo
+            if(!matcher.matches()){
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }else{
+                
+                // Si es un formato de fecha valido, validara si la fecha es una fecha valida
+                if(Pattern.matches(regex, textoCampo)){
+                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   valido = true;
+                }else{
+                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    valido = false;
+                }
+                
+            }
+        }
+        
+        // Si el campo debe ser numerico
+        if(esNumerico){
+            try {
+                Double.parseDouble(textoCampo);
+                // Si la conversión es exitosa, el contenido es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                valido = true;
+            } catch (NumberFormatException ex) {
+                // Si ocurre una excepción, el contenido no es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }
+        }
+        return valido;
+    }
+    
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        
+         if(
+            validarCampoVacio(txtfNombre, false, false) &&
+            validarCampoVacio(txtfApellidoPaterno, false, false) &&
+            validarCampoVacio(txtfApellidoMaterno, false, false) &&
+            validarCampoVacio(txtfEmail, false, false) &&
+            validarCampoVacio(txtfTelefono, false, true) && 
+            validarCampoVacio(txtfCalle, false, false) &&
+            validarCampoVacio(txtfNumeroInterior, false, true) && 
+            validarCampoVacio(txtfCodigoPostal, false, true) &&    
+            validarCampoVacio(txtfColonia, false, false) &&  
+            validarCampoVacio(txtfCiudad, false, false) &&  
+            validarCampoVacio(txtfEstado, false, false)        
+        ){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Verifica los campos");
+        }
+         
+        String nombre = txtfNombre.getText();
+        System.out.println(nombre);
+        String apellidoPaterno = txtfApellidoPaterno.getText();
+        System.out.println(apellidoPaterno);
+        String apellidoMaterno = txtfApellidoMaterno.getText();
+        System.out.println(apellidoMaterno);
+        String email = txtfEmail.getText();
+        System.out.println(email);
+        String telefono = txtfTelefono.getText();
+        System.out.println(telefono);
+        String calle = txtfCalle.getText();
+        System.out.println(calle);
+        String numeroInterior = txtfNumeroInterior.getText();
+        System.out.println(numeroInterior);
+        String codigoPostal = txtfCodigoPostal.getText();
+        System.out.println(codigoPostal);
+        String colonia = txtfColonia.getText();
+        System.out.println(colonia);
+        String ciudad = txtfCiudad.getText();
+        System.out.println(ciudad);
+        String estado = txtfEstado.getText();
+        System.out.println(estado);
+        
+        
+        
+        // Logica del pop up de confirmacion
+        int result = JOptionPane.showConfirmDialog(
+                            new JFrame(),
+                            "¿Estas seguro de crear este cliente?", 
+                            "QUALITAS - CONFIRMACION",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.QUESTION_MESSAGE
+                        );
+         
+            if(result == JOptionPane.YES_OPTION){
 
-    private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+                Connection conexion;
+            
+            try {
+                conexion = ConexionBD.obtenerConexion();
+                Clientes cliente = new Clientes(nombre, apellidoPaterno, apellidoMaterno, calle, numeroInterior, codigoPostal, colonia, ciudad, estado, email, telefono);
+                System.out.println(cliente);
+                
+                ClientesDAO clientesDAO = new ClientesDAO(conexion);
+                int id = clientesDAO.actualizarCliente(cliente, this.idCliente);
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se actualizo el cliente (" + nombre + ") exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    VistaClientes vistaClientes = new VistaClientes();
+                    vistaClientes.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se pudo actualizar el cliente (" + nombre + ") ", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(VistaClientesActualizar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+
+            }else if (result == JOptionPane.NO_OPTION){
+                System.out.println(2);
+               //label.setText("You selected: No");
+            }else {
+                System.out.println(3);
+               
+            }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaClientes vistaClientes = new VistaClientes();
@@ -193,41 +504,17 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
                  dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-         
-        String nombre = txtfNombre.getText();
-        System.out.println(nombre);
-        String descripcion = txtfDescripcion.getText();
-        System.out.println(descripcion);
-        int numeroLote = Integer.valueOf(txtfnumeroLote.getText());
-        System.out.println(numeroLote);
-        String fechaProduccion = txtffechaProduccion.getText();
-        System.out.println(fechaProduccion);
-        String fechaExpiracion = txtffechaExpiracion.getText();
-        System.out.println(fechaExpiracion);
-        
-        
-        
-        // Logica del pop up de confirmacion
-        int result = JOptionPane.showConfirmDialog(
-                            new JFrame(),
-                            "¿Estas seguro de actualizar este producto?", 
-                            "QUALITAS - CONFIRMACION",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                        );
-         
-            if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-               //label.setText("You selected: Yes");
-            }else if (result == JOptionPane.NO_OPTION){
-                System.out.println(2);
-               //label.setText("You selected: No");
-            }else {
-                System.out.println(3);
-               //label.setText("None selected");
-            }
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    private void txtfCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfCiudadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfCiudadActionPerformed
+
+    private void txtfEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfEstadoActionPerformed
+
+    private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,6 +573,102 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -298,20 +681,29 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JLabel lblApellidoMaterno;
+    private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblBackground;
-    private javax.swing.JLabel lblDescripcion;
+    private javax.swing.JLabel lblCalle;
+    private javax.swing.JLabel lblCiudad;
+    private javax.swing.JLabel lblCodigoPostal;
+    private javax.swing.JLabel lblColonia;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblProductos;
+    private javax.swing.JLabel lblNumeroInterior;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblfechaExpiracion;
-    private javax.swing.JLabel lblfechaProduccion;
-    private javax.swing.JLabel lblidProducto;
-    private javax.swing.JLabel lblnumeroLote;
-    private javax.swing.JTextField txtfDescripcion;
+    private javax.swing.JTextField txtfApellidoMaterno;
+    private javax.swing.JTextField txtfApellidoPaterno;
+    private javax.swing.JTextField txtfCalle;
+    private javax.swing.JTextField txtfCiudad;
+    private javax.swing.JTextField txtfCodigoPostal;
+    private javax.swing.JTextField txtfColonia;
+    private javax.swing.JTextField txtfEmail;
+    private javax.swing.JTextField txtfEstado;
     private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtffechaExpiracion;
-    private javax.swing.JTextField txtffechaProduccion;
-    private javax.swing.JTextField txtfidProducto;
-    private javax.swing.JTextField txtfnumeroLote;
+    private javax.swing.JTextField txtfNumeroInterior;
+    private javax.swing.JTextField txtfTelefono;
     // End of variables declaration//GEN-END:variables
 }

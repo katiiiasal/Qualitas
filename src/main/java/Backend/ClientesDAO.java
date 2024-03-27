@@ -57,7 +57,7 @@ public class ClientesDAO {
 
             while (resultSet.next()) {
                 Clientes cliente = new Clientes();
-                cliente.setIdCliente(resultSet.getInt("idCliente"));
+                cliente.setIdCliente(resultSet.getInt("id_cliente"));
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setApellidoPaterno(resultSet.getString("apellido_paterno"));
                 cliente.setApellidoMaterno(resultSet.getString("apellido_materno"));
@@ -78,7 +78,7 @@ public class ClientesDAO {
     }
 
     public Clientes obtenerCliente(int idCliente) throws SQLException {
-        String sql = "SELECT * FROM clientes WHERE idCliente = ?";
+        String sql = "SELECT * FROM clientes WHERE id_cliente = ?";
         Clientes cliente = null;
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -87,7 +87,7 @@ public class ClientesDAO {
 
             if (resultSet.next()) {
                 cliente = new Clientes();
-                cliente.setIdCliente(resultSet.getInt("idCliente"));
+                cliente.setIdCliente(resultSet.getInt("id_cliente"));
                 cliente.setNombre(resultSet.getString("nombre"));
                 cliente.setApellidoPaterno(resultSet.getString("apellido_paterno"));
                 cliente.setApellidoMaterno(resultSet.getString("apellido_materno"));
@@ -106,7 +106,7 @@ public class ClientesDAO {
     }
 
     public int actualizarCliente(Clientes cliente, int idCliente) throws SQLException {
-        String sql = "UPDATE clientes SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, calle = ?, numero = ?, codigo_postal = ?, colonia = ?, ciudad = ?, estado = ?, email = ?, telefono = ? WHERE idCliente = ?";
+        String sql = "UPDATE clientes SET nombre = ?, apellido_paterno = ?, apellido_materno = ?, calle = ?, numero = ?, codigo_postal = ?, colonia = ?, ciudad = ?, estado = ?, email = ?, telefono = ? WHERE id_cliente = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, cliente.getNombre());
@@ -120,7 +120,7 @@ public class ClientesDAO {
             statement.setString(9, cliente.getEstado());
             statement.setString(10, cliente.getEmail());
             statement.setString(11, cliente.getTelefono());
-            statement.setInt(12, cliente.getIdCliente());
+            statement.setInt(12, idCliente);
 
             statement.executeUpdate();
             return 1;
@@ -131,7 +131,7 @@ public class ClientesDAO {
     }
 
     public int eliminarCliente(int idCliente) throws SQLException {
-        String sql = "DELETE FROM clientes WHERE idCliente = ?";
+        String sql = "DELETE FROM clientes WHERE id_cliente = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, idCliente);
