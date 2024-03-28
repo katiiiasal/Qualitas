@@ -16,7 +16,7 @@ public class ProductosDAO {
     
 
     public int insertarProducto(Productos producto) throws SQLException {
-        String query = "INSERT INTO productos (nombre, descripcion, numero_lote, fecha_produccion, fecha_expiracion, expiracion_alerta) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO productos (nombre, descripcion, numero_lote, fecha_produccion, fecha_expiracion, expiracion_alerta, precio) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, producto.getNombre());
             statement.setString(2, producto.getDescripcion());
@@ -24,6 +24,7 @@ public class ProductosDAO {
             statement.setString(4, producto.getFechaProduccion());
             statement.setString(5, producto.getFechaExpiracion());
             statement.setBoolean(6, producto.estaPorExpirar());
+            statement.setDouble(7, producto.getPrecio());
 
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) {
@@ -63,6 +64,7 @@ public class ProductosDAO {
         producto.setNumeroLote(resultSet.getInt("numero_lote"));
         producto.setFechaProduccion(resultSet.getString("fecha_produccion"));
         producto.setFechaExpiracion(resultSet.getString("fecha_expiracion"));
+        producto.setPrecio(resultSet.getDouble("precio"));
         producto.estaPorExpirar();
         return producto;
     }
@@ -78,9 +80,21 @@ public class ProductosDAO {
         }
         return productos;
     }
+    
+    public List<Productos> obtenerTodosProductosAlerta() throws SQLException {
+        List<Productos> productos = new ArrayList<>();
+        String query = "SELECT * FROM productos WHERE expiracion_alerta = 1;";
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                productos.add(obtenerProductoDesdeResultSet(resultSet));
+            }
+        }
+        return productos;
+    }
 
     public int actualizarProducto(Productos producto, int idProducto) throws SQLException {
-        String query = "UPDATE productos SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ? WHERE id_producto = ?";
+        String query = "UPDATE productos SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ?, precio = ? WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, producto.getNombre());
             statement.setString(2, producto.getDescripcion());
@@ -88,7 +102,9 @@ public class ProductosDAO {
             statement.setString(4, producto.getFechaProduccion());
             statement.setString(5, producto.getFechaExpiracion());
             statement.setBoolean(6, producto.estaPorExpirar());
-            statement.setInt(7, idProducto);
+            statement.setDouble(7, producto.getPrecio());
+            statement.setInt(8, idProducto);
+            
 
             statement.executeUpdate();
             return 1;

@@ -50,6 +50,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
             txtfnumeroLote.setText(Integer.toString( producto.getNumeroLote()));
             txtffechaProduccion.setText(producto.getFechaProduccion());
             txtffechaExpiracion.setText(producto.getFechaExpiracion());
+            txtfPrecio.setText(Double.toString(producto.getPrecio()));
             
             
         } catch (SQLException ex) {
@@ -70,21 +71,23 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private void initComponents() {
 
         lblidProducto = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
-        lblDescripcion = new javax.swing.JLabel();
-        lblnumeroLote = new javax.swing.JLabel();
-        lblfechaProduccion = new javax.swing.JLabel();
-        lblfechaExpiracion = new javax.swing.JLabel();
         txtfidProducto = new javax.swing.JTextField();
-        txtfNombre = new javax.swing.JTextField();
-        txtfDescripcion = new javax.swing.JTextField();
-        txtfnumeroLote = new javax.swing.JTextField();
-        txtffechaExpiracion = new javax.swing.JTextField();
-        txtffechaProduccion = new javax.swing.JTextField();
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        txtfNombre = new javax.swing.JTextField();
+        lblDescripcion = new javax.swing.JLabel();
+        txtfDescripcion = new javax.swing.JTextField();
+        lblnumeroLote = new javax.swing.JLabel();
+        txtfnumeroLote = new javax.swing.JTextField();
+        lblfechaProduccion = new javax.swing.JLabel();
+        txtffechaProduccion = new javax.swing.JTextField();
+        lblfechaExpiracion = new javax.swing.JLabel();
+        txtffechaExpiracion = new javax.swing.JTextField();
+        lblPrecio = new javax.swing.JLabel();
+        txtfPrecio = new javax.swing.JTextField();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,88 +101,13 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         lblidProducto.setText("idProducto");
         lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 140, 122, 32);
-
-        lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNombre.setText("Nombre");
-        lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 230, 90, 32);
-
-        lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripcion");
-        lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 320, 128, 32);
-
-        lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblnumeroLote.setText("Numero de lote");
-        lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(510, 410, 180, 32);
-
-        lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaProduccion.setText("Fecha de produccion");
-        lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(500, 490, 250, 32);
-
-        lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblfechaExpiracion.setText("Fecha de expiracion");
-        lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(510, 580, 230, 32);
+        lblidProducto.setBounds(520, 90, 122, 32);
 
         txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfidProducto);
-        txtfidProducto.setBounds(520, 180, 690, 40);
-
-        txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfNombre);
-        txtfNombre.setBounds(520, 270, 690, 40);
-
-        txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfDescripcion.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfDescripcion);
-        txtfDescripcion.setBounds(520, 360, 690, 38);
-
-        txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtfnumeroLote.setPreferredSize(new java.awt.Dimension(65, 40));
-        getContentPane().add(txtfnumeroLote);
-        txtfnumeroLote.setBounds(520, 440, 690, 40);
-
-        txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaExpiracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaExpiracionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtffechaExpiracion);
-        txtffechaExpiracion.setBounds(520, 610, 690, 40);
-
-        txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
-        txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.setPreferredSize(new java.awt.Dimension(65, 40));
-        txtffechaProduccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtffechaProduccionActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtffechaProduccion);
-        txtffechaProduccion.setBounds(520, 520, 690, 40);
+        txtfidProducto.setBounds(520, 120, 690, 40);
 
         btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
@@ -212,6 +140,110 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().add(btnRegresar);
         btnRegresar.setBounds(60, 20, 170, 80);
 
+        lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre.setText("Nombre");
+        lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblNombre);
+        lblNombre.setBounds(520, 170, 90, 32);
+
+        txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfNombre.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtfNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfNombreFocusLost(evt);
+            }
+        });
+        getContentPane().add(txtfNombre);
+        txtfNombre.setBounds(520, 210, 690, 40);
+
+        lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDescripcion.setText("Descripción");
+        lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblDescripcion);
+        lblDescripcion.setBounds(520, 260, 128, 32);
+
+        txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfDescripcion.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfDescripcion);
+        txtfDescripcion.setBounds(520, 300, 690, 38);
+
+        lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblnumeroLote.setText("Número de lote (solo números)");
+        lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblnumeroLote);
+        lblnumeroLote.setBounds(520, 350, 380, 32);
+
+        txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfnumeroLote.setPreferredSize(new java.awt.Dimension(65, 40));
+        getContentPane().add(txtfnumeroLote);
+        txtfnumeroLote.setBounds(520, 380, 690, 40);
+
+        lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblfechaProduccion.setText("Fecha de produccion (YYYY-MM-DD)");
+        lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblfechaProduccion);
+        lblfechaProduccion.setBounds(520, 430, 430, 32);
+
+        txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtffechaProduccion.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtffechaProduccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtffechaProduccionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtffechaProduccion);
+        txtffechaProduccion.setBounds(520, 460, 690, 40);
+
+        lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblfechaExpiracion.setText("Fecha de expiracion (YYYY-MM-DD)");
+        lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblfechaExpiracion);
+        lblfechaExpiracion.setBounds(520, 520, 430, 32);
+
+        txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtffechaExpiracion.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtffechaExpiracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtffechaExpiracionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtffechaExpiracion);
+        txtffechaExpiracion.setBounds(520, 550, 690, 40);
+
+        lblPrecio.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPrecio.setText("Precio");
+        lblPrecio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblPrecio);
+        lblPrecio.setBounds(520, 610, 68, 32);
+
+        txtfPrecio.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfPrecio.setMinimumSize(new java.awt.Dimension(65, 40));
+        txtfPrecio.setPreferredSize(new java.awt.Dimension(65, 40));
+        txtfPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtfPrecioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtfPrecioFocusLost(evt);
+            }
+        });
+        getContentPane().add(txtfPrecio);
+        txtfPrecio.setBounds(520, 640, 690, 40);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -219,14 +251,6 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtffechaProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaProduccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaProduccionActionPerformed
-
-    private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtffechaExpiracionActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaProductos vistaProductos = new VistaProductos();
@@ -246,6 +270,8 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         System.out.println(fechaProduccion);
         String fechaExpiracion = txtffechaExpiracion.getText();
         System.out.println(fechaExpiracion);
+        double precio = Double.parseDouble(txtfPrecio.getText());
+        System.out.println(precio);
         
         
         
@@ -266,7 +292,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
             
             try {
                 conexion = ConexionBD.obtenerConexion();
-                 Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion);
+                 Productos producto = new Productos(nombre, descripcion, numeroLote, fechaProduccion, fechaExpiracion, precio);
                 producto.estaPorExpirar();
                 
                 ProductosDAO productosDAO = new ProductosDAO(conexion);
@@ -295,6 +321,30 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
                
             }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfNombreFocusGained
+
+    }//GEN-LAST:event_txtfNombreFocusGained
+
+    private void txtfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfNombreFocusLost
+
+    }//GEN-LAST:event_txtfNombreFocusLost
+
+    private void txtffechaProduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaProduccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtffechaProduccionActionPerformed
+
+    private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtffechaExpiracionActionPerformed
+
+    private void txtfPrecioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfPrecioFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfPrecioFocusGained
+
+    private void txtfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfPrecioFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfPrecioFocusLost
 
     /**
      * @param args the command line arguments
@@ -352,6 +402,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblProductos;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblfechaExpiracion;
@@ -360,6 +411,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private javax.swing.JLabel lblnumeroLote;
     private javax.swing.JTextField txtfDescripcion;
     private javax.swing.JTextField txtfNombre;
+    private javax.swing.JTextField txtfPrecio;
     private javax.swing.JTextField txtffechaExpiracion;
     private javax.swing.JTextField txtffechaProduccion;
     private javax.swing.JTextField txtfidProducto;

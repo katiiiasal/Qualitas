@@ -13,18 +13,20 @@ public class Productos {
     private int numeroLote;
     private String fechaProduccion;
     private String fechaExpiracion;
+    private double precio;
 
     // Constructor
     public Productos() {
 
     }
 
-    public Productos(String nombre, String descripcion, int numeroLote, String fechaProduccion, String fechaExpiracion) {
+    public Productos(String nombre, String descripcion, int numeroLote, String fechaProduccion, String fechaExpiracion, double precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.numeroLote = numeroLote;
         this.fechaProduccion = fechaProduccion;
         this.fechaExpiracion = fechaExpiracion;
+        this.precio = precio;
     }
 
     // Getters & Setters
@@ -107,6 +109,15 @@ public class Productos {
             return false;
         }
     }
+    
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
 
     @Override
     public String toString() {
@@ -117,6 +128,7 @@ public class Productos {
                 ", numeroLote=" + numeroLote +
                 ", fechaProduccion='" + fechaProduccion + '\'' +
                 ", fechaExpiracion='" + fechaExpiracion + '\'' +
+                ", precio='" + precio + '\'' +
                 '}';
     }
 }

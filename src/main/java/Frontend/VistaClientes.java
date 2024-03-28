@@ -79,6 +79,8 @@ public class VistaClientes extends javax.swing.JFrame {
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         lblReturnToMenu = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblFoto = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -167,6 +169,16 @@ public class VistaClientes extends javax.swing.JFrame {
         lblReturnToMenu.setText("MENU");
         getContentPane().add(lblReturnToMenu);
         lblReturnToMenu.setBounds(10, 620, 120, 60);
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("LISTA DE CLIENTES");
+        getContentPane().add(lblTitulo);
+        lblTitulo.setBounds(150, 10, 1120, 40);
+
+        lblFoto.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
+        getContentPane().add(lblFoto);
+        lblFoto.setBounds(0, 280, 270, 120);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -299,7 +311,9 @@ public class VistaClientes extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReturnToMenu;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JScrollPane spHeadersTable;
     private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
