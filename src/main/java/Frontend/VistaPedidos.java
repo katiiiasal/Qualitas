@@ -4,8 +4,17 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Pedido;
+import Backend.PedidoDAO;
+import Backend.Productos;
+import Backend.ProductosDAO;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +27,22 @@ public class VistaPedidos extends javax.swing.JFrame {
      */
     public VistaPedidos() {
         initComponents();
+
+        DefaultTableModel model = (DefaultTableModel) tblPedidos.getModel();
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        // Obtener todos los pedidos
+        List<Pedido> pedidos = pedidoDAO.obtenerPedidos();
+        System.out.println(pedidos);
+        System.out.println("Todos los pedidos:");
+        for (Pedido pedido : pedidos) {
+            
+            model.addRow(new Object[]{
+                pedido.getIdPedido(),
+                pedido.getIdCliente(),
+                pedido.getFechaCreacion(),
+                pedido.getFechaEnvio()
+            });
+        }
     }
 
     /**
@@ -30,7 +55,7 @@ public class VistaPedidos extends javax.swing.JFrame {
     private void initComponents() {
 
         spHeadersTable = new javax.swing.JScrollPane();
-        tblProductos = new javax.swing.JTable();
+        tblPedidos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
@@ -48,24 +73,31 @@ public class VistaPedidos extends javax.swing.JFrame {
 
         spHeadersTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
+        tblPedidos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        tblPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "idProducto", "Nombre", "Descripcion", "Lote", "Fecha produccion", "Fecha Expiracion", "Alerta Expiracion"
+                "idPedido", "idCliente", "Fecha envio", "Fecha creacion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        spHeadersTable.setViewportView(tblProductos);
+        spHeadersTable.setViewportView(tblPedidos);
 
         getContentPane().add(spHeadersTable);
         spHeadersTable.setBounds(142, 58, 1138, 662);
@@ -152,7 +184,7 @@ public class VistaPedidos extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         VistaPedidosCrear vistaPedidosCrear = new VistaPedidosCrear();
-        vistaPedidosCrear.show();
+        vistaPedidosCrear.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -168,6 +200,7 @@ public class VistaPedidos extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+
                //label.setText("You selected: Yes");
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
@@ -224,6 +257,6 @@ public class VistaPedidos extends javax.swing.JFrame {
     private javax.swing.JLabel lblReturnToMenu;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JScrollPane spHeadersTable;
-    private javax.swing.JTable tblProductos;
+    private javax.swing.JTable tblPedidos;
     // End of variables declaration//GEN-END:variables
 }
