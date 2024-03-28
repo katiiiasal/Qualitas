@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author heiva
  */
-public class VistaProductos extends javax.swing.JFrame {
+public class VistaProductosAlerta extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProductos
      */
-    public VistaProductos() {
+    public VistaProductosAlerta() {
         initComponents();
 
         try {
@@ -35,7 +35,7 @@ public class VistaProductos extends javax.swing.JFrame {
             ProductosDAO productosDAO = new ProductosDAO(conexion);
             
             // Obtener todos los productos
-            List<Productos> todosProductos = productosDAO.obtenerTodosProductos();
+            List<Productos> todosProductos = productosDAO.obtenerTodosProductosAlerta();
             System.out.println("Todos los productos:");
             for (Productos product : todosProductos) {
                 
@@ -71,11 +71,10 @@ public class VistaProductos extends javax.swing.JFrame {
         spHeadersTable = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnCreate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
         lblReturnToMenu = new javax.swing.JLabel();
         btnAlerta = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
@@ -127,39 +126,6 @@ public class VistaProductos extends javax.swing.JFrame {
         getContentPane().add(btnMenu);
         btnMenu.setBounds(30, 540, 80, 70);
 
-        btnUpdate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnUpdate.setText("🖊️");
-        btnUpdate.setPreferredSize(new java.awt.Dimension(65, 65));
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(0, 129, 65, 65);
-
-        btnCreate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnCreate.setText("➕");
-        btnCreate.setPreferredSize(new java.awt.Dimension(65, 65));
-        btnCreate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCreate);
-        btnCreate.setBounds(0, 58, 136, 65);
-
-        btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnDelete.setText("🗑️");
-        btnDelete.setPreferredSize(new java.awt.Dimension(65, 65));
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDelete);
-        btnDelete.setBounds(70, 130, 65, 65);
-
         lblReturnToMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         lblReturnToMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblReturnToMenu.setText("MENU");
@@ -175,13 +141,34 @@ public class VistaProductos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAlerta);
-        btnAlerta.setBounds(40, 260, 65, 65);
+        btnAlerta.setBounds(40, 40, 65, 65);
+
+        btnUpdate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        btnUpdate.setText("🖊️");
+        btnUpdate.setPreferredSize(new java.awt.Dimension(65, 65));
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnUpdate);
+        btnUpdate.setBounds(0, 129, 65, 65);
+
+        btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        btnDelete.setText("🗑️");
+        btnDelete.setPreferredSize(new java.awt.Dimension(65, 65));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDelete);
+        btnDelete.setBounds(70, 130, 65, 65);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("LISTA DE PRODUCTOS");
+        lblTitulo.setText("PRODUCTOS CERCA DE EXPIRAR - MOVER PRODUCTOS");
         getContentPane().add(lblTitulo);
-        lblTitulo.setBounds(150, 10, 1120, 40);
+        lblTitulo.setBounds(260, 10, 950, 40);
 
         lblFoto.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
         getContentPane().add(lblFoto);
@@ -195,10 +182,24 @@ public class VistaProductos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        VistaMenu vistaMenu = new VistaMenu();
+        vistaMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void tblProductosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblProductosComponentShown
+
+    }//GEN-LAST:event_tblProductosComponentShown
+
+    private void btnAlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlertaActionPerformed
+
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
+
         int selectedRow = tblProductos.getSelectedRow();
-        
+
         if(selectedRow != -1){
             int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
             System.out.println(idProducto);
@@ -206,87 +207,62 @@ public class VistaProductos extends javax.swing.JFrame {
             vistaProductosActualizar.setVisible(true);
             dispose();
         }else{
-             JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
+            JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
         }
 
- 
     }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        VistaMenu vistaMenu = new VistaMenu();
-        vistaMenu.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        VistaProductosCrear vistaProductosCrear = new VistaProductosCrear();
-        vistaProductosCrear.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
-                            new JFrame(),
-                            "¿Estas seguro de eliminar este producto?", 
-                            "QUALITAS - CONFIRMACION",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                        );
-         
-            if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-                int selectedRow = tblProductos.getSelectedRow();
-        
-                if(selectedRow != -1){
-                    int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
-                    System.out.println(idProducto);
-                    Connection conexion;
-        
-                    try {
-                        conexion = ConexionBD.obtenerConexion();
+            new JFrame(),
+            "¿Estas seguro de eliminar este producto?",
+            "QUALITAS - CONFIRMACION",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
 
+        if(result == JOptionPane.YES_OPTION){
+            System.out.println(1);
+            int selectedRow = tblProductos.getSelectedRow();
 
-                        ProductosDAO productosDAO = new ProductosDAO(conexion);
-                        int id = productosDAO.eliminarProducto(idProducto);
-                        if (id != 0){
-                            JOptionPane.showMessageDialog(null, "Se creo elimino el producto exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
-                            VistaProductos vistaProductos = new VistaProductos();
-                            vistaProductos.setVisible(true);
-                            dispose();
+            if(selectedRow != -1){
+                int idProducto = (int) tblProductos.getValueAt(selectedRow, 0);
+                System.out.println(idProducto);
+                Connection conexion;
 
-                        }else{
-                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                try {
+                    conexion = ConexionBD.obtenerConexion();
 
-                        }
+                    ProductosDAO productosDAO = new ProductosDAO(conexion);
+                    int id = productosDAO.eliminarProducto(idProducto);
+                    if (id != 0){
+                        JOptionPane.showMessageDialog(null, "Se creo elimino el producto exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                        VistaProductos vistaProductos = new VistaProductos();
+                        vistaProductos.setVisible(true);
+                        dispose();
 
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
 
-                    } catch (SQLException ex) {
-                        System.out.println("Error al eliminar el producto");    
                     }
-                    
-                }else{
-                     JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
+
+                } catch (SQLException ex) {
+                    System.out.println("Error al eliminar el producto");
                 }
 
-            }else if (result == JOptionPane.NO_OPTION){
-                System.out.println(2);
-               //label.setText("You selected: No");
-            }else {
-                System.out.println(3);
-               //label.setText("None selected");
+            }else{
+                JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
             }
+
+        }else if (result == JOptionPane.NO_OPTION){
+            System.out.println(2);
+            //label.setText("You selected: No");
+        }else {
+            System.out.println(3);
+            //label.setText("None selected");
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void tblProductosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_tblProductosComponentShown
-
-    }//GEN-LAST:event_tblProductosComponentShown
-
-    private void btnAlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertaActionPerformed
-        VistaProductosAlerta vistaProductosAlerta = new VistaProductosAlerta();
-        vistaProductosAlerta.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnAlertaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,27 +281,27 @@ public class VistaProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProductos().setVisible(true);
+                new VistaProductosAlerta().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlerta;
-    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnUpdate;
