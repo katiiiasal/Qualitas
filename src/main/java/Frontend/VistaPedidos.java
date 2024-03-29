@@ -57,7 +57,6 @@ public class VistaPedidos extends javax.swing.JFrame {
         spHeadersTable = new javax.swing.JScrollPane();
         tblPedidos = new javax.swing.JTable();
         btnMenu = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         lblReturnToMenu = new javax.swing.JLabel();
@@ -113,17 +112,6 @@ public class VistaPedidos extends javax.swing.JFrame {
         getContentPane().add(btnMenu);
         btnMenu.setBounds(30, 540, 80, 70);
 
-        btnUpdate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnUpdate.setText("🖊️");
-        btnUpdate.setPreferredSize(new java.awt.Dimension(65, 65));
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnUpdate);
-        btnUpdate.setBounds(0, 129, 65, 65);
-
         btnCreate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         btnCreate.setText("➕");
         btnCreate.setPreferredSize(new java.awt.Dimension(65, 65));
@@ -133,7 +121,7 @@ public class VistaPedidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnCreate);
-        btnCreate.setBounds(0, 58, 136, 65);
+        btnCreate.setBounds(6, 58, 130, 65);
 
         btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         btnDelete.setText("🗑️");
@@ -144,7 +132,7 @@ public class VistaPedidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(71, 129, 65, 65);
+        btnDelete.setBounds(6, 129, 130, 65);
 
         lblReturnToMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         lblReturnToMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -170,12 +158,6 @@ public class VistaPedidos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        VistaPedidosActualizar vistaPedidosActualizar = new VistaPedidosActualizar();
-        vistaPedidosActualizar.show();
-        dispose();   
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         VistaMenu vistaMenu = new VistaMenu();
         vistaMenu.show();
@@ -192,7 +174,7 @@ public class VistaPedidos extends javax.swing.JFrame {
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de eliminar este producto?", 
+                            "¿Estas seguro de eliminar este pedido?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -200,8 +182,29 @@ public class VistaPedidos extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
+                int selectedRow = tblPedidos.getSelectedRow();
+        
+                if(selectedRow != -1){
+                    int idPedido = (int) tblPedidos.getValueAt(selectedRow, 0);
+                    System.out.println(idPedido);
+                    
+                        PedidoDAO pedidoDAO = new PedidoDAO();
+                        int id = pedidoDAO.eliminarPedido(idPedido);
+                        if (id != 0){
+                            JOptionPane.showMessageDialog(null, "Se elimino el pedido exitosmente.", "Qualitas - Pedido", JOptionPane.INFORMATION_MESSAGE);
+                            VistaPedidos vistaPedidos = new VistaPedidos();
+                            vistaPedidos.setVisible(true);
+                            dispose();
 
-               //label.setText("You selected: Yes");
+                        }else{
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el pedido", "Qualitas - Pedido", JOptionPane.ERROR_MESSAGE);
+
+                        }
+
+                }else{
+                     JOptionPane.showMessageDialog(null, "Por favor selecciona un producto");
+                }
+
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
@@ -251,7 +254,6 @@ public class VistaPedidos extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReturnToMenu;
