@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import Backend.Utilidades;
+
 /**
  *
  * @author carde
@@ -15,6 +17,8 @@ public class VistaLogin extends javax.swing.JFrame {
      */
     public VistaLogin() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
+        
     }
 
     /**

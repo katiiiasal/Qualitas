@@ -9,6 +9,7 @@ import Backend.Empleado;
 import Backend.EmpleadoDAO;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +28,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
      */
     public VistaEmpleados() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
         
         
             DefaultTableModel model = (DefaultTableModel) tblEmpleado.getModel();

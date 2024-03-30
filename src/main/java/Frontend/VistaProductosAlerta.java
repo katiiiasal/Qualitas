@@ -7,6 +7,7 @@ package Frontend;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +28,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
      */
     public VistaProductosAlerta() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
 
         try {
             DefaultTableModel model = (DefaultTableModel) tblProductos.getModel();

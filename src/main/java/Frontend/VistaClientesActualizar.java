@@ -9,6 +9,7 @@ import Backend.ClientesDAO;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -47,10 +48,13 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     
     
     public VistaClientesActualizar(){
+        initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
     }
     
     public VistaClientesActualizar(int idCliente) {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
         this.setIdCliente(idCliente);
         
         List<JTextField> campos;

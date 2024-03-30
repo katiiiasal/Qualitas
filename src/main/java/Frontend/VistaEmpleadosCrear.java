@@ -7,6 +7,7 @@ package Frontend;
 import Backend.ConexionBD;
 import Backend.Empleado;
 import Backend.EmpleadoDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,6 +26,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
      */
     public VistaEmpleadosCrear() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
     }
 
     /**

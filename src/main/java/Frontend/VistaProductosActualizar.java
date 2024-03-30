@@ -4,6 +4,7 @@ package Frontend;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -29,11 +30,14 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     
     public VistaProductosActualizar() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
     }
     
     public VistaProductosActualizar(int idProducto) {
-        this.idProducto = idProducto;
         initComponents(); 
+        
+        Utilidades.cargarLogo(this, "logo.png");
+        this.idProducto = idProducto;
         
         Connection conexion;
         

@@ -3,6 +3,7 @@ package Frontend;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -27,6 +28,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
      */
     public VistaProductosCrear() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
         
         List<JTextField> campos;
         campos = new ArrayList<>();

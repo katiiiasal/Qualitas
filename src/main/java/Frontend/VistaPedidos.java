@@ -9,6 +9,7 @@ import Backend.Pedido;
 import Backend.PedidoDAO;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +28,7 @@ public class VistaPedidos extends javax.swing.JFrame {
      */
     public VistaPedidos() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
 
         DefaultTableModel model = (DefaultTableModel) tblPedidos.getModel();
         PedidoDAO pedidoDAO = new PedidoDAO();
