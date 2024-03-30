@@ -60,10 +60,12 @@ public class VistaClientesCrear extends javax.swing.JFrame {
                 @Override
                 public void focusLost(FocusEvent e) {
                     validarCampoVacio(campo, false, false);
+                    campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 }
                 @Override
                 public void focusGained(FocusEvent e) {
-                    campo.setForeground(Color.BLACK);
+                    campo.setForeground(Utilidades.VERDE);
+                    campo.setBorder(BorderFactory.createLineBorder(Utilidades.AZUL, 5));
                     if (campo.getText().isEmpty() ||
                         campo.getText().equals("El campo es obligatorio")) {
                         campo.setText("");
@@ -323,12 +325,12 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         
         String textoCampo = campo.getText().trim();
         if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
-            campo.setForeground(Color.RED);
+            campo.setForeground(Utilidades.ROJO);
             campo.setText("El campo es obligatorio");
             valido = false;
         }
         else{
-            campo.setForeground(Color.BLACK);
+            campo.setForeground(Utilidades.AZUL);
             valido = true;
         }
         
@@ -341,16 +343,16 @@ public class VistaClientesCrear extends javax.swing.JFrame {
             
             // Si no es un formato de fecha pone el borde en rojo
             if(!matcher.matches()){
-                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                 valido = false;
             }else{
                 
                 // Si es un formato de fecha valido, validara si la fecha es una fecha valida
                 if(Pattern.matches(regex, textoCampo)){
-                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   campo.setBorder(BorderFactory.createLineBorder(Utilidades.AZUL));
                    valido = true;
                 }else{
-                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                     valido = false;
                 }
                 
@@ -362,11 +364,11 @@ public class VistaClientesCrear extends javax.swing.JFrame {
             try {
                 Double.parseDouble(textoCampo);
                 // Si la conversión es exitosa, el contenido es numérico
-                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.AZUL));
                 valido = true;
             } catch (NumberFormatException ex) {
                 // Si ocurre una excepción, el contenido no es numérico
-                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                 valido = false;
             }
         }

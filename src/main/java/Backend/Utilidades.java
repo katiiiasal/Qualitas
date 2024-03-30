@@ -12,6 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Utilidades {
+    
+    // Atributos
+    
+    public static final Color ROJO = new Color(0xCB2129);
+    public static final Color NARANJA = new Color(0xF88920);
+    public static final Color AZUL = new Color(0x286591);
+    public static final Color VERDE = new Color(0x146E38);
 
     public static void cargarLogo(JFrame frame, String nombreImagen) {
         // Obtener la URL de la imagen
