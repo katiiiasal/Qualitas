@@ -5,12 +5,21 @@ import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
 import Backend.Utilidades;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 
 public class VistaProductosActualizar extends javax.swing.JFrame {
@@ -60,11 +69,95 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("Error al cargar datos");    
         }
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfNombre);
+        campos.add(txtfDescripcion);
+        campos.add(txtfnumeroLote);
+        campos.add(txtffechaProduccion);
+        campos.add(txtffechaExpiracion);
+        campos.add(txtfPrecio);
+
+        // Agregar oyente de foco a cada JTextField
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    validarCampoVacio(campo, false, false);
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Color.BLACK);
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setText("");
+                    }
+                }
+            });
+        }
        
         
     }
 
-
+    public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {
+        boolean valido = false;
+        String FORMATO_FECHA = "\\d{4}-\\d{2}-\\d{2}";
+        
+        String textoCampo = campo.getText().trim();
+        if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
+            campo.setForeground(Color.RED);
+            campo.setText("El campo es obligatorio");
+            valido = false;
+        }
+        else{
+            campo.setForeground(Color.BLACK);
+            valido = true;
+        }
+        
+        // Si el campo es una fecha
+        if(esFecha){
+            Pattern pattern = Pattern.compile(FORMATO_FECHA);
+            Matcher matcher = pattern.matcher(textoCampo);
+           
+            String regex = "^(20[1-9][5-9]|[2-9][0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]|(0[1-9]|1\\d|2[0-8]))|((20[1-9][5-9]|[2-9][0-9]{3})(0[48]|[2468][048]|[13579][26])-02-29|((20[1-9][5-9]|[2-9][0-9]{3})-02-(0[1-9]|1\\d|2[0-8])))$";
+            
+            // Si no es un formato de fecha pone el borde en rojo
+            if(!matcher.matches()){
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }else{
+                
+                // Si es un formato de fecha valido, validara si la fecha es una fecha valida
+                if(Pattern.matches(regex, textoCampo)){
+                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   valido = true;
+                }else{
+                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    valido = false;
+                }
+                
+            }
+        }
+        
+        // Si el campo debe ser numerico
+        if(esNumerico){
+            try {
+                Double.parseDouble(textoCampo);
+                // Si la conversión es exitosa, el contenido es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                valido = true;
+            } catch (NumberFormatException ex) {
+                // Si ocurre una excepción, el contenido no es numérico
+                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                valido = false;
+            }
+        }
+        return valido;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

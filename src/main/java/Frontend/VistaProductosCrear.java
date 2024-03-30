@@ -50,6 +50,10 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                 @Override
                 public void focusGained(FocusEvent e) {
                     campo.setForeground(Color.BLACK);
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setText("");
+                    }
                 }
             });
         }
