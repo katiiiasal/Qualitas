@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import Backend.Utilidades;
+
 /**
  *
  * @author heiva
@@ -15,6 +17,7 @@ public class VistaMenu extends javax.swing.JFrame {
      */
     public VistaMenu() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
     }
 
     /**

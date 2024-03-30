@@ -9,6 +9,7 @@ import Backend.ClientesDAO;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -36,6 +37,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
      */
     public VistaClientesCrear() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
         
         List<JTextField> campos;
         campos = new ArrayList<>();

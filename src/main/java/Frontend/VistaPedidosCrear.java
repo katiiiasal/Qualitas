@@ -13,6 +13,7 @@ import Backend.Pedido;
 import Backend.PedidoDAO;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.Connection;
@@ -42,6 +43,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
      */
     public VistaPedidosCrear() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
         
         total = 0;
         idPedidoGenerado = generarIdAleatorio();

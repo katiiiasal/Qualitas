@@ -9,6 +9,7 @@ import Backend.ClientesDAO;
 import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
+import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,6 +28,7 @@ public class VistaClientes extends javax.swing.JFrame {
      */
     public VistaClientes() {
         initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
                 
                 
         try {
