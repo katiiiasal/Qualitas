@@ -36,6 +36,7 @@ public class VistaLogin extends javax.swing.JFrame {
         lblLogoEmpresa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("QUALITAS - LOGIN");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 

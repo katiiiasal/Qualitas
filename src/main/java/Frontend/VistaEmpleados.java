@@ -54,6 +54,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
             }
             
             
+            
          
     }
 
