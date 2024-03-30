@@ -38,13 +38,13 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="NOMBRE"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="170" width="-1" height="-1"/>
+          <AbsoluteConstraints x="520" y="180" width="110" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -53,13 +53,13 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="DESCRIPCI&#xd3;N"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="260" width="-1" height="-1"/>
+          <AbsoluteConstraints x="520" y="270" width="160" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -69,12 +69,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero de lote (solo n&#xfa;meros)"/>
+        <Property name="text" type="java.lang.String" value="N&#xda;MERO DE LOTE (SOLO N&#xda;MEROS)"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="350" width="380" height="-1"/>
+          <AbsoluteConstraints x="520" y="350" width="450" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -84,12 +84,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Fecha de produccion (YYYY-MM-DD)"/>
+        <Property name="text" type="java.lang.String" value="FECHA DE PRODUCCI&#xd3;N (YYYY-MM-DD)"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="430" width="430" height="-1"/>
+          <AbsoluteConstraints x="520" y="430" width="460" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -99,12 +99,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Fecha de expiracion (YYYY-MM-DD)"/>
+        <Property name="text" type="java.lang.String" value="FECHA DE EXPIRACI&#xd3;N (YYYY-MM-DD)"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="520" width="430" height="-1"/>
+          <AbsoluteConstraints x="520" y="520" width="440" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -294,8 +294,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Precio"/>
+        <Property name="horizontalAlignment" type="int" value="2"/>
+        <Property name="text" type="java.lang.String" value="PRECIO"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
@@ -306,6 +306,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblBackground">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Images\background.png"/>
         </Property>

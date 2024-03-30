@@ -58,16 +58,16 @@ public class ClientesDAO {
             while (resultSet.next()) {
                 Clientes cliente = new Clientes();
                 cliente.setIdCliente(resultSet.getInt("id_cliente"));
-                cliente.setNombre(resultSet.getString("nombre"));
-                cliente.setApellidoPaterno(resultSet.getString("apellido_paterno"));
-                cliente.setApellidoMaterno(resultSet.getString("apellido_materno"));
-                cliente.setCalle(resultSet.getString("calle"));
+                cliente.setNombre(resultSet.getString("nombre").toUpperCase());
+                cliente.setApellidoPaterno(resultSet.getString("apellido_paterno").toUpperCase());
+                cliente.setApellidoMaterno(resultSet.getString("apellido_materno").toUpperCase());
+                cliente.setCalle(resultSet.getString("calle").toUpperCase());
                 cliente.setNumero(resultSet.getString("numero"));
                 cliente.setCodigoPostal(resultSet.getString("codigo_postal"));
-                cliente.setColonia(resultSet.getString("colonia"));
-                cliente.setCiudad(resultSet.getString("ciudad"));
-                cliente.setEstado(resultSet.getString("estado"));
-                cliente.setEmail(resultSet.getString("email"));
+                cliente.setColonia(resultSet.getString("colonia").toUpperCase());
+                cliente.setCiudad(resultSet.getString("ciudad").toUpperCase());
+                cliente.setEstado(resultSet.getString("estado").toUpperCase());
+                cliente.setEmail(resultSet.getString("email").toUpperCase());
                 cliente.setTelefono(resultSet.getString("telefono"));
 
                 clientesList.add(cliente);
@@ -88,16 +88,16 @@ public class ClientesDAO {
             if (resultSet.next()) {
                 cliente = new Clientes();
                 cliente.setIdCliente(resultSet.getInt("id_cliente"));
-                cliente.setNombre(resultSet.getString("nombre"));
-                cliente.setApellidoPaterno(resultSet.getString("apellido_paterno"));
-                cliente.setApellidoMaterno(resultSet.getString("apellido_materno"));
-                cliente.setCalle(resultSet.getString("calle"));
+                cliente.setNombre(resultSet.getString("nombre").toUpperCase());
+                cliente.setApellidoPaterno(resultSet.getString("apellido_paterno").toUpperCase());
+                cliente.setApellidoMaterno(resultSet.getString("apellido_materno").toUpperCase());
+                cliente.setCalle(resultSet.getString("calle").toUpperCase());
                 cliente.setNumero(resultSet.getString("numero"));
                 cliente.setCodigoPostal(resultSet.getString("codigo_postal"));
-                cliente.setColonia(resultSet.getString("colonia"));
-                cliente.setCiudad(resultSet.getString("ciudad"));
-                cliente.setEstado(resultSet.getString("estado"));
-                cliente.setEmail(resultSet.getString("email"));
+                cliente.setColonia(resultSet.getString("colonia").toUpperCase());
+                cliente.setCiudad(resultSet.getString("ciudad").toUpperCase());
+                cliente.setEstado(resultSet.getString("estado").toUpperCase());
+                cliente.setEmail(resultSet.getString("email").toUpperCase());
                 cliente.setTelefono(resultSet.getString("telefono"));
             }
         }

@@ -99,7 +99,7 @@ public class VistaClientes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idCliente", "nombre", "apellidoPaterno", "apellidoMaterno", "calle", "numeroInterior", "email", "telefono"
+                "ID CLIENTE", "NOMBRE", "APELLIDO PATERNO", "APELLIDO MATERNO", "CALLE", "# INTERIOR", "EMAIL", "TELEFONO"
             }
         ) {
             Class[] types = new Class [] {

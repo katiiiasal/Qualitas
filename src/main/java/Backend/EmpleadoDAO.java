@@ -65,12 +65,12 @@ public class EmpleadoDAO {
             preparedStatement.setInt(1, idEmpleado);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                String nombre = rs.getString("nombre");
-                String apellidoPaterno = rs.getString("apellido_paterno");
-                String apellidoMaterno = rs.getString("apellido_materno");
-                String email = rs.getString("email");
+                String nombre = rs.getString("nombre").toUpperCase();
+                String apellidoPaterno = rs.getString("apellido_paterno").toUpperCase();
+                String apellidoMaterno = rs.getString("apellido_materno").toUpperCase();
+                String email = rs.getString("email").toUpperCase();
                 String contrasena = rs.getString("contrasena");
-                String rol = rs.getString("rol");
+                String rol = rs.getString("rol").toUpperCase();
                 String telefono = rs.getString("telefono");
                 empleado = new Empleado(nombre, apellidoPaterno, apellidoMaterno, email, contrasena, rol, telefono);
                 empleado.setIdEmpleado(idEmpleado);
@@ -89,12 +89,12 @@ public class EmpleadoDAO {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 int idEmpleado = rs.getInt("id_empleado");
-                String nombre = rs.getString("nombre");
-                String apellidoPaterno = rs.getString("apellido_paterno");
-                String apellidoMaterno = rs.getString("apellido_materno");
-                String email = rs.getString("email");
+                String nombre = rs.getString("nombre").toUpperCase();
+                String apellidoPaterno = rs.getString("apellido_paterno").toUpperCase();
+                String apellidoMaterno = rs.getString("apellido_materno").toUpperCase();
+                String email = rs.getString("email").toUpperCase();
                 String contrasena = rs.getString("contrasena");
-                String rol = rs.getString("rol");
+                String rol = rs.getString("rol").toUpperCase();
                 String telefono = rs.getString("telefono");
                 Empleado empleado = new Empleado(nombre, apellidoPaterno, apellidoMaterno, email, contrasena, rol, telefono);
                 empleado.setIdEmpleado(idEmpleado);

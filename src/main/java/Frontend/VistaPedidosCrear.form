@@ -89,12 +89,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="Cantidad"/>
+        <Property name="text" type="java.lang.String" value="CANTIDAD"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="950" y="70" width="100" height="-1"/>
+          <AbsoluteConstraints x="940" y="70" width="120" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -104,12 +104,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="idCliente"/>
+        <Property name="text" type="java.lang.String" value="ID CLIENTE"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="320" y="70" width="-1" height="-1"/>
+          <AbsoluteConstraints x="340" y="70" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -119,12 +119,12 @@
           <Font name="Yu Gothic UI Semilight" size="24" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="idProducto"/>
+        <Property name="text" type="java.lang.String" value="ID PRODUCTO"/>
         <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="670" y="70" width="130" height="-1"/>
+          <AbsoluteConstraints x="670" y="70" width="170" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -288,12 +288,12 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="6" rowCount="0">
-                <Column editable="true" title="idProducto" type="java.lang.Integer"/>
-                <Column editable="false" title="Nombre" type="java.lang.String"/>
-                <Column editable="false" title="Descripcion" type="java.lang.String"/>
-                <Column editable="false" title="Precio" type="java.lang.Double"/>
-                <Column editable="false" title="Cantidad" type="java.lang.Integer"/>
-                <Column editable="false" title="Subtotal" type="java.lang.Double"/>
+                <Column editable="true" title="ID PRODUCTO" type="java.lang.Integer"/>
+                <Column editable="false" title="NOMBRE" type="java.lang.String"/>
+                <Column editable="false" title="DESCRIPCI&#xd3;N" type="java.lang.String"/>
+                <Column editable="false" title="PRECIO" type="java.lang.Double"/>
+                <Column editable="false" title="CANTIDAD" type="java.lang.Integer"/>
+                <Column editable="false" title="SUBTOTAL" type="java.lang.Double"/>
               </Table>
             </Property>
           </Properties>

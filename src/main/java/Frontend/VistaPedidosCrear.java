@@ -192,24 +192,24 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
 
         lblCantidad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblCantidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblCantidad.setText("Cantidad");
+        lblCantidad.setText("CANTIDAD");
         lblCantidad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblCantidad);
-        lblCantidad.setBounds(950, 70, 100, 32);
+        lblCantidad.setBounds(940, 70, 120, 32);
 
         idCliente.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         idCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        idCliente.setText("idCliente");
+        idCliente.setText("ID CLIENTE");
         idCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idCliente);
-        idCliente.setBounds(320, 70, 96, 32);
+        idCliente.setBounds(340, 70, 130, 32);
 
         idProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         idProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        idProducto.setText("idProducto");
+        idProducto.setText("ID PRODUCTO");
         idProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idProducto);
-        idProducto.setBounds(670, 70, 130, 32);
+        idProducto.setBounds(670, 70, 170, 32);
 
         cmbIdProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         getContentPane().add(cmbIdProducto);
@@ -277,7 +277,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idProducto", "Nombre", "Descripcion", "Precio", "Cantidad", "Subtotal"
+                "ID PRODUCTO", "NOMBRE", "DESCRIPCIÓN", "PRECIO", "CANTIDAD", "SUBTOTAL"
             }
         ) {
             Class[] types = new Class [] {

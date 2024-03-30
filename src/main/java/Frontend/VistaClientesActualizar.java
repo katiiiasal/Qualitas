@@ -108,7 +108,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
             txtfCalle.setText(cliente.getCalle());
             txtfNumeroInterior.setText(cliente.getNumero());
             txtfCodigoPostal.setText(cliente.getCodigoPostal());
-            txtfColonia.setText(cliente.getCiudad());
+            txtfColonia.setText(cliente.getColonia());
             txtfCiudad.setText(cliente.getCiudad());
             txtfEstado.setText(cliente.getEstado());
             

@@ -97,39 +97,39 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNombre.setText("Nombre");
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombre.setText("NOMBRE");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 170, 90, 32);
+        lblNombre.setBounds(520, 180, 110, 32);
 
         lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblDescripcion.setText("Descripción");
+        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDescripcion.setText("DESCRIPCIÓN");
         lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 260, 128, 32);
+        lblDescripcion.setBounds(520, 270, 160, 32);
 
         lblnumeroLote.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblnumeroLote.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblnumeroLote.setText("Número de lote (solo números)");
+        lblnumeroLote.setText("NÚMERO DE LOTE (SOLO NÚMEROS)");
         lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(520, 350, 380, 32);
+        lblnumeroLote.setBounds(520, 350, 450, 32);
 
         lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblfechaProduccion.setText("Fecha de produccion (YYYY-MM-DD)");
+        lblfechaProduccion.setText("FECHA DE PRODUCCIÓN (YYYY-MM-DD)");
         lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(520, 430, 430, 32);
+        lblfechaProduccion.setBounds(520, 430, 460, 32);
 
         lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblfechaExpiracion.setText("Fecha de expiracion (YYYY-MM-DD)");
+        lblfechaExpiracion.setText("FECHA DE EXPIRACIÓN (YYYY-MM-DD)");
         lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(520, 520, 430, 32);
+        lblfechaExpiracion.setBounds(520, 520, 440, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -225,12 +225,13 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         txtfPrecio.setBounds(520, 640, 690, 40);
 
         lblPrecio.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPrecio.setText("Precio");
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPrecio.setText("PRECIO");
         lblPrecio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblPrecio);
-        lblPrecio.setBounds(520, 610, 68, 32);
+        lblPrecio.setBounds(520, 610, 83, 32);
 
+        lblBackground.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);

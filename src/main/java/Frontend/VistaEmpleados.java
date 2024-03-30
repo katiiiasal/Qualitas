@@ -92,7 +92,7 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idEmpleado", "Nombre", "Apellido Paterno", "Apellido Materno", "Email", "Telefono"
+                "ID EMPLEADO", "NOMBRE", "APELLIDO PATERNO", "APELLIDO MATERNO", "EMAIL", "TELEFONO"
             }
         ) {
             Class[] types = new Class [] {

@@ -38,6 +38,7 @@ public class VistaMenu extends javax.swing.JFrame {
         lblPedidos = new javax.swing.JLabel();
         lblProductos = new javax.swing.JLabel();
         lblClientes1 = new javax.swing.JLabel();
+        btnAlerta = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -124,6 +125,19 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().add(lblClientes1);
         lblClientes1.setBounds(660, 20, 300, 240);
 
+        btnAlerta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        btnAlerta.setForeground(new java.awt.Color(255, 255, 51));
+        btnAlerta.setText("🔔");
+        btnAlerta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAlerta.setPreferredSize(new java.awt.Dimension(65, 65));
+        btnAlerta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlertaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAlerta);
+        btnAlerta.setBounds(10, 10, 170, 140);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -159,6 +173,12 @@ public class VistaMenu extends javax.swing.JFrame {
         vistaEmpleados.show();
         dispose();
     }//GEN-LAST:event_btnEmpleadosActionPerformed
+
+    private void btnAlertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlertaActionPerformed
+        VistaProductosAlerta vistaProductosAlerta = new VistaProductosAlerta();
+        vistaProductosAlerta.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnAlertaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +216,7 @@ public class VistaMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlerta;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEmpleados;
     private javax.swing.JButton btnPedidos;

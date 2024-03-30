@@ -96,7 +96,7 @@ public class VistaProductos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idProducto", "Nombre", "Descripcion", "Lote", "Fecha produccion", "Fecha Expiracion", "Alerta Expiracion", "Precio"
+                "ID PRODCUTO", "NOMBRE", "DESCRIPCIÓN", "LOTE", "PRODUCCIÓN", "EXPIRACIÓN", "ALERTA EXPIRACIÓN", "PRECIO"
             }
         ) {
             Class[] types = new Class [] {

@@ -45,6 +45,19 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     public VistaProductosActualizar(int idProducto) {
         initComponents(); 
         
+        //Logica para convertir todo a mayusculas
+        
+        lblidProducto.setText(lblidProducto.getText().toUpperCase());
+        lblNombre.setText(lblNombre.getText().toUpperCase());
+        lblDescripcion.setText(lblDescripcion.getText().toUpperCase());
+        lblnumeroLote.setText(lblnumeroLote.getText().toUpperCase());
+        lblfechaProduccion.setText(lblfechaProduccion.getText().toUpperCase());
+        lblfechaExpiracion.setText(lblfechaExpiracion.getText().toUpperCase());
+        lblPrecio.setText(lblPrecio.getText().toUpperCase());
+
+        
+        //Fin de logica
+        
         Utilidades.cargarLogo(this, "logo.png");
         this.idProducto = idProducto;
         
@@ -196,11 +209,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblidProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblidProducto.setText("idProducto");
+        lblidProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblidProducto.setText("id Producto");
         lblidProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblidProducto);
-        lblidProducto.setBounds(520, 90, 122, 32);
+        lblidProducto.setBounds(520, 90, 350, 32);
 
         txtfidProducto.setEditable(false);
         txtfidProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
@@ -240,11 +253,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         btnRegresar.setBounds(60, 20, 170, 80);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 170, 90, 32);
+        lblNombre.setBounds(520, 180, 320, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -261,11 +274,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         txtfNombre.setBounds(520, 210, 690, 40);
 
         lblDescripcion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblDescripcion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblDescripcion.setText("Descripción");
         lblDescripcion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblDescripcion);
-        lblDescripcion.setBounds(520, 260, 128, 32);
+        lblDescripcion.setBounds(520, 270, 360, 32);
 
         txtfDescripcion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfDescripcion.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -278,7 +291,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         lblnumeroLote.setText("Número de lote (solo números)");
         lblnumeroLote.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblnumeroLote);
-        lblnumeroLote.setBounds(520, 350, 380, 32);
+        lblnumeroLote.setBounds(520, 350, 610, 32);
 
         txtfnumeroLote.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfnumeroLote.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -288,10 +301,10 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
         lblfechaProduccion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblfechaProduccion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblfechaProduccion.setText("Fecha de produccion (YYYY-MM-DD)");
+        lblfechaProduccion.setText("Fecha de producción (YYYY-MM-DD)");
         lblfechaProduccion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaProduccion);
-        lblfechaProduccion.setBounds(520, 430, 430, 32);
+        lblfechaProduccion.setBounds(520, 430, 660, 32);
 
         txtffechaProduccion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtffechaProduccion.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -306,10 +319,10 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
 
         lblfechaExpiracion.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblfechaExpiracion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblfechaExpiracion.setText("Fecha de expiracion (YYYY-MM-DD)");
+        lblfechaExpiracion.setText("Fecha de expiración (YYYY-MM-DD)");
         lblfechaExpiracion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblfechaExpiracion);
-        lblfechaExpiracion.setBounds(520, 520, 430, 32);
+        lblfechaExpiracion.setBounds(520, 520, 660, 32);
 
         txtffechaExpiracion.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtffechaExpiracion.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -323,11 +336,11 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         txtffechaExpiracion.setBounds(520, 550, 690, 40);
 
         lblPrecio.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPrecio.setText("Precio");
         lblPrecio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblPrecio);
-        lblPrecio.setBounds(520, 610, 68, 32);
+        lblPrecio.setBounds(520, 610, 300, 32);
 
         txtfPrecio.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfPrecio.setMinimumSize(new java.awt.Dimension(65, 40));

@@ -59,8 +59,8 @@ public class ProductosDAO {
     private Productos obtenerProductoDesdeResultSet(ResultSet resultSet) throws SQLException {
         Productos producto = new Productos();
         producto.setIdProducto(resultSet.getInt("id_producto"));
-        producto.setNombre(resultSet.getString("nombre"));
-        producto.setDescripcion(resultSet.getString("descripcion"));
+        producto.setNombre(resultSet.getString("nombre").toUpperCase());
+        producto.setDescripcion(resultSet.getString("descripcion").toUpperCase());
         producto.setNumeroLote(resultSet.getInt("numero_lote"));
         producto.setFechaProduccion(resultSet.getString("fecha_produccion"));
         producto.setFechaExpiracion(resultSet.getString("fecha_expiracion"));
