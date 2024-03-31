@@ -29,6 +29,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     public VistaProductosCrear() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
         
         List<JTextField> campos;
         campos = new ArrayList<>();
@@ -84,9 +85,9 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         txtfPrecio = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,16 +201,6 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
 
-        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 180, 80);
-
         txtfPrecio.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfPrecio.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfPrecio.setPreferredSize(new java.awt.Dimension(65, 40));
@@ -230,6 +221,16 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         lblPrecio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblPrecio);
         lblPrecio.setBounds(520, 610, 83, 32);
+
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         lblBackground.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
@@ -380,12 +381,6 @@ public class VistaProductosCrear extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaProductos vistaProductos = new VistaProductos();
-                 vistaProductos.setVisible(true);
-                 dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
-
     private void txtfNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfNombreFocusGained
 
     }//GEN-LAST:event_txtfNombreFocusGained
@@ -401,6 +396,12 @@ public class VistaProductosCrear extends javax.swing.JFrame {
     private void txtfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfPrecioFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfPrecioFocusLost
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaProductos vistaProductos = new VistaProductos();
+        vistaProductos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

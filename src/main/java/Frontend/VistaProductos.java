@@ -29,6 +29,7 @@ public class VistaProductos extends javax.swing.JFrame {
     public VistaProductos() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
 
         try {
             DefaultTableModel model = (DefaultTableModel) tblProductos.getModel();
@@ -119,7 +120,7 @@ public class VistaProductos extends javax.swing.JFrame {
         spHeadersTable.setBounds(142, 58, 1138, 662);
 
         btnMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
-        btnMenu.setText("🏠");
+        btnMenu.setIcon(new javax.swing.ImageIcon("C:\\Images\\menu.png")); // NOI18N
         btnMenu.setPreferredSize(new java.awt.Dimension(65, 65));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +131,7 @@ public class VistaProductos extends javax.swing.JFrame {
         btnMenu.setBounds(30, 540, 80, 70);
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnUpdate.setText("🖊️");
+        btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Images\\actualizar.png")); // NOI18N
         btnUpdate.setPreferredSize(new java.awt.Dimension(65, 65));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +142,7 @@ public class VistaProductos extends javax.swing.JFrame {
         btnUpdate.setBounds(0, 129, 65, 65);
 
         btnCreate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnCreate.setText("➕");
+        btnCreate.setIcon(new javax.swing.ImageIcon("C:\\Images\\crear.png")); // NOI18N
         btnCreate.setPreferredSize(new java.awt.Dimension(65, 65));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +153,7 @@ public class VistaProductos extends javax.swing.JFrame {
         btnCreate.setBounds(0, 58, 136, 65);
 
         btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnDelete.setText("🗑️");
+        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Images\\borrar.png")); // NOI18N
         btnDelete.setPreferredSize(new java.awt.Dimension(65, 65));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +170,7 @@ public class VistaProductos extends javax.swing.JFrame {
         lblReturnToMenu.setBounds(10, 620, 120, 60);
 
         btnAlerta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnAlerta.setText("🔔");
+        btnAlerta.setIcon(new javax.swing.ImageIcon("C:\\Images\\notificacion.png")); // NOI18N
         btnAlerta.setPreferredSize(new java.awt.Dimension(65, 65));
         btnAlerta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +178,7 @@ public class VistaProductos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAlerta);
-        btnAlerta.setBounds(40, 260, 65, 65);
+        btnAlerta.setBounds(20, 240, 90, 90);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

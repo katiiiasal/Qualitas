@@ -18,6 +18,7 @@ public class VistaMenu extends javax.swing.JFrame {
     public VistaMenu() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
     }
 
     /**
@@ -39,6 +40,7 @@ public class VistaMenu extends javax.swing.JFrame {
         lblProductos = new javax.swing.JLabel();
         lblClientes1 = new javax.swing.JLabel();
         btnAlerta = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,7 +60,7 @@ public class VistaMenu extends javax.swing.JFrame {
         lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMenu.setText("MENU");
         getContentPane().add(lblMenu);
-        lblMenu.setBounds(490, 610, 240, 90);
+        lblMenu.setBounds(30, 330, 240, 90);
 
         btnPedidos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnPedidos.setText("PEDIDOS");
@@ -70,7 +72,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnPedidos);
-        btnPedidos.setBounds(350, 510, 200, 35);
+        btnPedidos.setBounds(480, 260, 200, 35);
 
         btnProductos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnProductos.setText("PRODUCTOS");
@@ -82,7 +84,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnProductos);
-        btnProductos.setBounds(750, 510, 200, 35);
+        btnProductos.setBounds(860, 260, 200, 35);
 
         btnEmpleados.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnEmpleados.setText("EMPLEADOS");
@@ -94,7 +96,7 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEmpleados);
-        btnEmpleados.setBounds(340, 200, 200, 40);
+        btnEmpleados.setBounds(480, 570, 200, 40);
 
         btnClientes.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnClientes.setText("CLIENTES");
@@ -106,28 +108,28 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClientes);
-        btnClientes.setBounds(720, 210, 200, 35);
+        btnClientes.setBounds(860, 570, 200, 35);
 
         lblEmpleados.setIcon(new javax.swing.ImageIcon("C:\\Images\\Empleados.png")); // NOI18N
         getContentPane().add(lblEmpleados);
-        lblEmpleados.setBounds(320, 40, 240, 190);
+        lblEmpleados.setBounds(460, 410, 240, 190);
 
         lblPedidos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Pedidos.png")); // NOI18N
         getContentPane().add(lblPedidos);
-        lblPedidos.setBounds(330, 350, 220, 200);
+        lblPedidos.setBounds(460, 100, 220, 200);
 
         lblProductos.setIcon(new javax.swing.ImageIcon("C:\\Images\\Productos.png")); // NOI18N
         getContentPane().add(lblProductos);
-        lblProductos.setBounds(700, 350, 270, 210);
+        lblProductos.setBounds(810, 100, 270, 210);
 
         lblClientes1.setIcon(new javax.swing.ImageIcon("C:\\Images\\Clientes.jpg")); // NOI18N
         lblClientes1.setName(""); // NOI18N
         getContentPane().add(lblClientes1);
-        lblClientes1.setBounds(660, 20, 300, 240);
+        lblClientes1.setBounds(800, 380, 300, 240);
 
         btnAlerta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
         btnAlerta.setForeground(new java.awt.Color(255, 255, 51));
-        btnAlerta.setText("🔔");
+        btnAlerta.setIcon(new javax.swing.ImageIcon("C:\\Images\\notificacion.png")); // NOI18N
         btnAlerta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAlerta.setPreferredSize(new java.awt.Dimension(65, 65));
         btnAlerta.addActionListener(new java.awt.event.ActionListener() {
@@ -136,11 +138,15 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAlerta);
-        btnAlerta.setBounds(10, 10, 170, 140);
+        btnAlerta.setBounds(1080, 70, 100, 100);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoEmpresa.png")); // NOI18N
+        getContentPane().add(lblLogo);
+        lblLogo.setBounds(100, 220, 100, 100);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(0, 0, 1280, 720);
+        lblBackground.setBounds(300, 0, 980, 720);
 
         pack();
         setLocationRelativeTo(null);
@@ -224,6 +230,7 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblClientes1;
     private javax.swing.JLabel lblEmpleados;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblPedidos;
     private javax.swing.JLabel lblProductos;

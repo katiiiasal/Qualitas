@@ -29,6 +29,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
     public VistaProductosAlerta() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
 
         try {
             DefaultTableModel model = (DefaultTableModel) tblProductos.getModel();
@@ -118,7 +119,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         spHeadersTable.setBounds(142, 58, 1138, 662);
 
         btnMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
-        btnMenu.setText("🏠");
+        btnMenu.setIcon(new javax.swing.ImageIcon("C:\\Images\\menu.png")); // NOI18N
         btnMenu.setPreferredSize(new java.awt.Dimension(65, 65));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +136,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         lblReturnToMenu.setBounds(10, 620, 120, 60);
 
         btnAlerta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnAlerta.setText("🔔");
+        btnAlerta.setIcon(new javax.swing.ImageIcon("C:\\Images\\notificacion.png")); // NOI18N
         btnAlerta.setPreferredSize(new java.awt.Dimension(65, 65));
         btnAlerta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,10 +144,10 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAlerta);
-        btnAlerta.setBounds(40, 40, 65, 65);
+        btnAlerta.setBounds(20, 10, 100, 100);
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnUpdate.setText("🖊️");
+        btnUpdate.setIcon(new javax.swing.ImageIcon("C:\\Images\\actualizar.png")); // NOI18N
         btnUpdate.setPreferredSize(new java.awt.Dimension(65, 65));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +158,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         btnUpdate.setBounds(0, 129, 65, 65);
 
         btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnDelete.setText("🗑️");
+        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Images\\borrar.png")); // NOI18N
         btnDelete.setPreferredSize(new java.awt.Dimension(65, 65));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

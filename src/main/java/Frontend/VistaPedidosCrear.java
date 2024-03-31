@@ -44,6 +44,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
     public VistaPedidosCrear() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
         
         total = 0;
         idPedidoGenerado = generarIdAleatorio();
@@ -151,12 +152,12 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
         txtfNombreCliente = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         cmbIdCliente = new javax.swing.JComboBox<>();
         spnCantidad = new javax.swing.JSpinner();
         btnAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCarrito = new javax.swing.JTable();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
         txtfPrecio = new javax.swing.JTextField();
         txtfDescripcion = new javax.swing.JTextField();
@@ -195,21 +196,21 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
         lblCantidad.setText("CANTIDAD");
         lblCantidad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblCantidad);
-        lblCantidad.setBounds(940, 70, 120, 32);
+        lblCantidad.setBounds(940, 70, 130, 32);
 
         idCliente.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         idCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         idCliente.setText("ID CLIENTE");
         idCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idCliente);
-        idCliente.setBounds(340, 70, 130, 32);
+        idCliente.setBounds(340, 70, 140, 32);
 
         idProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         idProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         idProducto.setText("ID PRODUCTO");
         idProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idProducto);
-        idProducto.setBounds(670, 70, 170, 32);
+        idProducto.setBounds(670, 70, 180, 32);
 
         cmbIdProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         getContentPane().add(cmbIdProducto);
@@ -243,16 +244,6 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(960, 0, 320, 90);
-
-        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 180, 80);
 
         cmbIdCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         getContentPane().add(cmbIdCliente);
@@ -299,6 +290,16 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(60, 160, 1120, 440);
+
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -379,12 +380,6 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaPedidos vistaPedidos = new VistaPedidos();
-                 vistaPedidos.show();
-                 dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblCarrito.getModel();
         model.setRowCount(0);
@@ -419,6 +414,12 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
         }
         txtfTotal.setText(Double.toString(this.total));
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaPedidos vistaPedidos = new VistaPedidos();
+        vistaPedidos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

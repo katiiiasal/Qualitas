@@ -20,6 +20,7 @@ public class VistaPedidosActualizar extends javax.swing.JFrame {
     public VistaPedidosActualizar() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
     }
 
     /**
@@ -164,14 +165,14 @@ public class VistaPedidosActualizar extends javax.swing.JFrame {
         lblTitulo.setBounds(890, 30, 320, 90);
 
         btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 170, 80);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -188,12 +189,6 @@ public class VistaPedidosActualizar extends javax.swing.JFrame {
     private void txtffechaExpiracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtffechaExpiracionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtffechaExpiracionActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaPedidos vistaPedidos = new VistaPedidos();
-                 vistaPedidos.show();
-                 dispose();      
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          
@@ -230,6 +225,12 @@ public class VistaPedidosActualizar extends javax.swing.JFrame {
                //label.setText("None selected");
             }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaPedidos vistaPedidos = new VistaPedidos();
+        vistaPedidos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

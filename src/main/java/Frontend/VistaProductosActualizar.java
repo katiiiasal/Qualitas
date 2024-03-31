@@ -43,20 +43,8 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     }
     
     public VistaProductosActualizar(int idProducto) {
-        initComponents(); 
-        
-        //Logica para convertir todo a mayusculas
-        
-        lblidProducto.setText(lblidProducto.getText().toUpperCase());
-        lblNombre.setText(lblNombre.getText().toUpperCase());
-        lblDescripcion.setText(lblDescripcion.getText().toUpperCase());
-        lblnumeroLote.setText(lblnumeroLote.getText().toUpperCase());
-        lblfechaProduccion.setText(lblfechaProduccion.getText().toUpperCase());
-        lblfechaExpiracion.setText(lblfechaExpiracion.getText().toUpperCase());
-        lblPrecio.setText(lblPrecio.getText().toUpperCase());
-
-        
-        //Fin de logica
+        initComponents();
+        Utilidades.convertComponentsToUpperCase(this);
         
         Utilidades.cargarLogo(this, "logo.png");
         this.idProducto = idProducto;
@@ -187,7 +175,6 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         lblNombre = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
         lblDescripcion = new javax.swing.JLabel();
@@ -200,6 +187,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         txtffechaExpiracion = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
         txtfPrecio = new javax.swing.JTextField();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -241,16 +229,6 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
-
-        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 170, 80);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -356,6 +334,16 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfPrecio);
         txtfPrecio.setBounds(520, 640, 690, 40);
 
+        btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar);
+        btnRegresar.setBounds(0, 0, 90, 80);
+
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
         lblBackground.setBounds(0, 0, 1280, 720);
@@ -363,12 +351,6 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaProductos vistaProductos = new VistaProductos();
-                 vistaProductos.show();
-                 dispose();      
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          
@@ -457,6 +439,12 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
     private void txtfPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtfPrecioFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfPrecioFocusLost
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaProductos vistaProductos = new VistaProductos();
+        vistaProductos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

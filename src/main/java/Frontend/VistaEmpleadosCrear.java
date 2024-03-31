@@ -36,6 +36,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     public VistaEmpleadosCrear() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
         
         List<JTextField> campos;
         campos = new ArrayList<>();
@@ -144,8 +145,8 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         txtpPassword = new javax.swing.JPasswordField();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,46 +156,46 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTelefono.setText("Telefono");
         lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblTelefono);
-        lblTelefono.setBounds(520, 590, 100, 30);
+        lblTelefono.setBounds(520, 600, 650, 30);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 130, 90, 30);
+        lblNombre.setBounds(520, 140, 640, 30);
 
         lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(520, 220, 190, 32);
+        lblApellidoPaterno.setBounds(520, 220, 740, 32);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblApellidoMaterno.setText("Apellido Materno");
         lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(520, 310, 200, 32);
+        lblApellidoMaterno.setBounds(520, 310, 750, 32);
 
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEmail.setText("Email");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(530, 390, 60, 32);
+        lblEmail.setBounds(520, 390, 610, 32);
 
         lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblPassword.setText("Contraseña");
         lblPassword.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblPassword);
-        lblPassword.setBounds(520, 480, 130, 32);
+        lblPassword.setBounds(520, 490, 680, 32);
 
         txtfTelefono.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfTelefono.setPreferredSize(new java.awt.Dimension(65, 40));
@@ -251,20 +252,20 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
 
+        txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtpPassword.setText("jPasswordField1");
+        getContentPane().add(txtpPassword);
+        txtpPassword.setBounds(520, 520, 690, 40);
+
         btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 180, 80);
-
-        txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtpPassword.setText("jPasswordField1");
-        getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(520, 520, 690, 40);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -348,10 +349,11 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                
             }
     }//GEN-LAST:event_btnCrearActionPerformed
+
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaEmpleados vistaEmpleados = new VistaEmpleados();
-                 vistaEmpleados.show();
-                 dispose();
+        VistaEmpleados vistaEmpleados = new VistaEmpleados();
+        vistaEmpleados.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**

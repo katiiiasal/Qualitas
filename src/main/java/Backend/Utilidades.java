@@ -6,10 +6,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import java.awt.Image;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.text.JTextComponent;
 
 public class Utilidades {
     
@@ -19,6 +24,8 @@ public class Utilidades {
     public static final Color NARANJA = new Color(0xF88920);
     public static final Color AZUL = new Color(0x286591);
     public static final Color VERDE = new Color(0x146E38);
+    
+    private static JDialog loadingDialog;
 
     public static void cargarLogo(JFrame frame, String nombreImagen) {
         // Obtener la URL de la imagen
@@ -45,6 +52,23 @@ public class Utilidades {
             System.err.println("No se pudo cargar la imagen.");
         }
 
-        
     }
+    
+    public static void convertComponentsToUpperCase(Container container) {
+        for (Component component : container.getComponents()) {
+            if (component instanceof Container) {
+                convertComponentsToUpperCase((Container) component);
+            }
+            if (component instanceof JLabel) {
+                JLabel label = (JLabel) component;
+                label.setText(label.getText().toUpperCase());
+            } else if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                button.setText(button.getText().toUpperCase());
+            }
+        }
+    }
+    
+    
+ 
 }

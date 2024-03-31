@@ -50,11 +50,13 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     public VistaClientesActualizar(){
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
     }
     
     public VistaClientesActualizar(int idCliente) {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
         this.setIdCliente(idCliente);
         
         List<JTextField> campos;
@@ -116,6 +118,19 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
             System.out.println("Error al cargar datos");    
         }
         
+        txtfNombre.setNextFocusableComponent(txtfApellidoPaterno);
+        txtfApellidoPaterno.setNextFocusableComponent(txtfApellidoMaterno);
+        txtfApellidoMaterno.setNextFocusableComponent(txtfEmail);
+        txtfEmail.setNextFocusableComponent(txtfTelefono);
+        txtfTelefono.setNextFocusableComponent(txtfCalle);
+        txtfCalle.setNextFocusableComponent(txtfNumeroInterior);
+        txtfNumeroInterior.setNextFocusableComponent(txtfCodigoPostal);
+        txtfCodigoPostal.setNextFocusableComponent(txtfColonia);
+        txtfColonia.setNextFocusableComponent(txtfCiudad);
+        txtfCiudad.setNextFocusableComponent(txtfEstado);
+        txtfEstado.setNextFocusableComponent(btnActualizar);
+        btnActualizar.setNextFocusableComponent(btnRegresar);
+        
     }
     
     /**
@@ -127,31 +142,32 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombre = new javax.swing.JLabel();
-        lblApellidoPaterno = new javax.swing.JLabel();
-        lblApellidoMaterno = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
         txtfApellidoPaterno = new javax.swing.JTextField();
         txtfApellidoMaterno = new javax.swing.JTextField();
         txtfTelefono = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
-        lblEmail = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtfCalle = new javax.swing.JTextField();
-        lblCalle = new javax.swing.JLabel();
-        lblNumeroInterior = new javax.swing.JLabel();
         txtfNumeroInterior = new javax.swing.JTextField();
-        lblCodigoPostal = new javax.swing.JLabel();
         txtfCodigoPostal = new javax.swing.JTextField();
-        lblColonia = new javax.swing.JLabel();
         txtfColonia = new javax.swing.JTextField();
-        lblCiudad = new javax.swing.JLabel();
         txtfCiudad = new javax.swing.JTextField();
-        lblEstado = new javax.swing.JLabel();
         txtfEstado = new javax.swing.JTextField();
         txtfEmail = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblNombre = new javax.swing.JLabel();
+        lblCalle = new javax.swing.JLabel();
+        lblApellidoPaterno = new javax.swing.JLabel();
+        lblNumeroInterior = new javax.swing.JLabel();
+        lblApellidoMaterno = new javax.swing.JLabel();
+        lblCodigoPostal = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
+        lblColonia = new javax.swing.JLabel();
         lblTelefono = new javax.swing.JLabel();
+        lblCiudad = new javax.swing.JLabel();
+        lblEstado = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,27 +175,6 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("jfVistaProductoActualizar"); // NOI18N
         getContentPane().setLayout(null);
-
-        lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblNombre.setText("Nombre");
-        lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblNombre);
-        lblNombre.setBounds(140, 140, 90, 32);
-
-        lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblApellidoPaterno.setText("Apellido Paterno");
-        lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(140, 220, 240, 32);
-
-        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblApellidoMaterno.setText("Apellido Materno");
-        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(140, 310, 230, 32);
 
         txtfNombre.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNombre.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -211,6 +206,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         txtfTelefono.setBounds(140, 520, 450, 40);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(203, 33, 41));
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("CLIENTES");
         lblTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -218,23 +214,18 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         lblTitulo.setBounds(890, 30, 320, 90);
 
         btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 180, 80);
-
-        lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmail.setText("Email");
-        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblEmail);
-        lblEmail.setBounds(140, 400, 230, 32);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         btnActualizar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(20, 110, 56));
+        btnActualizar.setIcon(new javax.swing.ImageIcon("C:\\Images\\actualizar.png")); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,26 +233,12 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnActualizar);
-        btnActualizar.setBounds(220, 610, 260, 55);
+        btnActualizar.setBounds(140, 620, 450, 40);
 
         txtfCalle.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfCalle.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfCalle);
         txtfCalle.setBounds(640, 170, 450, 40);
-
-        lblCalle.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblCalle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCalle.setText("Calle");
-        lblCalle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblCalle);
-        lblCalle.setBounds(640, 140, 53, 32);
-
-        lblNumeroInterior.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNumeroInterior.setText("Numero Interior");
-        lblNumeroInterior.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblNumeroInterior);
-        lblNumeroInterior.setBounds(640, 230, 210, 32);
 
         txtfNumeroInterior.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfNumeroInterior.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -269,38 +246,17 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfNumeroInterior);
         txtfNumeroInterior.setBounds(640, 260, 450, 40);
 
-        lblCodigoPostal.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblCodigoPostal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCodigoPostal.setText("Codigo Postal");
-        lblCodigoPostal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblCodigoPostal);
-        lblCodigoPostal.setBounds(640, 310, 240, 32);
-
         txtfCodigoPostal.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfCodigoPostal.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfCodigoPostal.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfCodigoPostal);
         txtfCodigoPostal.setBounds(640, 350, 450, 38);
 
-        lblColonia.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblColonia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblColonia.setText("Colonia");
-        lblColonia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblColonia);
-        lblColonia.setBounds(640, 400, 230, 32);
-
         txtfColonia.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfColonia.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfColonia.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfColonia);
         txtfColonia.setBounds(640, 430, 450, 40);
-
-        lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblCiudad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblCiudad.setText("Cuidad");
-        lblCiudad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblCiudad);
-        lblCiudad.setBounds(640, 490, 250, 32);
 
         txtfCiudad.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfCiudad.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -312,13 +268,6 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         });
         getContentPane().add(txtfCiudad);
         txtfCiudad.setBounds(640, 520, 450, 40);
-
-        lblEstado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEstado.setText("Estado");
-        lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblEstado);
-        lblEstado.setBounds(640, 590, 230, 32);
 
         txtfEstado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfEstado.setMinimumSize(new java.awt.Dimension(65, 40));
@@ -342,12 +291,100 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         getContentPane().add(txtfEmail);
         txtfEmail.setBounds(140, 430, 450, 40);
 
+        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(50, 100));
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(610, 0, 30, 720);
+
+        lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(40, 101, 145));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNombre.setText("Nombre");
+        lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblNombre);
+        lblNombre.setBounds(140, 140, 290, 32);
+
+        lblCalle.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCalle.setForeground(new java.awt.Color(40, 101, 145));
+        lblCalle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCalle.setText("Calle");
+        lblCalle.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCalle);
+        lblCalle.setBounds(640, 140, 250, 32);
+
+        lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoPaterno.setForeground(new java.awt.Color(40, 101, 145));
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoPaterno.setText("Apellido Paterno");
+        lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoPaterno);
+        lblApellidoPaterno.setBounds(140, 220, 440, 32);
+
+        lblNumeroInterior.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblNumeroInterior.setForeground(new java.awt.Color(40, 101, 145));
+        lblNumeroInterior.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblNumeroInterior.setText("Numero Interior");
+        lblNumeroInterior.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblNumeroInterior);
+        lblNumeroInterior.setBounds(640, 230, 410, 32);
+
+        lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblApellidoMaterno.setForeground(new java.awt.Color(40, 101, 145));
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblApellidoMaterno.setText("Apellido Materno");
+        lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblApellidoMaterno);
+        lblApellidoMaterno.setBounds(140, 310, 430, 32);
+
+        lblCodigoPostal.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCodigoPostal.setForeground(new java.awt.Color(40, 101, 145));
+        lblCodigoPostal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCodigoPostal.setText("Codigo Postal");
+        lblCodigoPostal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCodigoPostal);
+        lblCodigoPostal.setBounds(640, 310, 440, 32);
+
+        lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(40, 101, 145));
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEmail.setText("Email");
+        lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEmail);
+        lblEmail.setBounds(140, 400, 430, 32);
+
+        lblColonia.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblColonia.setForeground(new java.awt.Color(40, 101, 145));
+        lblColonia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblColonia.setText("Colonia");
+        lblColonia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblColonia);
+        lblColonia.setBounds(640, 400, 430, 32);
+
         lblTelefono.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblTelefono.setForeground(new java.awt.Color(40, 101, 145));
         lblTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblTelefono.setText("Telefono");
         lblTelefono.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblTelefono);
-        lblTelefono.setBounds(140, 490, 230, 32);
+        lblTelefono.setBounds(140, 490, 430, 32);
+
+        lblCiudad.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblCiudad.setForeground(new java.awt.Color(40, 101, 145));
+        lblCiudad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCiudad.setText("Cuidad");
+        lblCiudad.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblCiudad);
+        lblCiudad.setBounds(640, 490, 450, 32);
+
+        lblEstado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblEstado.setForeground(new java.awt.Color(40, 101, 145));
+        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEstado.setText("Estado");
+        lblEstado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblEstado);
+        lblEstado.setBounds(640, 590, 430, 32);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -510,7 +547,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
                  VistaClientes vistaClientes = new VistaClientes();
-                 vistaClientes.show();
+                 vistaClientes.setVisible(true);
                  dispose();      
     }//GEN-LAST:event_btnRegresarActionPerformed
 
@@ -691,6 +728,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblApellidoMaterno;
     private javax.swing.JLabel lblApellidoPaterno;
     private javax.swing.JLabel lblBackground;

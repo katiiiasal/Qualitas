@@ -29,6 +29,7 @@ public class VistaPedidos extends javax.swing.JFrame {
     public VistaPedidos() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
 
         DefaultTableModel model = (DefaultTableModel) tblPedidos.getModel();
         PedidoDAO pedidoDAO = new PedidoDAO();
@@ -104,7 +105,7 @@ public class VistaPedidos extends javax.swing.JFrame {
         spHeadersTable.setBounds(142, 58, 1138, 662);
 
         btnMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
-        btnMenu.setText("🏠");
+        btnMenu.setIcon(new javax.swing.ImageIcon("C:\\Images\\menu.png")); // NOI18N
         btnMenu.setPreferredSize(new java.awt.Dimension(65, 65));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +116,7 @@ public class VistaPedidos extends javax.swing.JFrame {
         btnMenu.setBounds(30, 540, 80, 70);
 
         btnCreate.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnCreate.setText("➕");
+        btnCreate.setIcon(new javax.swing.ImageIcon("C:\\Images\\crear.png")); // NOI18N
         btnCreate.setPreferredSize(new java.awt.Dimension(65, 65));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +127,7 @@ public class VistaPedidos extends javax.swing.JFrame {
         btnCreate.setBounds(6, 58, 130, 65);
 
         btnDelete.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnDelete.setText("🗑️");
+        btnDelete.setIcon(new javax.swing.ImageIcon("C:\\Images\\borrar.png")); // NOI18N
         btnDelete.setPreferredSize(new java.awt.Dimension(65, 65));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

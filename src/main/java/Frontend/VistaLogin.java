@@ -18,7 +18,7 @@ public class VistaLogin extends javax.swing.JFrame {
     public VistaLogin() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
-        
+        Utilidades.convertComponentsToUpperCase(this);
     }
 
     /**
@@ -41,7 +41,7 @@ public class VistaLogin extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnLogin.setText("INICIAR SESION");
+        btnLogin.setText("INICIAR SESIÓN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);

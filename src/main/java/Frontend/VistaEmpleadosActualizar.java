@@ -20,6 +20,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
     public VistaEmpleadosActualizar() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
     }
 
     /**
@@ -44,9 +45,9 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         lblProductos = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        btnRegresar = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         txtpPassword = new javax.swing.JPasswordField();
+        btnRegresar = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,39 +57,39 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lblidEmpleado.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblidEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblidEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblidEmpleado.setText("idEmpleado");
         lblidEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblidEmpleado);
-        lblidEmpleado.setBounds(520, 140, 140, 32);
+        lblidEmpleado.setBounds(520, 140, 430, 32);
 
         lblNombre.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblNombre.setText("Nombre");
         lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblNombre);
-        lblNombre.setBounds(520, 230, 90, 32);
+        lblNombre.setBounds(520, 240, 380, 32);
 
         lblApellidoPaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoPaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblApellidoPaterno.setText("Apellido Paterno");
         lblApellidoPaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoPaterno);
-        lblApellidoPaterno.setBounds(520, 320, 190, 32);
+        lblApellidoPaterno.setBounds(520, 320, 480, 32);
 
         lblApellidoMaterno.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblApellidoMaterno.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblApellidoMaterno.setText("Apellido Materno");
         lblApellidoMaterno.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblApellidoMaterno);
-        lblApellidoMaterno.setBounds(510, 410, 210, 32);
+        lblApellidoMaterno.setBounds(520, 410, 500, 32);
 
         lblEmail.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblEmail.setText("Email");
         lblEmail.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(530, 490, 60, 32);
+        lblEmail.setBounds(520, 490, 350, 32);
 
         txtfidEmpleado.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         txtfidEmpleado.setPreferredSize(new java.awt.Dimension(65, 40));
@@ -145,27 +146,27 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(890, 30, 320, 90);
 
+        lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
+        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPassword.setText("Contraseña");
+        lblPassword.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        getContentPane().add(lblPassword);
+        lblPassword.setBounds(520, 590, 420, 32);
+
+        txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txtpPassword.setText("jPasswordField1");
+        getContentPane().add(txtpPassword);
+        txtpPassword.setBounds(520, 620, 690, 40);
+
         btnRegresar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
-        btnRegresar.setText("🔙");
+        btnRegresar.setIcon(new javax.swing.ImageIcon("C:\\Images\\regresar.png")); // NOI18N
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegresar);
-        btnRegresar.setBounds(60, 20, 170, 80);
-
-        lblPassword.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPassword.setText("Contraseña");
-        lblPassword.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lblPassword);
-        lblPassword.setBounds(520, 580, 130, 32);
-
-        txtpPassword.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txtpPassword.setText("jPasswordField1");
-        getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(520, 620, 690, 40);
+        btnRegresar.setBounds(0, 0, 90, 80);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -178,12 +179,6 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
     private void txtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfEmailActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-                 VistaEmpleados vistaEmpleados = new VistaEmpleados();
-                 vistaEmpleados.show();
-                 dispose();      
-    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
          
@@ -223,6 +218,12 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
                //label.setText("None selected");
             }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        VistaEmpleados vistaEmpleados = new VistaEmpleados();
+        vistaEmpleados.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
