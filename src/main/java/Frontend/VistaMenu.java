@@ -58,9 +58,9 @@ public class VistaMenu extends javax.swing.JFrame {
 
         lblMenu.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
         lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMenu.setText("MENU");
+        lblMenu.setText("MENÚ");
         getContentPane().add(lblMenu);
-        lblMenu.setBounds(30, 330, 240, 90);
+        lblMenu.setBounds(60, 420, 240, 90);
 
         btnPedidos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         btnPedidos.setText("PEDIDOS");
@@ -140,13 +140,13 @@ public class VistaMenu extends javax.swing.JFrame {
         getContentPane().add(btnAlerta);
         btnAlerta.setBounds(1080, 70, 100, 100);
 
-        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoEmpresa.png")); // NOI18N
+        lblLogo.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoEmpresa airesize.png")); // NOI18N
         getContentPane().add(lblLogo);
-        lblLogo.setBounds(100, 220, 100, 100);
+        lblLogo.setBounds(-10, 140, 390, 280);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
-        lblBackground.setBounds(300, 0, 980, 720);
+        lblBackground.setBounds(370, 0, 910, 720);
 
         pack();
         setLocationRelativeTo(null);

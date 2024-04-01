@@ -5,6 +5,8 @@
 package Frontend;
 
 import Backend.ConexionBD;
+import Backend.DetallePedido;
+import Backend.DetallePedidoDAO;
 import Backend.Pedido;
 import Backend.PedidoDAO;
 import Backend.Productos;
@@ -13,6 +15,8 @@ import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -65,6 +69,7 @@ public class VistaPedidos extends javax.swing.JFrame {
         lblReturnToMenu = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblFoto = new javax.swing.JLabel();
+        btnVer = new javax.swing.JButton();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +86,7 @@ public class VistaPedidos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idPedido", "idCliente", "Fecha envio", "Fecha creacion"
+                "ID PEDIDO", "ID CLIENTE", "FECHA ENVIO", "FECHA CREACIÓN"
             }
         ) {
             Class[] types = new Class [] {
@@ -135,7 +140,7 @@ public class VistaPedidos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDelete);
-        btnDelete.setBounds(6, 129, 130, 65);
+        btnDelete.setBounds(10, 200, 130, 65);
 
         lblReturnToMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         lblReturnToMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,6 +157,17 @@ public class VistaPedidos extends javax.swing.JFrame {
         lblFoto.setIcon(new javax.swing.ImageIcon("C:\\Images\\Pedidos.png")); // NOI18N
         getContentPane().add(lblFoto);
         lblFoto.setBounds(-50, 280, 270, 120);
+
+        btnVer.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
+        btnVer.setIcon(new javax.swing.ImageIcon("C:\\Images\\ver.png")); // NOI18N
+        btnVer.setPreferredSize(new java.awt.Dimension(65, 65));
+        btnVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVer);
+        btnVer.setBounds(6, 129, 130, 65);
 
         lblBackground.setIcon(new javax.swing.ImageIcon("C:\\Images\\background.png")); // NOI18N
         getContentPane().add(lblBackground);
@@ -217,6 +233,61 @@ public class VistaPedidos extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
+         int selectedRow = tblPedidos.getSelectedRow();
+        
+        if(selectedRow != -1){
+            
+            Connection conexion;
+            
+            
+            
+            int idPedido = (int) tblPedidos.getValueAt(selectedRow, 0);
+            System.out.println(idPedido);
+            
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            Pedido pedido = pedidoDAO.obtenerPedidoPorId(idPedido);
+            
+            DetallePedidoDAO detallePedidoDAO = new DetallePedidoDAO();
+             try {
+                 List <DetallePedido> detallePedido = detallePedidoDAO.obtenerDetallesPedidoPorIdPedido(idPedido);
+                 for(DetallePedido producto: detallePedido){
+                    //System.out.println(producto);
+                     
+                    conexion = ConexionBD.obtenerConexion();
+                    ProductosDAO productosDAO = new ProductosDAO(conexion);
+                    Productos producto1 = productosDAO.obtenerProducto(producto.getIdProducto());
+                    System.out.println(producto1.getNombre());
+                    System.out.println(producto1.getDescripcion());
+                 }
+                 
+                 
+                 
+                 
+             } catch (SQLException ex) {
+                 Logger.getLogger(VistaPedidos.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            JOptionPane.showMessageDialog(null, "Detalles del Pedido #" + pedido.getIdPedido() + "\n" +
+                                                 ""   
+                    
+                    , "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+           
+            
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un pedido");
+        }
+    }//GEN-LAST:event_btnVerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -257,6 +328,7 @@ public class VistaPedidos extends javax.swing.JFrame {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnVer;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReturnToMenu;

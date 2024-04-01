@@ -60,9 +60,9 @@ public class VistaLogin extends javax.swing.JFrame {
         getContentPane().add(txtpPassword);
         txtpPassword.setBounds(450, 340, 440, 40);
 
-        lblLogoEmpresa.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoEmpresa.png")); // NOI18N
+        lblLogoEmpresa.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoEmpresa airesize.png")); // NOI18N
         getContentPane().add(lblLogoEmpresa);
-        lblLogoEmpresa.setBounds(630, 130, 110, 120);
+        lblLogoEmpresa.setBounds(460, 0, 420, 270);
 
         pack();
         setLocationRelativeTo(null);
