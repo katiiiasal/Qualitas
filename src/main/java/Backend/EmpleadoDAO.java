@@ -107,21 +107,22 @@ public class EmpleadoDAO {
     }
 
     // Eliminar un empleado por su ID
-    public boolean borrarEmpleado(int idEmpleado) {
+    public int borrarEmpleado(int idEmpleado) {
         boolean rowDeleted = false;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_EMPLEADO_SQL)) {
             statement.setInt(1, idEmpleado);
-            rowDeleted = statement.executeUpdate() > 0;
+            statement.executeUpdate();
+            return 1;
         } catch (SQLException e) {
-            e.printStackTrace();
+            return 0;
         }
-        return rowDeleted;
+        
     }
 
     // Actualizar un empleado
-    public boolean actualizarEmpleado(Empleado empleado, int idEmpleado) {
-        boolean rowUpdated = false;
+    public int actualizarEmpleado(Empleado empleado, int idEmpleado) {
+       
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_EMPLEADO_SQL)) {
             statement.setString(1, empleado.getNombre());
@@ -129,14 +130,16 @@ public class EmpleadoDAO {
             statement.setString(3, empleado.getApellidoMaterno());
             statement.setString(4, empleado.getEmail());
             statement.setString(5, empleado.getPassword());
-            statement.setString(6, empleado.getRol());
+            statement.setString(6, "empleado");
             statement.setString(7, empleado.getTelefono());
             statement.setInt(8,idEmpleado );
-            rowUpdated = statement.executeUpdate() > 0;
+            statement.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
+            return 0;
         }
-        return rowUpdated;
+        
     }
 }
 
