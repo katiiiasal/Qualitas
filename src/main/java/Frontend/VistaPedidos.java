@@ -14,7 +14,9 @@ import Backend.ProductosDAO;
 import Backend.Utilidades;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -237,51 +239,39 @@ public class VistaPedidos extends javax.swing.JFrame {
          int selectedRow = tblPedidos.getSelectedRow();
         
         if(selectedRow != -1){
-            
-            Connection conexion;
-            
-            
+            int cantidad = 0;
+            double precio = 0;
+            double total = 0;
             
             int idPedido = (int) tblPedidos.getValueAt(selectedRow, 0);
-            System.out.println(idPedido);
-            
-            PedidoDAO pedidoDAO = new PedidoDAO();
-            Pedido pedido = pedidoDAO.obtenerPedidoPorId(idPedido);
-            
             DetallePedidoDAO detallePedidoDAO = new DetallePedidoDAO();
+            
              try {
-                 List <DetallePedido> detallePedido = detallePedidoDAO.obtenerDetallesPedidoPorIdPedido(idPedido);
-                 for(DetallePedido producto: detallePedido){
-                    //System.out.println(producto);
-                     
-                    conexion = ConexionBD.obtenerConexion();
-                    ProductosDAO productosDAO = new ProductosDAO(conexion);
-                    Productos producto1 = productosDAO.obtenerProducto(producto.getIdProducto());
-                    System.out.println(producto1.getNombre());
-                    System.out.println(producto1.getDescripcion());
-                 }
-                 
-                 
-                 
-                 
-             } catch (SQLException ex) {
-                 Logger.getLogger(VistaPedidos.class.getName()).log(Level.SEVERE, null, ex);
-             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            JOptionPane.showMessageDialog(null, "Detalles del Pedido #" + pedido.getIdPedido() + "\n" +
-                                                 ""   
+                List<Object[]> detallesPedidos = detallePedidoDAO.obtenerDetallePedidoCompleto(idPedido);
+
+                StringBuilder mensaje = new StringBuilder();
+                mensaje.append("Detalles del pedido #(").append(idPedido).append(") :\n");
+                
+                for (Object[] detallePedido : detallesPedidos) {
+                    mensaje.append("\nID Producto: ").append(detallePedido[0]).append("\n");
+                    mensaje.append("Nombre: ").append(detallePedido[2]).append("\n");
+                    mensaje.append("Descripción: ").append(detallePedido[3]).append("\n");
+                    mensaje.append("Precio: ").append(detallePedido[4]).append("\n");
+                    mensaje.append("Cantidad: ").append(detallePedido[1]).append("\n");
                     
-                    , "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
-           
+                    double subTotal = (Integer.valueOf(detallePedido[1].toString()) * Double.valueOf(detallePedido[4].toString()));
+                    mensaje.append("----$").append(subTotal).append("---\n");
+                    total += subTotal;
+                }
+                
+                mensaje.append("-----------------\n");
+                mensaje.append("Total: $").append(total);
+
+                JOptionPane.showMessageDialog(null, mensaje.toString());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener detalles del pedido: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
             
         }else{
              JOptionPane.showMessageDialog(null, "Por favor selecciona un pedido");
