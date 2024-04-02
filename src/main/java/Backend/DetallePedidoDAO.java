@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DetallePedidoDAO {
 
@@ -123,4 +126,33 @@ public class DetallePedidoDAO {
 
         return detallesPedidos;
     }
+    
+    public List<Object[]> obtenerDetallePedidoCompleto(int idPedido) throws SQLException {
+        List<Object[]> detallesPedidos = new ArrayList<>();
+        String query = "SELECT dp.id_producto, dp.cantidad, p.nombre, p.descripcion, p.precio FROM detalle_pedido dp JOIN productos p ON dp.id_producto = p.id_producto WHERE dp.id_pedido=?;";
+
+        try (Connection conn = obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, idPedido);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Object[] detallePedido = new Object[5];
+                    detallePedido[0] = rs.getObject("id_producto");
+                    detallePedido[1] = rs.getObject("cantidad");
+                    detallePedido[2] = rs.getObject("nombre");
+                    detallePedido[3] = rs.getObject("descripcion");
+                    detallePedido[4] = rs.getObject("precio");
+                    detallesPedidos.add(detallePedido);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener detalles de pedidos por idPedido: " + e.getMessage());
+            throw e;
+        }
+
+        return detallesPedidos;
+    }
+
+
+
 }

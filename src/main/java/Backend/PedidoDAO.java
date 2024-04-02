@@ -70,7 +70,7 @@ public class PedidoDAO {
     public Pedido obtenerPedidoPorId(int idPedido) {
         Pedido pedido = null;
         try (Connection conn = obtenerConexion();
-             PreparedStatement statement = conn.prepareStatement("SELECT * FROM pedidos WHERE id_pedidos = ?")) {
+             PreparedStatement statement = conn.prepareStatement("SELECT * FROM pedidos WHERE id_pedido = ?")) {
             statement.setInt(1, idPedido);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
