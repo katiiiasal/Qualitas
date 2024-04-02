@@ -4,7 +4,16 @@
  */
 package Frontend;
 
+import Backend.ConexionBD;
+import Backend.Empleado;
+import Backend.EmpleadoDAO;
+import Backend.Productos;
+import Backend.ProductosDAO;
 import Backend.Utilidades;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -14,6 +23,17 @@ import javax.swing.JOptionPane;
  */
 public class VistaEmpleadosActualizar extends javax.swing.JFrame {
 
+    // Atributos 
+    private int idEmpleado;
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+    
     /**
      * Creates new form VistaProductosCrear
      */
@@ -23,6 +43,27 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         Utilidades.convertComponentsToUpperCase(this);
     }
 
+    public VistaEmpleadosActualizar(int idEmpleado) {
+        initComponents();
+        Utilidades.cargarLogo(this, "logo.png");
+        Utilidades.convertComponentsToUpperCase(this);
+        
+        this.idEmpleado = idEmpleado;
+        
+        EmpleadoDAO empleadoDAO =new EmpleadoDAO();
+        Empleado empleado = empleadoDAO.obtenerEmpleado(idEmpleado);
+        
+       txtfidEmpleado.setText(String.valueOf(empleado.getIdEmpleado()) );
+       txtfNombre.setText(empleado.getNombre());
+       txtfApellidoPaterno.setText(empleado.getApellidoPaterno());
+       txtfApellidoMaterno.setText(empleado.getApellidoMaterno());
+       txtfEmail.setText(empleado.getEmail());
+       txtpPassword.setText(empleado.getPassword());
+       
+       
+    
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -195,13 +236,12 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         
         String password =  String.valueOf(txtpPassword.getPassword());
         System.out.println(password);
-        
-        
+       
         
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de actualizar este Empleado?", 
+                            "¿Estas seguro de actualizar este producto?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -209,14 +249,31 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
          
             if(result == JOptionPane.YES_OPTION){
                 System.out.println(1);
-               //label.setText("You selected: Yes");
+                
+                Empleado empleado = new Empleado(nombre, apellidoPaterno, apellidoMaterno, email, password, email, password);
+                
+                EmpleadoDAO empleadoDAO =new EmpleadoDAO ();
+                int id = empleadoDAO.actualizarEmpleado(empleado, this.getIdEmpleado());
+                if (id != 0){
+                    JOptionPane.showMessageDialog(null, "Se actualizo empleado(" + nombre + ") exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                    VistaEmpleados vistaEmpleados = new VistaEmpleados();
+                    vistaEmpleados.setVisible(true);
+                    dispose();
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se actualizo empleado(" + nombre + ") ", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+ 
             }else if (result == JOptionPane.NO_OPTION){
                 System.out.println(2);
                //label.setText("You selected: No");
             }else {
                 System.out.println(3);
-               //label.setText("None selected");
+               
             }
+
+        
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
