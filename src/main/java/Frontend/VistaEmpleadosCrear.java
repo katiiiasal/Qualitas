@@ -64,6 +64,12 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                 }
             });
         }
+        
+        Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoMaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
+        
     }
     
     public boolean validarCampoVacio(JTextField campo, boolean esFecha, boolean esNumerico) {

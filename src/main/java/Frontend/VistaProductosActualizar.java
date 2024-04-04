@@ -100,7 +100,12 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
                 }
             });
         }
-       
+        
+        Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
+        Utilidades.limitarCaracteres(txtfnumeroLote, 10, "numeros");
+        Utilidades.limitarCaracteres(txtffechaProduccion, 10, "fechas");
+        Utilidades.limitarCaracteres(txtffechaExpiracion, 10, "fechas");
+        Utilidades.limitarCaracteres(txtfPrecio, 6, "numeros");
         
     }
 
