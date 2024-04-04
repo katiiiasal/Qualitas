@@ -131,6 +131,17 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         txtfEstado.setNextFocusableComponent(btnActualizar);
         btnActualizar.setNextFocusableComponent(btnRegresar);
         
+        Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfApellidoMaterno, 20, "letras");
+        Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
+        Utilidades.limitarCaracteres(txtfCalle, 20, "letras");
+        Utilidades.limitarCaracteres(txtfNumeroInterior, 5, "numeros");
+        Utilidades.limitarCaracteres(txtfCodigoPostal, 5, "numeros");
+        Utilidades.limitarCaracteres(txtfColonia, 20, "letras");
+        Utilidades.limitarCaracteres(txtfCiudad, 20, "letras");
+        Utilidades.limitarCaracteres(txtfEstado, 20, "letras");
+        
     }
     
     /**

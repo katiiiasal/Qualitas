@@ -47,7 +47,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="420" width="240" height="90"/>
+          <AbsoluteConstraints x="70" y="420" width="240" height="90"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -212,12 +212,12 @@
     <Component class="javax.swing.JLabel" name="lblLogo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Images\LogoEmpresa airesize.png"/>
+          <Image iconType="2" name="C:\Images\Logo Qualitas Legit.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="-10" y="140" width="390" height="280"/>
+          <AbsoluteConstraints x="-40" y="140" width="390" height="280"/>
         </Constraint>
       </Constraints>
     </Component>
