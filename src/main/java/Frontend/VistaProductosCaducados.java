@@ -106,7 +106,7 @@ public class VistaProductosCaducados extends javax.swing.JFrame {
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("QUALITAS - PRODUCTOS");
+        setTitle("QUALITAS - PRODUCTOS CADUCADOS");
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("jfVistaProductos"); // NOI18N
         getContentPane().setLayout(null);

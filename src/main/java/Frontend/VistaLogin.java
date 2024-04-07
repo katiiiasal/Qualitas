@@ -4,7 +4,11 @@
  */
 package Frontend;
 
+import Backend.Empleado;
+import Backend.EmpleadoDAO;
 import Backend.Utilidades;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,13 +73,26 @@ public class VistaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        boolean credencialesCorrectas = false;
         String email = txtfEmail1.getText();
         String password = String.valueOf(txtpPassword.getPassword());
-        System.out.println(email);
-        System.out.println(password);
-        VistaMenu vistaMenu = new VistaMenu();
-        vistaMenu.setVisible(true);
-        dispose();
+        
+        EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+        List<Empleado> empleados = empleadoDAO.obtenerEmpleados();
+        
+        for(Empleado empleado : empleados){
+            if(empleado.getEmail() == email && empleado.getPassword() == password){
+                credencialesCorrectas = true;
+            }
+        }
+        
+        if(credencialesCorrectas){
+            VistaMenu vistaMenu = new VistaMenu();
+            vistaMenu.setVisible(true);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas", "Qualitas", JOptionPane.ERROR_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
