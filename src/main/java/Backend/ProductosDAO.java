@@ -23,7 +23,7 @@ public class ProductosDAO {
             statement.setInt(3, producto.getNumeroLote());
             statement.setString(4, producto.getFechaProduccion());
             statement.setString(5, producto.getFechaExpiracion());
-            statement.setBoolean(6, producto.estaPorExpirar());
+            statement.setInt(6, producto.estaPorExpirar());
             statement.setDouble(7, producto.getPrecio());
 
             int rowsInserted = statement.executeUpdate();
@@ -93,6 +93,18 @@ public class ProductosDAO {
         return productos;
     }
 
+     public List<Productos> obtenerProductosCaducados() throws SQLException {
+        List<Productos> productos = new ArrayList<>();
+        String query = "SELECT * FROM productos WHERE expiracion_alerta = 2;";
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                productos.add(obtenerProductoDesdeResultSet(resultSet));
+            }
+        }
+        return productos;
+    }   
+    
     public int actualizarProducto(Productos producto, int idProducto) throws SQLException {
         String query = "UPDATE productos SET nombre = ?, descripcion = ?, numero_lote = ?, fecha_produccion = ?, fecha_expiracion = ?, expiracion_alerta = ?, precio = ? WHERE id_producto = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -101,7 +113,7 @@ public class ProductosDAO {
             statement.setInt(3, producto.getNumeroLote());
             statement.setString(4, producto.getFechaProduccion());
             statement.setString(5, producto.getFechaExpiracion());
-            statement.setBoolean(6, producto.estaPorExpirar());
+            statement.setInt(6, producto.estaPorExpirar());
             statement.setDouble(7, producto.getPrecio());
             statement.setInt(8, idProducto);
             

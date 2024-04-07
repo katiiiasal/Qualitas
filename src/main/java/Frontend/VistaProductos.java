@@ -8,13 +8,15 @@ import Backend.ConexionBD;
 import Backend.Productos;
 import Backend.ProductosDAO;
 import Backend.Utilidades;
+import java.awt.Color;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -59,6 +61,24 @@ public class VistaProductos extends javax.swing.JFrame {
             e.printStackTrace();
         }
         
+        tblProductos.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                int expiracionValue = (int) table.getModel().getValueAt(row, 6);
+
+                switch (expiracionValue) {
+                    case 0 -> component.setBackground(Utilidades.VERDE);
+                    case 1 -> component.setBackground(Utilidades.NARANJA);
+                    case 2 -> component.setBackground(Utilidades.ROJO);
+                    default -> component.setBackground(Utilidades.AZUL);
+                }
+
+                return component;
+            }
+        });
+        
 
     }
 
@@ -73,6 +93,9 @@ public class VistaProductos extends javax.swing.JFrame {
 
         spHeadersTable = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         btnMenu = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
@@ -91,7 +114,7 @@ public class VistaProductos extends javax.swing.JFrame {
 
         spHeadersTable.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
-        tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        tblProductos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -101,7 +124,7 @@ public class VistaProductos extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -118,6 +141,30 @@ public class VistaProductos extends javax.swing.JFrame {
 
         getContentPane().add(spHeadersTable);
         spHeadersTable.setBounds(142, 58, 1138, 662);
+
+        jLabel1.setBackground(new java.awt.Color(248, 137, 32));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(248, 137, 32));
+        jLabel1.setText("POR CADUCAR 🟥");
+        jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(1040, 20, 100, 30);
+
+        jLabel2.setBackground(new java.awt.Color(203, 33, 41));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(203, 33, 41));
+        jLabel2.setText("CADUCADO 🟥");
+        jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(1160, 20, 100, 30);
+
+        jLabel3.setBackground(new java.awt.Color(20, 110, 56));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(20, 110, 56));
+        jLabel3.setText("NO CADUCADO 🟥");
+        jLabel3.setToolTipText("");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(910, 20, 140, 30);
 
         btnMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         btnMenu.setIcon(new javax.swing.ImageIcon("C:\\Images\\menu.png")); // NOI18N
@@ -332,6 +379,9 @@ public class VistaProductos extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblReturnToMenu;

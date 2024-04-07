@@ -98,17 +98,21 @@ public class Productos {
         return dias;
     }
 
-    public boolean estaPorExpirar() {
+    public int estaPorExpirar() {
         int dias = calcularDiferenciaEnDias(fechaHoy(), this.getFechaExpiracion());
 
         if (dias <= 2 && dias >= 0) {
-            System.out.println("El producto está por expirar, ¡muévelo!");
-            return true;
-        } else {
+            System.out.println("El producto está por expirar en " + dias + " días.");
+            return 1;
+        } else if (dias > 2) {
             System.out.println("El producto no está por expirar, ¡no te preocupes!");
-            return false;
+            return 0;
+        } else {
+            System.out.println("El producto ha expirado.");
+            return 2;
         }
     }
+
     
     public double getPrecio() {
         return precio;

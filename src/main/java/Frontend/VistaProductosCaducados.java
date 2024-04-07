@@ -24,12 +24,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author heiva
  */
-public class VistaProductosAlerta extends javax.swing.JFrame {
+public class VistaProductosCaducados extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProductos
      */
-    public VistaProductosAlerta() {
+    public VistaProductosCaducados() {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
         Utilidades.convertComponentsToUpperCase(this);
@@ -41,7 +41,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
             ProductosDAO productosDAO = new ProductosDAO(conexion);
             
             // Obtener todos los productos
-            List<Productos> todosProductos = productosDAO.obtenerTodosProductosAlerta();
+            List<Productos> todosProductos = productosDAO.obtenerProductosCaducados();
             System.out.println("Todos los productos:");
             for (Productos product : todosProductos) {
                 
@@ -96,7 +96,6 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         spHeadersTable = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
-        btnCaducados = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         lblReturnToMenu = new javax.swing.JLabel();
         btnAlerta = new javax.swing.JButton();
@@ -112,10 +111,10 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         setName("jfVistaProductos"); // NOI18N
         getContentPane().setLayout(null);
 
-        jLabel1.setBackground(new java.awt.Color(248, 137, 32));
+        jLabel1.setBackground(new java.awt.Color(203, 33, 41));
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(248, 137, 32));
-        jLabel1.setText("POR CADUCAR 🟥");
+        jLabel1.setForeground(new java.awt.Color(203, 33, 41));
+        jLabel1.setText("CADUCADO 🟥");
         jLabel1.setToolTipText("");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(1170, 20, 100, 30);
@@ -150,17 +149,6 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         getContentPane().add(spHeadersTable);
         spHeadersTable.setBounds(142, 58, 1138, 662);
 
-        btnCaducados.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnCaducados.setIcon(new javax.swing.ImageIcon("C:\\Images\\caducado.png")); // NOI18N
-        btnCaducados.setPreferredSize(new java.awt.Dimension(65, 65));
-        btnCaducados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCaducadosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCaducados);
-        btnCaducados.setBounds(20, 240, 90, 90);
-
         btnMenu.setFont(new java.awt.Font("Segoe UI Emoji", 0, 36)); // NOI18N
         btnMenu.setIcon(new javax.swing.ImageIcon("C:\\Images\\menu.png")); // NOI18N
         btnMenu.setPreferredSize(new java.awt.Dimension(65, 65));
@@ -179,7 +167,7 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         lblReturnToMenu.setBounds(10, 620, 120, 60);
 
         btnAlerta.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        btnAlerta.setIcon(new javax.swing.ImageIcon("C:\\Images\\notificacion.png")); // NOI18N
+        btnAlerta.setIcon(new javax.swing.ImageIcon("C:\\Images\\caducado.png")); // NOI18N
         btnAlerta.setPreferredSize(new java.awt.Dimension(65, 65));
         btnAlerta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,8 +200,8 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         btnDelete.setBounds(70, 130, 65, 65);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(248, 137, 32));
-        lblTitulo.setText("PRODUCTOS CERCA DE EXPIRAR - MOVER PRODUCTOS");
+        lblTitulo.setForeground(new java.awt.Color(203, 33, 41));
+        lblTitulo.setText("PRODUCTOS CADUCADOS - DESTRUIR PRODUCTOS");
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(260, 10, 950, 40);
 
@@ -311,12 +299,6 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnCaducadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaducadosActionPerformed
-        VistaProductosCaducados vistaProductosCaducados = new VistaProductosCaducados();
-        vistaProductosCaducados.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnCaducadosActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -334,28 +316,29 @@ public class VistaProductosAlerta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosCaducados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosCaducados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosCaducados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaProductosAlerta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaProductosCaducados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProductosAlerta().setVisible(true);
+                new VistaProductosCaducados().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlerta;
-    private javax.swing.JButton btnCaducados;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMenu;
     private javax.swing.JButton btnUpdate;

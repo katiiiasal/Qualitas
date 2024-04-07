@@ -48,21 +48,21 @@ public class VistaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnLogin);
-        btnLogin.setBounds(460, 490, 440, 40);
+        btnLogin.setBounds(420, 530, 440, 40);
 
         txtfEmail1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtfEmail1.setText("EMAIL");
         getContentPane().add(txtfEmail1);
-        txtfEmail1.setBounds(460, 360, 440, 40);
+        txtfEmail1.setBounds(420, 400, 440, 40);
 
         txtpPassword.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtpPassword.setText("jPasswordField1");
         getContentPane().add(txtpPassword);
-        txtpPassword.setBounds(460, 420, 440, 40);
+        txtpPassword.setBounds(420, 460, 440, 40);
 
-        lblLogoEmpresa.setIcon(new javax.swing.ImageIcon("C:\\Images\\Logo Qualitas Legit.png")); // NOI18N
+        lblLogoEmpresa.setIcon(new javax.swing.ImageIcon("C:\\Images\\LogoQualitas.png")); // NOI18N
         getContentPane().add(lblLogoEmpresa);
-        lblLogoEmpresa.setBounds(450, 80, 420, 270);
+        lblLogoEmpresa.setBounds(390, 110, 420, 270);
 
         pack();
         setLocationRelativeTo(null);
