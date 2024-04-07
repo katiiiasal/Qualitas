@@ -91,7 +91,6 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
         Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
         Utilidades.limitarCaracteres(txtfApellidoMaterno, 20, "letras");
-        Utilidades.limitarCaracteres(txtfEmail, 20, "letras");
         Utilidades.limitarCaracteres(txtfTelefono, 10, "numeros");
         Utilidades.limitarCaracteres(txtfCalle, 20, "letras");
         Utilidades.limitarCaracteres(txtfNumeroInterior, 5, "numeros");

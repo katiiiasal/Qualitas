@@ -4,16 +4,10 @@
  */
 package Frontend;
 
-import Backend.ConexionBD;
+
 import Backend.Empleado;
 import Backend.EmpleadoDAO;
-import Backend.Productos;
-import Backend.ProductosDAO;
 import Backend.Utilidades;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -262,7 +256,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de actualizar este producto?", 
+                            "¿Estas seguro de actualizar este empleado?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -276,13 +270,13 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
                 EmpleadoDAO empleadoDAO =new EmpleadoDAO ();
                 int id = empleadoDAO.actualizarEmpleado(empleado, this.getIdEmpleado());
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se actualizo empleado(" + nombre + ") exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se actualizo empleado(" + nombre + ") exitosmente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
                     VistaEmpleados vistaEmpleados = new VistaEmpleados();
                     vistaEmpleados.setVisible(true);
                     dispose();
 
                 }else{
-                    JOptionPane.showMessageDialog(null, "No se actualizo empleado(" + nombre + ") ", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se actualizo empleado(" + nombre + ") ", "Qualitas - Empleado", JOptionPane.ERROR_MESSAGE);
                     
                 }
  

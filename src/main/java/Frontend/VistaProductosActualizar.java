@@ -397,7 +397,7 @@ public class VistaProductosActualizar extends javax.swing.JFrame {
                 ProductosDAO productosDAO = new ProductosDAO(conexion);
                 int id = productosDAO.actualizarProducto(producto, this.getIdProducto());
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se actualizo producto(" + nombre + ") exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se actualizo producto(" + nombre + ") exitosamente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
                     VistaProductos vistaProductos = new VistaProductos();
                     vistaProductos.setVisible(true);
                     dispose();

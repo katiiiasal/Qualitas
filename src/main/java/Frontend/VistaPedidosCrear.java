@@ -364,7 +364,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
                     }
                 }
                 
-                JOptionPane.showMessageDialog(null, "Se creo el pedido (#" + this.idPedidoGenerado + ") exitosmente.", "Qualitas - Pedido", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se creo el pedido (#" + this.idPedidoGenerado + ") exitosamente.", "Qualitas - Pedido", JOptionPane.INFORMATION_MESSAGE);
                 
                 VistaPedidos vistaPedidos = new VistaPedidos();
                 vistaPedidos.setVisible(true);

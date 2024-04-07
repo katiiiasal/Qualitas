@@ -81,7 +81,7 @@ public class VistaLogin extends javax.swing.JFrame {
         List<Empleado> empleados = empleadoDAO.obtenerEmpleados();
         
         for(Empleado empleado : empleados){
-            if(empleado.getEmail() == email && empleado.getPassword() == password){
+            if(empleado.getEmail().equalsIgnoreCase(email) && empleado.getPassword().equals(password)){
                 credencialesCorrectas = true;
             }
         }
