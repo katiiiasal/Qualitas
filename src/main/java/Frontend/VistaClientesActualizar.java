@@ -514,7 +514,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         // Logica del pop up de confirmacion
         int result = JOptionPane.showConfirmDialog(
                             new JFrame(),
-                            "¿Estas seguro de crear este cliente?", 
+                            "¿Estas seguro de actualizar este cliente?", 
                             "QUALITAS - CONFIRMACION",
                             JOptionPane.YES_NO_OPTION,
                             JOptionPane.QUESTION_MESSAGE
@@ -532,7 +532,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
                 ClientesDAO clientesDAO = new ClientesDAO(conexion);
                 int id = clientesDAO.actualizarCliente(cliente, this.idCliente);
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se actualizo el cliente (" + nombre + ") exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se actualizo el cliente (" + nombre + ") exitosamente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
                     VistaClientes vistaClientes = new VistaClientes();
                     vistaClientes.setVisible(true);
                     dispose();

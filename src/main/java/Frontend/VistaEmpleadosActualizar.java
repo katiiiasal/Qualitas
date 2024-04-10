@@ -270,7 +270,7 @@ public class VistaEmpleadosActualizar extends javax.swing.JFrame {
                 EmpleadoDAO empleadoDAO =new EmpleadoDAO ();
                 int id = empleadoDAO.actualizarEmpleado(empleado, this.getIdEmpleado());
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se actualizo empleado(" + nombre + ") exitosmente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se actualizo empleado(" + nombre + ") exitosamente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
                     VistaEmpleados vistaEmpleados = new VistaEmpleados();
                     vistaEmpleados.setVisible(true);
                     dispose();

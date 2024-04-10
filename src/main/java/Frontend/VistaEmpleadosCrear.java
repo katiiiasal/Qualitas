@@ -332,7 +332,7 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                 
                 int id = empleadoDAO.insertarEmpleado(empleado);
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se creo empleado(" + nombre + ") exitosmente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se creo empleado(" + nombre + ") exitosamente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
                     VistaEmpleados vistaEmpleados = new VistaEmpleados();
                     vistaEmpleados.setVisible(true);
                     dispose();

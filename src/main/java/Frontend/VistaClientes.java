@@ -244,7 +244,7 @@ public class VistaClientes extends javax.swing.JFrame {
                         ClientesDAO clientesDAO = new ClientesDAO(conexion);
                         int id = clientesDAO.eliminarCliente(idCliente);
                         if (id != 0){
-                            JOptionPane.showMessageDialog(null, "Se creo elimino el cliente exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Se elimino el cliente exitosamente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
                             VistaClientes vistaClientes = new VistaClientes();
                             vistaClientes.setVisible(true);
                             dispose();

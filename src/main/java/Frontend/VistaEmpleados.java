@@ -249,13 +249,13 @@ public class VistaEmpleados extends javax.swing.JFrame {
                         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
                         int id = empleadoDAO.borrarEmpleado(idEmpleado);
                         if (id != 0){
-                            JOptionPane.showMessageDialog(null, "Se elimino el producto exitosmente.", "Qualitas - Producto", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Se elimino el empleado exitosamente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
                             VistaEmpleados vistaEmpleados = new VistaEmpleados();
                             vistaEmpleados.setVisible(true);
                             dispose();
 
                         }else{
-                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el Empleado", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el Empleado", "Qualitas - Empleado", JOptionPane.ERROR_MESSAGE);
 
                         }
 

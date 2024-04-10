@@ -501,7 +501,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
                 ClientesDAO clientesDAO = new ClientesDAO(conexion);
                 int id = clientesDAO.insertarCliente(cliente);
                 if (id != 0){
-                    JOptionPane.showMessageDialog(null, "Se creo cliente (" + nombre + ") exitosmente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Se creo cliente (" + nombre + ") exitosamente.", "Qualitas - Cliente", JOptionPane.INFORMATION_MESSAGE);
                     VistaClientes vistaClientes = new VistaClientes();
                     vistaClientes.setVisible(true);
                     dispose();
