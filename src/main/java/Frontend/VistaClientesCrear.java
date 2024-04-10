@@ -62,6 +62,12 @@ public class VistaClientesCrear extends javax.swing.JFrame {
                 public void focusLost(FocusEvent e) {
                     validarCampoVacio(campo, false, false);
                     campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO, 5));
+                    }
+
                 }
                 @Override
                 public void focusGained(FocusEvent e) {
@@ -373,7 +379,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         String textoCampo = campo.getText().trim();
         if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
             campo.setForeground(Utilidades.ROJO);
-            campo.setText("El campo es obligatorio");
+            //campo.setText("El campo es obligatorio");
             valido = false;
         }
         else{
@@ -423,19 +429,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
     }
     
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        /* 
-        String nombre = txtfNombre.getText();
-        System.out.println(nombre);
-        String descripcion = txtfApellidoMaterno.getText();
-        System.out.println(descripcion);
-        int numeroLote = Integer.valueOf(txtfApellidoPaterno.getText());
-        System.out.println(numeroLote);
-        String fechaProduccion = txtffechaProduccion.getText();
-        System.out.println(fechaProduccion);
-        String fechaExpiracion = txtfTelefono.getText();
-        System.out.println(fechaExpiracion);
-        */
-        
+
          if(
             validarCampoVacio(txtfNombre, false, false) &&
             validarCampoVacio(txtfApellidoPaterno, false, false) &&
@@ -451,7 +445,7 @@ public class VistaClientesCrear extends javax.swing.JFrame {
         ){
             
         }else{
-            JOptionPane.showMessageDialog(null, "Verifica los campos", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Verifica los campos\n(Todos los campos son obligatorios)", "Qualitas - Cliente", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException("Verifica los campos");
         }
          

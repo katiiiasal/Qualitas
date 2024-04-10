@@ -81,6 +81,12 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
                 public void focusLost(FocusEvent e) {
                     validarCampoVacio(campo, false, false);
                     campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO, 5));
+                    }
+
                 }
                 @Override
                 public void focusGained(FocusEvent e) {
@@ -416,7 +422,7 @@ public class VistaClientesActualizar extends javax.swing.JFrame {
         String textoCampo = campo.getText().trim();
         if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
             campo.setForeground(Utilidades.ROJO);
-            campo.setText("El campo es obligatorio");
+            //campo.setText("El campo es obligatorio");
             valido = false;
         }
         else{

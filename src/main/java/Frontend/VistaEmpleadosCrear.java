@@ -4,19 +4,15 @@
  */
 package Frontend;
 
-import Backend.ConexionBD;
+
 import Backend.Empleado;
 import Backend.EmpleadoDAO;
 import Backend.Utilidades;
 import java.awt.Color;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
@@ -47,16 +43,23 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         campos.add(txtfEmail);
         campos.add(txtfTelefono);
 
-        // Agregar oyente de foco a cada JTextField
         for (JTextField campo : campos) {
             campo.addFocusListener(new FocusAdapter() {
                 @Override
                 public void focusLost(FocusEvent e) {
                     validarCampoVacio(campo, false, false);
+                    campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO, 5));
+                    }
+
                 }
                 @Override
                 public void focusGained(FocusEvent e) {
-                    campo.setForeground(Color.BLACK);
+                    campo.setForeground(Utilidades.VERDE);
+                    campo.setBorder(BorderFactory.createLineBorder(Utilidades.AZUL, 5));
                     if (campo.getText().isEmpty() ||
                         campo.getText().equals("El campo es obligatorio")) {
                         campo.setText("");
@@ -64,6 +67,14 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                 }
             });
         }
+        
+        txtfNombre.setNextFocusableComponent(txtfApellidoPaterno);
+        txtfApellidoPaterno.setNextFocusableComponent(txtfApellidoMaterno);
+        txtfApellidoMaterno.setNextFocusableComponent(txtfEmail);
+        txtfEmail.setNextFocusableComponent(txtpPassword);
+        txtpPassword.setNextFocusableComponent(txtfTelefono);
+        txtfTelefono.setNextFocusableComponent(btnCrear);
+        btnCrear.setNextFocusableComponent(txtfNombre);
         
         Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
         Utilidades.limitarCaracteres(txtfApellidoPaterno, 20, "letras");
@@ -78,12 +89,12 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
         
         String textoCampo = campo.getText().trim();
         if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
-            campo.setForeground(Color.RED);
-            campo.setText("El campo es obligatorio");
+            campo.setForeground(Utilidades.ROJO);
+            //campo.setText("El campo es obligatorio");
             valido = false;
         }
         else{
-            campo.setForeground(Color.BLACK);
+            campo.setForeground(Utilidades.AZUL);
             valido = true;
         }
         
@@ -96,16 +107,16 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
             
             // Si no es un formato de fecha pone el borde en rojo
             if(!matcher.matches()){
-                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                 valido = false;
             }else{
                 
                 // Si es un formato de fecha valido, validara si la fecha es una fecha valida
                 if(Pattern.matches(regex, textoCampo)){
-                   campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                   campo.setBorder(BorderFactory.createLineBorder(Utilidades.VERDE));
                    valido = true;
                 }else{
-                    campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                     valido = false;
                 }
                 
@@ -117,11 +128,11 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
             try {
                 Double.parseDouble(textoCampo);
                 // Si la conversión es exitosa, el contenido es numérico
-                campo.setBorder(BorderFactory.createLineBorder(Color.GREEN));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.VERDE));
                 valido = true;
             } catch (NumberFormatException ex) {
                 // Si ocurre una excepción, el contenido no es numérico
-                campo.setBorder(BorderFactory.createLineBorder(Color.RED));
+                campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO));
                 valido = false;
             }
         }
@@ -286,7 +297,21 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfEmailActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-         
+
+        if(
+            validarCampoVacio(txtfNombre, false, false) &&
+            validarCampoVacio(txtfApellidoPaterno, false, false) &&
+            validarCampoVacio(txtfApellidoMaterno, false, false) &&
+            validarCampoVacio(txtfEmail, false, false) &&
+            validarCampoVacio(txtpPassword, false, false) && 
+            validarCampoVacio(txtfTelefono, false, true)
+        ){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Verifica los campos \n(Todos los campos son obligatorios)", "Qualitas - Empleado", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("Verifica los campos");
+        }
+        
         String nombre = txtfNombre.getText();
         System.out.println(nombre);
         String apellidoPaterno = txtfApellidoPaterno.getText();
@@ -316,20 +341,11 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                         );
          
             if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-                
-                
-                
-                
-                Connection conexion;
+
             
-            try {
-                conexion = ConexionBD.obtenerConexion();
                 Empleado empleado = new Empleado(nombre, apellidoPaterno, apellidoMaterno, email, password, "empleado", telefono);
                 System.out.println(empleado);
                 EmpleadoDAO empleadoDAO =new EmpleadoDAO();
-                
-                
                 int id = empleadoDAO.insertarEmpleado(empleado);
                 if (id != 0){
                     JOptionPane.showMessageDialog(null, "Se creo empleado(" + nombre + ") exitosamente.", "Qualitas - Empleado", JOptionPane.INFORMATION_MESSAGE);
@@ -341,18 +357,6 @@ public class VistaEmpleadosCrear extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "No se creo el empleado(" + nombre + ") ", "Qualitas - Empleado", JOptionPane.ERROR_MESSAGE);
                     
                 }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(VistaProductosCrear.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                
-
-            }else if (result == JOptionPane.NO_OPTION){
-                System.out.println(2);
-               //label.setText("You selected: No");
-            }else {
-                System.out.println(3);
-               
             }
     }//GEN-LAST:event_btnCrearActionPerformed
 

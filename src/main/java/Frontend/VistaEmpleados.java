@@ -187,32 +187,17 @@ public class VistaEmpleados extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         
+        int selectedRow = tblEmpleado.getSelectedRow();
         
-        int result = JOptionPane.showConfirmDialog(
-                            new JFrame(),
-                            "¿Estas seguro de actualizar este empleado?", 
-                            "QUALITAS - CONFIRMACION",
-                            JOptionPane.YES_NO_OPTION,
-                            JOptionPane.QUESTION_MESSAGE
-                        );
-         
-            if(result == JOptionPane.YES_OPTION){
-                System.out.println(1);
-                int selectedRow = tblEmpleado.getSelectedRow();
-        
-                if(selectedRow != -1){
-                    int idEmpleado = (int) tblEmpleado.getValueAt(selectedRow, 0);
-                    System.out.println(idEmpleado);
-                    VistaEmpleadosActualizar vistaEmpleadosActualizar = new VistaEmpleadosActualizar(idEmpleado);
-                    vistaEmpleadosActualizar.setVisible(true);
-                    dispose();
-
-
-                    } 
-                    
-                }else{
-                     JOptionPane.showMessageDialog(null, "Por favor selecciona un empleado");
-                }
+        if(selectedRow != -1){
+            int idEmpleado = (int) tblEmpleado.getValueAt(selectedRow, 0);
+            System.out.println(idEmpleado);
+            VistaEmpleadosActualizar vistaEmpleadosActualizar = new VistaEmpleadosActualizar(idEmpleado);
+            vistaEmpleadosActualizar.setVisible(true);
+            dispose();
+        }else{
+             JOptionPane.showMessageDialog(null, "Por favor selecciona un empleado");
+        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

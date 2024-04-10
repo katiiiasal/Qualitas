@@ -49,6 +49,11 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                     validarCampoVacio(campo, false, false);
                     campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO, 5));
+                    }
+
                 }
                 @Override
                 public void focusGained(FocusEvent e) {
@@ -61,6 +66,15 @@ public class VistaProductosCrear extends javax.swing.JFrame {
                 }
             });
         }
+        
+        txtfNombre.setNextFocusableComponent(txtfDescripcion);
+        txtfDescripcion.setNextFocusableComponent(txtfnumeroLote);
+        txtfnumeroLote.setNextFocusableComponent(txtffechaProduccion);
+        txtffechaProduccion.setNextFocusableComponent(txtffechaExpiracion);
+        txtffechaExpiracion.setNextFocusableComponent(txtfPrecio);
+        txtfPrecio.setNextFocusableComponent(btnCrear);
+        btnCrear.setNextFocusableComponent(txtfNombre);
+
         
         Utilidades.limitarCaracteres(txtfNombre, 20, "letras");
         Utilidades.limitarCaracteres(txtfnumeroLote, 7, "numeros");
@@ -263,7 +277,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         String textoCampo = campo.getText().trim();
         if (textoCampo.isEmpty() || textoCampo.equals("El campo es obligatorio")) {
             campo.setForeground(Utilidades.ROJO);
-            campo.setText("El campo es obligatorio");
+            //campo.setText("El campo es obligatorio");
             valido = false;
         }
         else{
@@ -325,7 +339,7 @@ public class VistaProductosCrear extends javax.swing.JFrame {
         ){
             
         }else{
-            JOptionPane.showMessageDialog(null, "Verifica los campos", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Verifica los campos\n (Todos los campos son obligatorios)", "Qualitas - Producto", JOptionPane.ERROR_MESSAGE);
             throw new RuntimeException("Verifica los campos");
         }
         
