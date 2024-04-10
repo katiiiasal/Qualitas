@@ -106,25 +106,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
                     }
                 }
             });
-            
-            
-            /*
-            System.out.println("Todos los productos:");
-            for (Productos product : todosProductos) {
-                
-                model.addRow(new Object[]{
-                    product.getIdProducto(),
-                    product.getNombre(),
-                    product.getDescripcion(),
-                    product.getNumeroLote(),
-                    product.getFechaProduccion(),
-                    product.getFechaExpiracion(),
-                    product.estaPorExpirar(),
-                    product.getPrecio(),
-                });
-            }
-            */
-            
+           
             //conexion.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -199,34 +181,36 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
         lblCantidad.setBounds(940, 70, 130, 32);
 
         idCliente.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        idCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        idCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idCliente.setText("ID CLIENTE");
         idCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idCliente);
-        idCliente.setBounds(340, 70, 140, 32);
+        idCliente.setBounds(140, 70, 340, 32);
 
         idProducto.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 24)); // NOI18N
-        idProducto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        idProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idProducto.setText("ID PRODUCTO");
         idProducto.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         getContentPane().add(idProducto);
-        idProducto.setBounds(670, 70, 180, 32);
+        idProducto.setBounds(580, 70, 350, 32);
 
         cmbIdProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         getContentPane().add(cmbIdProducto);
-        cmbIdProducto.setBounds(600, 110, 80, 40);
+        cmbIdProducto.setBounds(500, 110, 80, 40);
 
         txtfNombreProducto.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfNombreProducto.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtfNombreProducto.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombreProducto.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombreProducto);
-        txtfNombreProducto.setBounds(680, 110, 250, 40);
+        txtfNombreProducto.setBounds(580, 110, 350, 40);
 
         txtfNombreCliente.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
+        txtfNombreCliente.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtfNombreCliente.setMinimumSize(new java.awt.Dimension(65, 40));
         txtfNombreCliente.setPreferredSize(new java.awt.Dimension(65, 40));
         getContentPane().add(txtfNombreCliente);
-        txtfNombreCliente.setBounds(320, 110, 250, 40);
+        txtfNombreCliente.setBounds(140, 110, 350, 40);
 
         btnCrear.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
         btnCrear.setText("CREAR");
@@ -247,7 +231,7 @@ public class VistaPedidosCrear extends javax.swing.JFrame {
 
         cmbIdCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         getContentPane().add(cmbIdCliente);
-        cmbIdCliente.setBounds(240, 110, 80, 40);
+        cmbIdCliente.setBounds(60, 110, 80, 40);
         getContentPane().add(spnCantidad);
         spnCantidad.setBounds(950, 110, 110, 40);
 

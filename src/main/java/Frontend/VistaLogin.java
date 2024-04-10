@@ -7,8 +7,14 @@ package Frontend;
 import Backend.Empleado;
 import Backend.EmpleadoDAO;
 import Backend.Utilidades;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +29,40 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
         Utilidades.cargarLogo(this, "logo.png");
         Utilidades.convertComponentsToUpperCase(this);
+        
+        List<JTextField> campos;
+        campos = new ArrayList<>();
+        
+        campos.add(txtfEmail1);
+        campos.add(txtpPassword);
+        
+        for (JTextField campo : campos) {
+            campo.addFocusListener(new FocusAdapter() {
+                @Override
+                public void focusLost(FocusEvent e) {
+                    campo.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setBorder(BorderFactory.createLineBorder(Utilidades.ROJO, 5));
+                    }
+
+                }
+                @Override
+                public void focusGained(FocusEvent e) {
+                    campo.setForeground(Utilidades.VERDE);
+                    campo.setBorder(BorderFactory.createLineBorder(Utilidades.AZUL, 5));
+                    if (campo.getText().isEmpty() ||
+                        campo.getText().equals("El campo es obligatorio")) {
+                        campo.setText("");
+                    }
+                }
+            });
+        }
+        
+        txtfEmail1.setNextFocusableComponent(txtpPassword);
+        txtpPassword.setNextFocusableComponent(btnLogin);
+        btnLogin.setNextFocusableComponent(txtfEmail1);
     }
 
     /**
